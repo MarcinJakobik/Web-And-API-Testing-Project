@@ -28,6 +28,10 @@ public class SearchResultDTO {
     private static class Usertype {
       @JsonProperty("usertype")
       private String usertype;
+
+      public String getUsertype() {
+        return usertype;
+      }
     }
 
     private static class Category {
@@ -36,6 +40,14 @@ public class SearchResultDTO {
 
       @JsonProperty("category")
       private String category;
+
+      public Usertype getUsertype() {
+        return usertype;
+      }
+
+      public String getCategory() {
+        return category;
+      }
     }
 
     @JsonProperty("id")
