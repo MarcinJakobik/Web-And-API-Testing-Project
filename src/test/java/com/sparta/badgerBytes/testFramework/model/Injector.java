@@ -11,13 +11,6 @@ public class Injector {
 
     public static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static <T> T deserialize(T dto) {
-        ConnectionManager.Method setMethod = null;
-        Map setParams = null;
-        String setEndPoint = null;
-        return deserialize(dto, setMethod, setParams, setEndPoint);
-    }
-
     public static <T> T deserialize(T dto, ConnectionManager.Method setMethod, String setEndPoint) {
         Map setParams = null;
         return deserialize(dto, setMethod, setParams, setEndPoint);
