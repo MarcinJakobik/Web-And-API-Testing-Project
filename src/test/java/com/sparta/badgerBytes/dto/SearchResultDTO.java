@@ -15,6 +15,14 @@ public class SearchResultDTO {
     return products;
   }
 
+  public int getNumProducts() {
+    if (products != null) {
+      return products.size();
+    } else {
+      return 0;
+    }
+  }
+
   public static class Product {
 
     private static class Usertype {
