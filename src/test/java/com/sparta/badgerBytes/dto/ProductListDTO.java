@@ -4,20 +4,33 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class SearchResultDTO {
+public class ProductListDTO {
   @JsonProperty("responseCode")
   private String responseCode;
 
   @JsonProperty("products")
   private List<Product> products;
+  private List<Product> searchResults;
 
   public List<Product> getProducts() {
     return products;
   }
 
+  public List<Product> getSearchResults() {
+    return searchResults;
+  }
+
   public int getNumProducts() {
     if (products != null) {
       return products.size();
+    } else {
+      return 0;
+    }
+  }
+
+  public int getNumSearchResults() {
+    if (searchResults != null) {
+      return searchResults.size();
     } else {
       return 0;
     }
