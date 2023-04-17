@@ -1,43 +1,43 @@
 package com.sparta.badgerBytes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class UserAccountDTO {
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("password")
     private String password;
+    @JsonProperty("title")
     private String title;
+    @JsonProperty("birth_date")
     private String birthDate;
+    @JsonProperty("birth_month")
     private String birthMonth;
+    @JsonProperty("birth_year")
     private String birthYear;
+    @JsonProperty("firstname")
     private String firstName;
+    @JsonProperty("lastname")
     private String lastName;
+    @JsonProperty("company")
     private String company;
+    @JsonProperty("address1")
     private String address1;
+    @JsonProperty("address2")
     private String address2;
+    @JsonProperty("country")
     private String country;
+    @JsonProperty("zipcode")
     private String zipcode;
+    @JsonProperty("state")
     private String state;
+    @JsonProperty("city")
     private String city;
+    @JsonProperty("mobile_number")
     private String mobileNumber;
 
-    public UserAccountDTO(String name, String email, String password, String title, String birthDate, String birthMonth, String birthYear, String firstName, String lastName, String company, String address1, String address2, String country, String zipcode, String state, String city, String mobileNumber) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.title = title;
-        this.birthDate = birthDate;
-        this.birthMonth = birthMonth;
-        this.birthYear = birthYear;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.company = company;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.country = country;
-        this.zipcode = zipcode;
-        this.state = state;
-        this.city = city;
-        this.mobileNumber = mobileNumber;
-    }
 
     public String getName() {
         return name;
