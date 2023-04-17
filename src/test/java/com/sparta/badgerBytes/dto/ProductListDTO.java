@@ -10,6 +10,8 @@ public class ProductListDTO {
 
   @JsonProperty("products")
   private List<Product> products;
+
+  @JsonProperty("searchResults")
   private List<Product> searchResults;
 
   public List<Product> getProducts() {
