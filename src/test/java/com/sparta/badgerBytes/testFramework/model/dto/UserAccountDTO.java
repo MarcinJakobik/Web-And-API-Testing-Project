@@ -1,8 +1,8 @@
-package com.sparta.badgerBytes.dto;
+package com.sparta.badgerBytes.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserAccountDTO {
+public class UserAccountDTO extends SuperDTO{
     @JsonProperty("name")
     private String name;
     @JsonProperty("email")

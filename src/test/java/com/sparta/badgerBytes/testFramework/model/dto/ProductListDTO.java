@@ -1,12 +1,10 @@
-package com.sparta.badgerBytes.dto;
+package com.sparta.badgerBytes.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class ProductListDTO {
-  @JsonProperty("responseCode")
-  private String responseCode;
+public class ProductListDTO extends SuperDTO{
 
   @JsonProperty("products")
   private List<Product> products;
