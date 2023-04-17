@@ -9,5 +9,8 @@
         <module name="webAndApiAutomationProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="webAndApiAutomationProject" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
