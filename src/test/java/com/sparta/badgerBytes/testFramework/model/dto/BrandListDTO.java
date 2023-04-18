@@ -12,16 +12,10 @@ public class BrandListDTO extends SuperDTO {
     @JsonProperty("brands")
     private List<BrandsItem> brands;
 
-    @JsonProperty("responseCode")
-    private Integer responseCode;
-
     public List<BrandsItem> getBrands(){
         return brands;
     }
 
-    public Integer getResponseCode(){
-        return responseCode;
-    }
 
     /**
      * Nested class for properties for brands
