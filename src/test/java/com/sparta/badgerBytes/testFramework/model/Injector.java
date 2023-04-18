@@ -29,6 +29,7 @@ public class Injector {
                 response = ConnectionManager.getResponse(setMethod, setParams, setEndPoint);
             }
             jsonBody = response.body().toString();
+            System.out.println(jsonBody);
             dto = (T) dto.getClass().newInstance();
             dto = (T) objectMapper.readValue(jsonBody, dto.getClass());
             dto.setHeaderProperties(response.headers().map());
