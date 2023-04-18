@@ -38,7 +38,7 @@ public class ProductListDTO extends SuperDTO{
 
   public static class Product {
 
-    private static class Usertype {
+    public static class Usertype {
       @JsonProperty("usertype")
       private String usertype;
 
@@ -47,7 +47,7 @@ public class ProductListDTO extends SuperDTO{
       }
     }
 
-    private static class Category {
+    public static class Category {
       @JsonProperty("usertype")
       private Usertype usertype;
 
