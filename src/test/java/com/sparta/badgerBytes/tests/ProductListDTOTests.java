@@ -22,21 +22,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductListDTOTests {
 
-    private static String urlEndpoint ; //conflict here
+    private static String urlEndpoint; //conflict here
 
     private static String accessMethod;
 
 
     private static String urlQueryParams;
 
-    private static ProductListDTO productListDTOPost= new ProductListDTO();
+    private static ProductListDTO productListDTOPost = new ProductListDTO();
+    private static ProductListDTO productListDTOGet = new ProductListDTO();
 
     @BeforeAll
-    static void setupPOST(){
+    static void setupPOST() {
 
-        urlEndpoint="productsList"; //conflict here
-        Map<String, String> products = new HashMap<>(Map.of("id","1")) ;
-        productListDTOPost = Injector.deserialize(productListDTOPost, ConnectionManager.Method.POST, products,urlEndpoint);
+        urlEndpoint = "productsList"; //conflict here
+        Map<String, String> products = new HashMap<>(Map.of("id", "1"));
+        productListDTOPost = Injector.deserialize(productListDTOPost, ConnectionManager.Method.POST, products, urlEndpoint);
+        productListDTOGet = Injector.deserialize(productListDTOGet, ConnectionManager.Method.GET, urlEndpoint);
     }
 
     @Nested
@@ -48,14 +50,14 @@ public class ProductListDTOTests {
         @Order(1)
         @DisplayName("1. Test POST method body response code")
         void testPostMethodBodyResponseCode() {
-            Assertions.assertEquals(405,productListDTOPost.getResponseCode());
+            Assertions.assertEquals(405, productListDTOPost.getResponseCode());
         }
 
         @Test
         @Order(2)
         @DisplayName("2. Test POST body response message")
         void testPostBodyResponseMessage() {
-            Assertions.assertEquals("This request method is not supported.",productListDTOPost.getMessage());
+            Assertions.assertEquals("This request method is not supported.", productListDTOPost.getMessage());
         }
 
         @Test
@@ -70,14 +72,14 @@ public class ProductListDTOTests {
         @Order(4)
         @DisplayName("4. Test number of products for POST method")
         void testNumberOfProductsForPostMethod() {
-            Assertions.assertEquals(0,productListDTOPost.getNumProducts());
+            Assertions.assertEquals(0, productListDTOPost.getNumProducts());
         }
 
         @Test
         @Order(5)
         @DisplayName("5. Test number of search results for POST method")
         void testNumberOfSearchResultsForPostMethod() {
-            Assertions.assertEquals(0,productListDTOPost.getNumSearchResults());
+            Assertions.assertEquals(0, productListDTOPost.getNumSearchResults());
         }
 
         @Test
@@ -118,5 +120,6 @@ public class ProductListDTOTests {
             assertTrue(productListDTO.getProducts().size() > 0, "Expected more than 0 products in the search results");
         }
     }
+
 
 }

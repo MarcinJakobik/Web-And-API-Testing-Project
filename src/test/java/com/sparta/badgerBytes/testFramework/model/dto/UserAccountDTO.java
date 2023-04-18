@@ -2,108 +2,121 @@ package com.sparta.badgerBytes.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UserAccountDTO extends SuperDTO{
-    @JsonProperty("name")
-    private String name;
-    @JsonProperty("email")
-    private String email;
-    @JsonProperty("password")
-    private String password;
-    @JsonProperty("title")
-    private String title;
-    @JsonProperty("birth_date")
-    private String birthDate;
-    @JsonProperty("birth_month")
-    private String birthMonth;
-    @JsonProperty("birth_year")
-    private String birthYear;
-    @JsonProperty("firstname")
-    private String firstName;
-    @JsonProperty("lastname")
-    private String lastName;
-    @JsonProperty("company")
-    private String company;
-    @JsonProperty("address1")
-    private String address1;
-    @JsonProperty("address2")
-    private String address2;
-    @JsonProperty("country")
-    private String country;
-    @JsonProperty("zipcode")
-    private String zipcode;
-    @JsonProperty("state")
-    private String state;
-    @JsonProperty("city")
-    private String city;
-    @JsonProperty("mobile_number")
-    private String mobileNumber;
+public class UserAccountDTO extends SuperDTO {
 
+    @JsonProperty("user")
+    private User user;
 
-    public String getName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public String getEmail() {
-        return email;
-    }
+    public static class User {
 
-    public String getPassword() {
-        return password;
-    }
+        @JsonProperty("id")
+        private String id;
+        @JsonProperty("name")
+        private String name;
+        @JsonProperty("email")
+        private String email;
+        @JsonProperty("password")
+        private String password;
+        @JsonProperty("title")
+        private String title;
+        @JsonProperty("birth_day")
+        private String birthDay;
+        @JsonProperty("birth_month")
+        private String birthMonth;
+        @JsonProperty("birth_year")
+        private String birthYear;
+        @JsonProperty("first_name")
+        private String firstName;
+        @JsonProperty("last_name")
+        private String lastName;
+        @JsonProperty("company")
+        private String company;
+        @JsonProperty("address1")
+        private String address1;
+        @JsonProperty("address2")
+        private String address2;
+        @JsonProperty("country")
+        private String country;
+        @JsonProperty("zipcode")
+        private String zipcode;
+        @JsonProperty("state")
+        private String state;
+        @JsonProperty("city")
+        private String city;
+        @JsonProperty("mobile_number")
+        private String mobileNumber;
 
-    public String getTitle() {
-        return title;
-    }
 
-    public String getBirthDate() {
-        return birthDate;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public String getBirthMonth() {
-        return birthMonth;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public String getBirthYear() {
-        return birthYear;
-    }
+        public String getPassword() {
+            return password;
+        }
 
-    public String getFirstName() {
-        return firstName;
-    }
+        public String getTitle() {
+            return title;
+        }
 
-    public String getLastName() {
-        return lastName;
-    }
+        public String getBirthDay() {
+            return birthDay;
+        }
 
-    public String getCompany() {
-        return company;
-    }
+        public String getBirthMonth() {
+            return birthMonth;
+        }
 
-    public String getAddress1() {
-        return address1;
-    }
+        public String getBirthYear() {
+            return birthYear;
+        }
 
-    public String getAddress2() {
-        return address2;
-    }
+        public String getFirstName() {
+            return firstName;
+        }
 
-    public String getCountry() {
-        return country;
-    }
+        public String getLastName() {
+            return lastName;
+        }
 
-    public String getZipcode() {
-        return zipcode;
-    }
+        public String getCompany() {
+            return company;
+        }
 
-    public String getState() {
-        return state;
-    }
+        public String getAddress1() {
+            return address1;
+        }
 
-    public String getCity() {
-        return city;
-    }
+        public String getAddress2() {
+            return address2;
+        }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+        public String getCountry() {
+            return country;
+        }
+
+        public String getZipcode() {
+            return zipcode;
+        }
+
+        public String getState() {
+            return state;
+        }
+
+        public String getCity() {
+            return city;
+        }
+
+        public String getMobileNumber() {
+            return mobileNumber;
+        }
     }
 }
