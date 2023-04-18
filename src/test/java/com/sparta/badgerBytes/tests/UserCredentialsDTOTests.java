@@ -16,7 +16,7 @@ public class UserCredentialsDTOTests {
     private static String urlEndpoint = "/verifyLogin";
 
     private static UserCredentialsDTO userCredentialsDTO = new UserCredentialsDTO();
-    
+
     @Test
     @DisplayName("Check a POST request to verifyLogin endpoint with invalid credentials gets body property 'responseCode' 404 & 'message' user not found")
     void testPostInvalidCredentialsToVerifyLogin() {
