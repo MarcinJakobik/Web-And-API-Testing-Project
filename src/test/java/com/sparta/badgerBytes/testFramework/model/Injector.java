@@ -2,8 +2,10 @@ package com.sparta.badgerBytes.testFramework.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.testFramework.model.dto.SuperDTO;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,22 +13,26 @@ public class Injector {
 
     public static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static <T> T deserialize(T dto, ConnectionManager.Method setMethod, String setEndPoint) {
+    public static <T extends SuperDTO> T deserialize(T dto, ConnectionManager.Method setMethod, String setEndPoint) {
         Map setParams = null;
         return deserialize(dto, setMethod, setParams, setEndPoint);
     }
 
-    public static <T> T deserialize(T dto, ConnectionManager.Method setMethod, Map setParams, String setEndPoint) {
+    public static <T extends SuperDTO> T deserialize(T dto, ConnectionManager.Method setMethod, Map setParams, String setEndPoint) {
 
         String jsonBody;
+        HttpResponse response;
         try {
             if (setParams == null) {
-                jsonBody = ConnectionManager.getResponse(setMethod, setEndPoint).body().toString();
+                response = ConnectionManager.getResponse(setMethod, setEndPoint);
             } else {
-                jsonBody = ConnectionManager.getResponse(setMethod, setParams, setEndPoint).body().toString();
+                response = ConnectionManager.getResponse(setMethod, setParams, setEndPoint);
             }
+            jsonBody = response.body().toString();
             dto = (T) dto.getClass().newInstance();
             dto = (T) objectMapper.readValue(jsonBody, dto.getClass());
+            dto.setHeaderProperties(response.headers().map());
+            dto.setStatusCode(response.statusCode());
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -36,6 +42,7 @@ public class Injector {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+
         return dto;
     }
 
