@@ -1,6 +1,8 @@
 package com.sparta.badgerBytes.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Set;
 
 public class BrandsListDTO extends SuperDTO {
 
+    private static Logger logger = LogManager.getLogger(BrandsListDTO.class);
     @JsonProperty("brands")
     private List<BrandsItem> brands;
 
@@ -45,7 +48,7 @@ public class BrandsListDTO extends SuperDTO {
 
     public boolean checkBrandDuplication() {
         if (brands == null || brands.size() == 0) {
-            //logger
+            logger.info("Brand list not initialised before method call or brand list empty.");
             return false;
         }
         int count = brands.size();
@@ -56,7 +59,7 @@ public class BrandsListDTO extends SuperDTO {
             if (tempSet.add(value)) {
                 continue;
             } else {
-                //logger
+                logger.info("Duplicate brand name detected in brands list");
                 return false;
             }
         }
@@ -65,7 +68,7 @@ public class BrandsListDTO extends SuperDTO {
 
     public boolean checkForNonSequentialIds() {
         if (brands == null || brands.size() == 0) {
-            //logger
+            logger.info("Brand list not initialised before method call or brand list empty.");
             return false;
         }
         int count = brands.size();
@@ -73,7 +76,7 @@ public class BrandsListDTO extends SuperDTO {
             if (brands.get(count).getId().equals(brands.get(count - 1).getId())) {
                 continue;
             } else {
-                //logger
+                logger.info("Missing id number detected in brands list");
                 return false;
             }
         }
@@ -82,7 +85,7 @@ public class BrandsListDTO extends SuperDTO {
 
     public boolean checkForDuplicatedIds() {
         if (brands == null || brands.size() == 0) {
-            //logger
+            logger.info("Brand list not initialised before method call or brand list empty.");
             return false;
         }
         int count = brands.size();
@@ -93,7 +96,7 @@ public class BrandsListDTO extends SuperDTO {
             if (tempSet.add(value)) {
                 continue;
             } else {
-                //logger
+                logger.info("Duplicate id number detected in brands list");
                 return false;
             }
         }
