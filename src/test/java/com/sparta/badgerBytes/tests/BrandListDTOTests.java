@@ -1,7 +1,7 @@
 package com.sparta.badgerBytes.tests;
 
 import org.junit.jupiter.api.BeforeAll;
-import com.sparta.badgerBytes.testFramework.model.dto.BrandListDTO;
+import com.sparta.badgerBytes.testFramework.model.dto.BrandsListDTO;
 
 public class BrandListDTOTests {
 
@@ -11,7 +11,7 @@ public class BrandListDTOTests {
 
     String urlQueryParams;
 
-    BrandListDTO brandListDTO = new BrandListDTO();
+    BrandsListDTO brandsListDTO = new BrandsListDTO();
 
     @BeforeAll
     void setup(){

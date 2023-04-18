@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class InjectorTests {
 
     public static ProductListDTO productListDTO;
-    public static BrandListDTO brandListDTO;
+    public static BrandsListDTO brandsListDTO;
     public static UserAccountDTO userAccountDTO;
     public static UserCredentialsDTO userCredentialsDTO;
 
@@ -19,17 +19,17 @@ public class InjectorTests {
     void checkThatTheDeserializeMethodWillReturnAnAppropriateJavaObject() {
         //Arrange
         productListDTO = new ProductListDTO();
-        brandListDTO = new BrandListDTO();
+        brandsListDTO = new BrandsListDTO();
         userAccountDTO = new UserAccountDTO();
         userCredentialsDTO = new UserCredentialsDTO();
         //Act
         productListDTO = (ProductListDTO) Injector.deserialize(productListDTO, ConnectionManager.Method.GET,"productsList");
-        brandListDTO = (BrandListDTO) Injector.deserialize(brandListDTO, ConnectionManager.Method.GET,"brandsList");
+        brandsListDTO = (BrandsListDTO) Injector.deserialize(brandsListDTO, ConnectionManager.Method.GET,"brandsList");
         userAccountDTO = (UserAccountDTO) Injector.deserialize(userAccountDTO, ConnectionManager.Method.GET,"getUserDetailByEmail");
         userCredentialsDTO = (UserCredentialsDTO) Injector.deserialize(userCredentialsDTO, ConnectionManager.Method.GET,"verifyLogin");
         //Assert
         assertInstanceOf(ProductListDTO.class, productListDTO);
-        assertInstanceOf(BrandListDTO.class, brandListDTO);
+        assertInstanceOf(BrandsListDTO.class, brandsListDTO);
         assertInstanceOf(UserAccountDTO.class, userAccountDTO);
         assertInstanceOf(UserCredentialsDTO.class, userCredentialsDTO);
     }
