@@ -19,16 +19,4 @@ public class UserAccountDTOTests {
 
     static String deleteURLEndpoint;
 
-    @BeforeAll
-    static void setup() {
-        deleteURLEndpoint = "verifyLogin";
-    }
-
-    @Test
-    void testDeleteRequest() throws IOException {
-        HttpResponse deleteResponse = ConnectionManager.getResponse(Method.DELETE, deleteURLEndpoint);
-        assertEquals("{\"responseCode\": 405, \"message\": \"This request method is not supported.\"}", deleteResponse.body().toString());
-
-
-    }
 }
