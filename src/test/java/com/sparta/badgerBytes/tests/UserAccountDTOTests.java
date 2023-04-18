@@ -42,7 +42,7 @@ public class UserAccountDTOTests {
         userData.put("address1", "ExamplePassword");
 
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.POST, userData, urlEndpoint);
-        Assertions.assertEquals(201, userAccountDTO.getResponseCodes());
+        Assertions.assertEquals(201, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User created!", userAccountDTO.getMessage());
     }
 

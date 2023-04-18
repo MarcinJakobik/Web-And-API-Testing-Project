@@ -22,7 +22,7 @@ public class UserCredentialsDTOTests {
     void testPostInvalidCredentialsToVerifyLogin() {
         Map<String, String> requestBody = new HashMap<>(Map.of("email","", "password",""));
         userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, requestBody, urlEndpoint);
-        Assertions.assertEquals(404, userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(404, userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("User not found!", userCredentialsDTO.getMessage());
     }
 
@@ -37,7 +37,7 @@ public class UserCredentialsDTOTests {
 
 
         //Checks
-        Assertions.assertEquals(400,userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(400,userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("Bad request, email or password parameter is missing in POST request.", userCredentialsDTO.getMessage());
     }
 
@@ -48,7 +48,7 @@ public class UserCredentialsDTOTests {
 
         userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, urlEndpoint);
 
-        Assertions.assertEquals(400, userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(400, userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("Bad request, email or password parameter is missing in POST request.", userCredentialsDTO.getMessage());
     }
 
@@ -58,7 +58,7 @@ public class UserCredentialsDTOTests {
     {
         userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.GET, urlEndpoint);
 
-        Assertions.assertEquals(405, userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(405, userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("This request method is not supported.", userCredentialsDTO.getMessage());
     }
 
@@ -68,7 +68,7 @@ public class UserCredentialsDTOTests {
     {
         userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.PUT, urlEndpoint);
 
-        Assertions.assertEquals(405,userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(405,userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("This request method is not supported.", userCredentialsDTO.getMessage());
     }
 
@@ -82,7 +82,7 @@ public class UserCredentialsDTOTests {
         userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, param, urlEndpoint);
 
         //Checks
-        Assertions.assertEquals(400, userCredentialsDTO.getResponseCodes());
+        Assertions.assertEquals(400, userCredentialsDTO.getResponseCode());
         Assertions.assertEquals("Bad request, email or password parameter is missing in POST request.", userCredentialsDTO.getMessage());
     }
 
@@ -119,7 +119,7 @@ public class UserCredentialsDTOTests {
             //Create account
             String urlTest = "createAccount";
             userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, userParam, urlTest);
-            Assertions.assertEquals(201, userCredentialsDTO.getResponseCodes());
+            Assertions.assertEquals(201, userCredentialsDTO.getResponseCode());
 
 
             //create parameters to delete user
@@ -133,7 +133,7 @@ public class UserCredentialsDTOTests {
             userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.DELETE, param, urlTest);
 
             //Checks
-            Assertions.assertEquals(200, userCredentialsDTO.getResponseCodes());
+            Assertions.assertEquals(200, userCredentialsDTO.getResponseCode());
             Assertions.assertEquals("Account deleted!", userCredentialsDTO.getMessage());
 
         }
@@ -147,7 +147,7 @@ public class UserCredentialsDTOTests {
             userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.DELETE, urlTest);
 
             //Checks
-            Assertions.assertEquals(400, userCredentialsDTO.getResponseCodes());
+            Assertions.assertEquals(400, userCredentialsDTO.getResponseCode());
             Assertions.assertEquals("Bad request, email parameter is missing in DELETE request.", userCredentialsDTO.getMessage());
         }
 
