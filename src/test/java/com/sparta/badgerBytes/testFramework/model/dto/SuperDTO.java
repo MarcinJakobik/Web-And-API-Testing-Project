@@ -47,4 +47,15 @@ public class SuperDTO {
     public Map<String, List<String>> getHeaderProperties() {
         return headerProperties;
     }
+
+    public String getHeaderPropertyAsString(String key){
+        StringBuilder property = new StringBuilder();
+        List<String> values = headerProperties.get(key);
+        for(String value : values) property.append(value);
+        return property.toString();
+    }
+
+    public List<String> getHeaderPropertyAsList(String key){
+        return headerProperties.get(key);
+    }
 }
