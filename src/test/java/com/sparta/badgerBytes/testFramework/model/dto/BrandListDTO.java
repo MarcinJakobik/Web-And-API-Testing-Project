@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.dto;
+package com.sparta.badgerBytes.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * DTO for brand list
  */
 
-public class BrandListDTO {
+public class BrandListDTO extends SuperDTO {
     @JsonProperty("brands")
     private List<BrandsItem> brands;
 
