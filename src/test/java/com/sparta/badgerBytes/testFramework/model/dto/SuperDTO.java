@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SuperDTO {
-
     @JsonProperty("responseCode")
     private Integer responseCode;
 
