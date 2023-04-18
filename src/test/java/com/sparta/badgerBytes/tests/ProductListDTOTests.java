@@ -7,10 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
 import com.sparta.badgerBytes.testFramework.model.Injector;
 import com.sparta.badgerBytes.testFramework.model.dto.ProductListDTO;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,22 +22,72 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductListDTOTests {
 
-    String urlResource;
+    private static String urlEndpoint = "/searchProduct"; //conflict here
 
-    private static String urlEndpoint = "/searchProduct";
+    private static String accessMethod;
 
-    String urlQueryParams;
 
-    ProductListDTO productListDTO = new ProductListDTO();
+    private static String urlQueryParams;
+
+    private static ProductListDTO productListDTOPost= new ProductListDTO();
 
     @BeforeAll
-    static void setup(){
+    static void setupPOST(){
 
+        urlEndpoint="productsList"; //conflict here
+        Map<String, String> products = new HashMap<>(Map.of("id","1")) ;
+        productListDTOPost = Injector.deserialize(productListDTOPost, ConnectionManager.Method.POST, products,urlEndpoint);
     }
 
+    @Nested
+    @Order(1)
+    @DisplayName("POST method tests")
+    class PostMethod {
 
-//        private static String urlEndpoint = "/searchProduct";
+        @Test
+        @Order(1)
+        @DisplayName("1. Test POST method body response code")
+        void testPostMethodBodyResponseCode() {
+            Assertions.assertEquals(405,productListDTOPost.getResponseCode());
+        }
 
+        @Test
+        @Order(2)
+        @DisplayName("2. Test POST body response message")
+        void testPostBodyResponseMessage() {
+            Assertions.assertEquals("This request method is not supported.",productListDTOPost.getMessage());
+        }
+
+        @Test
+        @Order(3)
+        @DisplayName("3. Test if there is no products for POST method")
+        void testIfThereIsNoProductsForPostMethod() {
+            Assertions.assertNull(productListDTOPost.getProducts());
+
+        }
+
+        @Test
+        @Order(4)
+        @DisplayName("4. Test number of products for POST method")
+        void testNumberOfProductsForPostMethod() {
+            Assertions.assertEquals(0,productListDTOPost.getNumProducts());
+        }
+
+        @Test
+        @Order(5)
+        @DisplayName("5. Test number of search results for POST method")
+        void testNumberOfSearchResultsForPostMethod() {
+            Assertions.assertEquals(0,productListDTOPost.getNumSearchResults());
+        }
+
+        @Test
+        @Order(6)
+        @DisplayName("6. Test search result for POST method")
+        void testSearchResultForPostMethod() {
+            Assertions.assertNull(productListDTOPost.getSearchResults());
+        }
+
+    }
     @Test
     @DisplayName("Check a POST request to searchProduct endpoint without search_product parameter returns 400 bad request")
     void testPostRequestToSearchProductWithoutSearchParam() {
