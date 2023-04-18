@@ -8,19 +8,13 @@ import java.util.List;
  * DTO for brand list
  */
 
-public class BrandListDTO extends SuperDTO {
+public class BrandsListDTO extends SuperDTO {
+
     @JsonProperty("brands")
     private List<BrandsItem> brands;
 
-    @JsonProperty("responseCode")
-    private Integer responseCode;
-
     public List<BrandsItem> getBrands(){
         return brands;
-    }
-
-    public Integer getResponseCode(){
-        return responseCode;
     }
 
     /**
