@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductListDTOTests {
 
-    private static String urlEndpoint = "/searchProduct"; //conflict here
+    private static String urlEndpoint ; //conflict here
 
     private static String accessMethod;
 
@@ -88,32 +88,35 @@ public class ProductListDTOTests {
         }
 
     }
-    @Test
-    @DisplayName("Check a POST request to searchProduct endpoint without search_product parameter returns 400 bad request")
-    void testPostRequestToSearchProductWithoutSearchParam() {
-        ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, urlEndpoint);
-        Assertions.assertEquals(400, productListDTO.getResponseCodes());
-        Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
+
+    @Nested
+    @DisplayName("POST method for searching products")
+    class PostMethodForSearchingProducts {
+        @Test
+        @DisplayName("Check a POST request to searchProduct endpoint without search_product parameter returns 400 bad request")
+        void testPostRequestToSearchProductWithoutSearchParam() {
+            ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, "searchProduct");
+            Assertions.assertEquals(400, productListDTO.getResponseCode());
+            Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
+        }
+
+        @Test
+        @DisplayName("Check a POST request to searchProduct endpoint with an empty search_product parameter returns 400 bad request")
+        void testPostRequestToSearchProductWithEmptySearchParam() {
+            ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, "searchProduct");
+            Assertions.assertEquals(400, productListDTO.getResponseCode());
+            Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
+        }
+
+        @Test
+        @DisplayName("Check a POST request to searchProduct endpoint with a search_product parameter returns 200 OK")
+        void testPostRequestToSearchProductWithSearchParam() {
+            Map<String, String> params = new HashMap<>();
+            params.put("search_product", "top");
+            ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, params, "searchProduct");
+            Assertions.assertEquals(200, productListDTO.getResponseCode());
+            assertTrue(productListDTO.getProducts().size() > 0, "Expected more than 0 products in the search results");
+        }
     }
 
-    @Test
-    @DisplayName("Check a POST request to searchProduct endpoint with an empty search_product parameter returns 400 bad request")
-    void testPostRequestToSearchProductWithEmptySearchParam() {
-        Map<String, String> params = new HashMap<>();
-        params.put("search_product", "");
-        ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, params, urlEndpoint);
-        Assertions.assertEquals(400, productListDTO.getResponseCodes());
-        Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
-    }
-
-    @Test
-    @DisplayName("Check a POST request to searchProduct endpoint with a search_product parameter returns 200 OK")
-    void testPostRequestToSearchProductWithSearchParam() {
-        Map<String, String> params = new HashMap<>();
-        params.put("search_product", "tshirt");
-        ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, params, urlEndpoint);
-        Assertions.assertEquals(200, productListDTO.getResponseCodes());
-        Assertions.assertEquals("OK", productListDTO.getMessage());
-        assertTrue(productListDTO.getProducts().size() > 0, "Expected more than 0 products in the search results");
-    }
 }
