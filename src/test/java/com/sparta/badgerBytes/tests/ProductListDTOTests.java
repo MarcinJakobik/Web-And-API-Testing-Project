@@ -152,7 +152,6 @@ public class ProductListDTOTests {
     }
 }
 
-
 @Nested
 @DisplayName("POST method for searching products")
 class PostMethodForSearchingProducts {
