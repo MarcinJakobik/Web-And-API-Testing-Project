@@ -92,7 +92,7 @@ public class ProductListDTOTests {
     @DisplayName("Check a POST request to searchProduct endpoint without search_product parameter returns 400 bad request")
     void testPostRequestToSearchProductWithoutSearchParam() {
         ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, urlEndpoint);
-        Assertions.assertEquals(400, productListDTO.getResponseCodes());
+        Assertions.assertEquals(400, productListDTO.getResponseCode());
         Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
     }
 
@@ -102,7 +102,7 @@ public class ProductListDTOTests {
         Map<String, String> params = new HashMap<>();
         params.put("search_product", "");
         ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, params, urlEndpoint);
-        Assertions.assertEquals(400, productListDTO.getResponseCodes());
+        Assertions.assertEquals(400, productListDTO.getResponseCode());
         Assertions.assertEquals("Bad request, search_product parameter is missing in POST request.", productListDTO.getMessage());
     }
 
@@ -112,7 +112,7 @@ public class ProductListDTOTests {
         Map<String, String> params = new HashMap<>();
         params.put("search_product", "tshirt");
         ProductListDTO productListDTO = Injector.deserialize(new ProductListDTO(), ConnectionManager.Method.POST, params, urlEndpoint);
-        Assertions.assertEquals(200, productListDTO.getResponseCodes());
+        Assertions.assertEquals(200, productListDTO.getResponseCode());
         Assertions.assertEquals("OK", productListDTO.getMessage());
         assertTrue(productListDTO.getProducts().size() > 0, "Expected more than 0 products in the search results");
     }
