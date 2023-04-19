@@ -10,7 +10,9 @@
 
         import java.util.HashMap;
         import java.util.Map;
+ 
  @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class UserAccountDTOTests {
     String createAccountEndpoint = "createAccount";
 
@@ -109,7 +111,7 @@ public class UserAccountDTOTests {
         Assertions.assertEquals(200, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User updated!", userAccountDTO.getMessage());
     }
-    
+
     @Test
     @Order(4)
     @DisplayName("Test deleting user")
