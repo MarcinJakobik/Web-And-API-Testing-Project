@@ -62,7 +62,7 @@ public class BrandsListDTO extends SuperDTO {
             if (tempSet.add(value)) {
                 continue;
             } else {
-                //logger.info("Duplicate brand name detected in brands list");
+                logger.info("Duplicate brand name detected in brands list");
                 return false;
             }
 
