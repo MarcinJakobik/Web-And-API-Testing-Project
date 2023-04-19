@@ -10,7 +10,7 @@
 
         import java.util.HashMap;
         import java.util.Map;
-
+ @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserAccountDTOTests {
     String createAccountEndpoint = "createAccount";
 
@@ -19,6 +19,8 @@ public class UserAccountDTOTests {
     UserAccountDTO userAccountDTO = new UserAccountDTO();
 
     Map<String, String> userData;
+
+
 
     @Test
     @Order(1)
@@ -29,7 +31,7 @@ public class UserAccountDTOTests {
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.GET, emailParam, "getUserDetailByEmail");
 
         if (userAccountDTO.getResponseCode() == 200) {
-            testDeletingUser()
+            testDeletingUser();
         }
 
         userData = new HashMap<>();
