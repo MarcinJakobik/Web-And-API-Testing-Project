@@ -37,6 +37,7 @@ public class UserAccountDTOTests {
         }
 
         userData = new HashMap<>();
+        userData.put("email", "ExampleEmail@example.com");
         userData.put("password", "ExamplePassword");
         userData.put("name", "Name");
         userData.put("title", "Mr");
