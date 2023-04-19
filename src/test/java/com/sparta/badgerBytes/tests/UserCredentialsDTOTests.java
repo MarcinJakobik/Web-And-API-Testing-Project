@@ -97,11 +97,10 @@ public class UserCredentialsDTOTests {
 
             //create User
             Map<String, String> userParam = new HashMap<>();
-            userParam.put("email", "ExampleEmail@example.com");
             userParam.put("password", "ExamplePassword");
             userParam.put("name", "ExampleEmail@example.com");
             userParam.put("title", "Mr");
-            userParam.put("birth_data", "ExampleEmail@example.com");
+            userParam.put("birth_date", "ExampleEmail@example.com");
             userParam.put("birth_month", "ExamplePassword");
             userParam.put("birth_year", "ExampleEmail@example.com");
             userParam.put("firstname", "ExamplePassword");

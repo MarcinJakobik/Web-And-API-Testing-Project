@@ -46,11 +46,11 @@ public class BrandsListDTOTests {
             assertEquals(200, getResponse.statusCode(), "Status code should return a 200 error code");
         }
 
-//        @Test
-//        @DisplayName("Check that the server header is cloudflare")
-//        void checkThatTheServerHeaderIsCloudflare() {
-//            assertEquals("cloudflare", getBrandsListDTO.getHeaderPropertiesAsString("server"));
-//        }
+        @Test
+        @DisplayName("Check that the server header is cloudflare")
+        void checkThatTheServerHeaderIsCloudflare() {
+            assertEquals("cloudflare", getBrandsListDTO.getHeaderPropertyAsString("server"));
+        }
     }
 
     @Nested
@@ -103,11 +103,11 @@ public class BrandsListDTOTests {
             assertEquals(405, getResponse.statusCode(), "Status code should return a 405 error code");
         }
 
-//        @Test
-//        @DisplayName("Check that the server header is cloudflare")
-//        void checkThatTheServerHeaderIsCloudflare() {
-//            assertEquals("cloudflare", putBrandsListDTO.getHeaderPropertiesAsString("server"));
-//        }
+        @Test
+        @DisplayName("Check that the server header is cloudflare")
+        void checkThatTheServerHeaderIsCloudflare() {
+            assertEquals("cloudflare", putBrandsListDTO.getHeaderPropertyAsString("server"));
+        }
     }
 
     @Nested
