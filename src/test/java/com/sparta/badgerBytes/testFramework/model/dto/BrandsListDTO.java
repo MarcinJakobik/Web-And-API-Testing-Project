@@ -47,6 +47,7 @@ public class BrandsListDTO extends SuperDTO {
     }
 
     public boolean checkBrandDuplication() {
+        
         if (brands == null || brands.size() == 0) {
             logger.info("Brand list not initialised before method call or brand list empty.");
             return false;
@@ -56,12 +57,15 @@ public class BrandsListDTO extends SuperDTO {
 
         for (count = 0; count < brands.size(); count++) {
             String value = String.valueOf(brands.get(count).getBrand());
+            System.out.println(value);
             if (tempSet.add(value)) {
                 continue;
             } else {
                 logger.info("Duplicate brand name detected in brands list");
                 return false;
             }
+
+
         }
         return true;
     }

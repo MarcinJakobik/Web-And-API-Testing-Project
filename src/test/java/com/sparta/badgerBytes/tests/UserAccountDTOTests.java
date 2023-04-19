@@ -25,21 +25,17 @@ public class UserAccountDTOTests {
     @DisplayName("Test POST to createAccount endpoint with valid fields, response body should have responseCode 201 and message 'User created!'")
     void testPostToCreateAccountWithValidData() {
 
-        Map emailParam = new HashMap(Map.of("email", "ExampleEmail@example.com"));
+        Map emailParam = new HashMap(Map.of("email", "Marcin@example.com"));
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.GET, emailParam, "getUserDetailByEmail");
 
-        Map<String, String> param = new HashMap<>();
-        param.put("email", "ExampleEmail@example.com");
-        param.put("password", "ExamplePassword");
-
         if (userAccountDTO.getResponseCode() == 200) {
-            userAccountDTO = Injector.deserialize(userAccountDTO, Method.DELETE, param, "deleteAccount");
+            testDeletingUser()
         }
 
         userData = new HashMap<>();
-        userData.put("email", "ExampleEmail@example.com");
+        userData.put("email", "Marcin@example.com");
         userData.put("password", "ExamplePassword");
-        userData.put("name", "Name");
+        userData.put("name", "marcin");
         userData.put("title", "Mr");
         userData.put("birth_date", "10");
         userData.put("birth_month", "April");
@@ -58,25 +54,18 @@ public class UserAccountDTOTests {
         Assertions.assertEquals(201, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User created!", userAccountDTO.getMessage());
     }
-    @Test
-    @DisplayName("Test deleting user")
-    void testDeletingUser() {
-        Map<String, String> params = new HashMap<>(Map.of("email","ExampleEmail@example.com","password","ExamplePassword"));
-        UserAccountDTO productListDTO = Injector.deserialize(new UserAccountDTO(), Method.DELETE, params, "deleteAccount");
-        Assertions.assertEquals(200,productListDTO.getResponseCode());
-    }
 
     @Test
     @Order(2)
     @DisplayName("Test retrieving user data")
     void testRetrievingUserData() {
 
-        Map<String, String> params = new HashMap<>(Map.of("email", "ExampleEmail@example.com"));
+        Map<String, String> params = new HashMap<>(Map.of("email", "Marcin@example.com"));
         UserAccountDTO userCredentials = Injector.deserialize(new UserAccountDTO(), Method.GET, params, "getUserDetailByEmail");
         UserAccountDTO.User usr = userCredentials.getUser();
         Assertions.assertEquals(200, userCredentials.getResponseCode());
-        Assertions.assertEquals("Name", usr.getName());
-        Assertions.assertEquals("ExampleEmail@example.com", usr.getEmail());
+        Assertions.assertEquals("marcin", usr.getName());
+        Assertions.assertEquals("Marcin@example.com", usr.getEmail());
         Assertions.assertEquals("Mr", usr.getTitle());
         Assertions.assertEquals("10", usr.getBirthDay());
         Assertions.assertEquals("April", usr.getBirthMonth());
@@ -97,16 +86,16 @@ public class UserAccountDTOTests {
     void testPutToUpdateAccountWithValidData() {
 
         userData = new HashMap<>();
+        userData.put("email", "Marcin@example.com");
         userData.put("password", "ExamplePassword");
-        userData.put("name", "Name");
+        userData.put("name", "marcin");
         userData.put("title", "Mr");
-        userData.put("birth_date", "ExampleEmail@example.com");
-        userData.put("birth_month", "ExamplePassword");
-        userData.put("birth_year", "ExampleEmail@example.com");
-        userData.put("firstname", "ExamplePassword");
-        userData.put("lastname", "ExampleEmail@example.com");
-        userData.put("company", "ExamplePassword");
-        userData.put("email", "ExampleEmail@example.com");
+        userData.put("birth_date", "10");
+        userData.put("birth_month", "April");
+        userData.put("birth_year", "1990");
+        userData.put("firstname", "Firstname");
+        userData.put("lastname", "Lastname");
+        userData.put("company", "Company");
         userData.put("country", "ExamplePassword");
         userData.put("zipcode", "ExamplePassword");
         userData.put("state", "ExamplePassword");
@@ -117,5 +106,14 @@ public class UserAccountDTOTests {
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.PUT, userData, updateAccountEndpoint);
         Assertions.assertEquals(200, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User updated!", userAccountDTO.getMessage());
+    }
+    
+    @Test
+    @Order(4)
+    @DisplayName("Test deleting user")
+    void testDeletingUser() {
+        Map<String, String> params = new HashMap<>(Map.of("email","Marcin@example.com","password","ExamplePassword"));
+        UserAccountDTO productListDTO = Injector.deserialize(new UserAccountDTO(), Method.DELETE, params, "deleteAccount");
+        Assertions.assertEquals(200,productListDTO.getResponseCode());
     }
 }
