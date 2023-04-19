@@ -1,15 +1,15 @@
-package com.sparta.badgerBytes.tests;
+ package com.sparta.badgerBytes.tests;
 
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
-import com.sparta.badgerBytes.testFramework.model.Injector;
-import com.sparta.badgerBytes.testFramework.model.dto.ProductListDTO;
-import com.sparta.badgerBytes.testFramework.model.dto.UserAccountDTO;
-import com.sparta.badgerBytes.testFramework.model.dto.UserCredentialsDTO;
-import org.junit.jupiter.api.*;
+        import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
+        import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
+        import com.sparta.badgerBytes.testFramework.model.Injector;
+        import com.sparta.badgerBytes.testFramework.model.dto.ProductListDTO;
+        import com.sparta.badgerBytes.testFramework.model.dto.UserAccountDTO;
+        import com.sparta.badgerBytes.testFramework.model.dto.UserCredentialsDTO;
+        import org.junit.jupiter.api.*;
 
-import java.util.HashMap;
-import java.util.Map;
+        import java.util.HashMap;
+        import java.util.Map;
 
 public class UserAccountDTOTests {
     String urlEndpoint = "/createAccount";
@@ -28,11 +28,11 @@ public class UserAccountDTOTests {
         userData.put("password", "ExamplePassword");
         userData.put("name", "Name");
         userData.put("title", "Mr");
-        userData.put("birth_day", "10");
+        userData.put("birth_date", "10");
         userData.put("birth_month", "April");
         userData.put("birth_year", "1990");
-        userData.put("first_name", "Firstname");
-        userData.put("last_name", "Lastname");
+        userData.put("firstname", "Firstname");
+        userData.put("lastname", "Lastname");
         userData.put("company", "Company");
         userData.put("country", "ExamplePassword");
         userData.put("zipcode", "ExamplePassword");
@@ -44,6 +44,13 @@ public class UserAccountDTOTests {
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.POST, userData, urlEndpoint);
         Assertions.assertEquals(201, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User created!", userAccountDTO.getMessage());
+    }
+    @Test
+    @DisplayName("Test deleting user")
+    void testDeletingUser() {
+        Map<String, String> params = new HashMap<>(Map.of("email","ExampleEmail@example.com","password","ExamplePassword"));
+        UserAccountDTO productListDTO = Injector.deserialize(new UserAccountDTO(), Method.DELETE, params, "deleteAccount");
+        Assertions.assertEquals(200,productListDTO.getResponseCode());
     }
 
     @Test
