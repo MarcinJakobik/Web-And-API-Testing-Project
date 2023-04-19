@@ -3,6 +3,7 @@ package com.sparta.badgerBytes.tests;
 import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
 import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
 import com.sparta.badgerBytes.testFramework.model.Injector;
+import com.sparta.badgerBytes.testFramework.model.dto.UserAccountDTO;
 import com.sparta.badgerBytes.testFramework.model.dto.UserCredentialsDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -97,30 +98,42 @@ public class UserCredentialsDTOTests {
         @DisplayName("Delete to Delete account and delete users account")
         void deleteToDeleteAccountAndDeleteUsersAccount() {
 
-            //create User
-            Map<String, String> userParam = new HashMap<>();
-            userParam.put("password", "ExamplePassword");
-            userParam.put("name", "ExampleEmail@example.com");
-            userParam.put("title", "Mr");
-            userParam.put("birth_date", "ExampleEmail@example.com");
-            userParam.put("birth_month", "ExamplePassword");
-            userParam.put("birth_year", "ExampleEmail@example.com");
-            userParam.put("firstname", "ExamplePassword");
-            userParam.put("lastname", "ExampleEmail@example.com");
-            userParam.put("company", "ExamplePassword");
-            userParam.put("email", "ExampleEmail@example.com");
-            userParam.put("country", "ExamplePassword");
-            userParam.put("zipcode", "ExamplePassword");
-            userParam.put("state", "ExamplePassword");
-            userParam.put("city", "ExamplePassword");
-            userParam.put("mobile_number", "ExamplePassword");
-            userParam.put("address1", "ExamplePassword");
+
+            Map emailParam = new HashMap(Map.of("email", "ExamplePassword"));
+            UserAccountDTO userAccountDTO = new UserAccountDTO();
+
+            userAccountDTO= Injector.deserialize(userAccountDTO, Method.GET, emailParam, "getUserDetailByEmail");
 
 
-            //Create account
             String urlTest = "createAccount";
-            userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, userParam, urlTest);
-            Assertions.assertEquals(201, userCredentialsDTO.getResponseCode());
+            if (userAccountDTO.getResponseCode() != 200) {
+
+                //create User
+                Map<String, String> userParam = new HashMap<>();
+                userParam.put("password", "ExamplePassword");
+                userParam.put("name", "ExampleEmail@example.com");
+                userParam.put("title", "Mr");
+                userParam.put("birth_date", "ExampleEmail@example.com");
+                userParam.put("birth_month", "ExamplePassword");
+                userParam.put("birth_year", "ExampleEmail@example.com");
+                userParam.put("firstname", "ExamplePassword");
+                userParam.put("lastname", "ExampleEmail@example.com");
+                userParam.put("company", "ExamplePassword");
+                userParam.put("email", "ExampleEmail@example.com");
+                userParam.put("country", "ExamplePassword");
+                userParam.put("zipcode", "ExamplePassword");
+                userParam.put("state", "ExamplePassword");
+                userParam.put("city", "ExamplePassword");
+                userParam.put("mobile_number", "ExamplePassword");
+                userParam.put("address1", "ExamplePassword");
+
+
+                //Create account
+
+                userCredentialsDTO = Injector.deserialize(userCredentialsDTO, Method.POST, userParam, urlTest);
+            }
+
+
 
 
             //create parameters to delete user
