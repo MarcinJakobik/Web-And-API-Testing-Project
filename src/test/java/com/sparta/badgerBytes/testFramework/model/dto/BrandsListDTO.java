@@ -54,14 +54,23 @@ public class BrandsListDTO extends SuperDTO {
         int count = brands.size();
         Set<String> tempSet = new HashSet<>();
 
+
+
         for (count = 0; count < brands.size(); count++) {
             String value = String.valueOf(brands.get(count).getBrand());
+            System.out.println(value);
             if (tempSet.add(value)) {
                 continue;
             } else {
-                logger.info("Duplicate brand name detected in brands list");
+                //logger.info("Duplicate brand name detected in brands list");
                 return false;
             }
+
+
+        }
+
+        for(String string : tempSet){
+            System.out.println(string);
         }
         return true;
     }
