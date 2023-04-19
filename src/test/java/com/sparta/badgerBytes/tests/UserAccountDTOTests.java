@@ -10,6 +10,8 @@
 
         import java.util.HashMap;
         import java.util.Map;
+ 
+ @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class UserAccountDTOTests {
     String createAccountEndpoint = "createAccount";
@@ -20,6 +22,8 @@ public class UserAccountDTOTests {
 
     Map<String, String> userData;
 
+
+
     @Test
     @Order(1)
     @DisplayName("Test POST to createAccount endpoint with valid fields, response body should have responseCode 201 and message 'User created!'")
@@ -29,7 +33,7 @@ public class UserAccountDTOTests {
         userAccountDTO = Injector.deserialize(userAccountDTO, Method.GET, emailParam, "getUserDetailByEmail");
 
         if (userAccountDTO.getResponseCode() == 200) {
-            testDeletingUser()
+            testDeletingUser();
         }
 
         userData = new HashMap<>();
@@ -107,7 +111,7 @@ public class UserAccountDTOTests {
         Assertions.assertEquals(200, userAccountDTO.getResponseCode());
         Assertions.assertEquals("User updated!", userAccountDTO.getMessage());
     }
-    
+
     @Test
     @Order(4)
     @DisplayName("Test deleting user")
