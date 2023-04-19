@@ -1,5 +1,6 @@
 package com.sparta.badgerBytes.tests;
 
+import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
 import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
 import com.sparta.badgerBytes.testFramework.model.Injector;
 import com.sparta.badgerBytes.testFramework.model.dto.UserCredentialsDTO;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -148,6 +150,15 @@ public class UserCredentialsDTOTests {
             //Checks
             Assertions.assertEquals(400, userCredentialsDTO.getResponseCode());
             Assertions.assertEquals("Bad request, email parameter is missing in DELETE request.", userCredentialsDTO.getMessage());
+        }
+
+        @Test
+        @DisplayName("checking for 405 response when using Get reqeust on Delete account API")
+        void checkingFor405ResponseWhenUsingGetReqeustOnDeleteAccountApi()
+        {
+            HttpResponse response= ConnectionManager.getResponse(Method.GET,"deleteAccount");
+
+            Assertions.assertEquals(405, response.statusCode());
         }
 
     }
