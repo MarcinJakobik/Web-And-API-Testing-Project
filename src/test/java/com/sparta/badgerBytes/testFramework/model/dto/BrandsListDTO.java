@@ -47,14 +47,13 @@ public class BrandsListDTO extends SuperDTO {
     }
 
     public boolean checkBrandDuplication() {
+        
         if (brands == null || brands.size() == 0) {
             logger.info("Brand list not initialised before method call or brand list empty.");
             return false;
         }
         int count = brands.size();
         Set<String> tempSet = new HashSet<>();
-
-
 
         for (count = 0; count < brands.size(); count++) {
             String value = String.valueOf(brands.get(count).getBrand());
@@ -67,10 +66,6 @@ public class BrandsListDTO extends SuperDTO {
             }
 
 
-        }
-
-        for(String string : tempSet){
-            System.out.println(string);
         }
         return true;
     }
