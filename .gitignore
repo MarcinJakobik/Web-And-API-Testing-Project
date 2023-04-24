@@ -28,6 +28,9 @@ hs_err_pid*
 chromedriver
 chromedriver.exe
 
+*.properties
+
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
