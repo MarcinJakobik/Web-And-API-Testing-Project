@@ -1,8 +1,8 @@
-package com.sparta.badgerBytes.testFramework.model;
+package com.sparta.badgerBytes.apiTesting.testFramework.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
-import com.sparta.badgerBytes.testFramework.model.dto.SuperDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.SuperDTO;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;

@@ -1,24 +1,15 @@
-package com.sparta.badgerBytes.tests;
+package com.sparta.badgerBytes.apiTesting.tests;
 
-import com.sparta.badgerBytes.testFramework.model.dto.ProductListDTO;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.ProductListDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
-import com.sparta.badgerBytes.testFramework.model.Injector;
-import com.sparta.badgerBytes.testFramework.model.dto.ProductListDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.Injector;
 import org.junit.jupiter.api.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.sparta.badgerBytes.tests.InjectorTests.productListDTO;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductListDTOTests {

@@ -1,18 +1,17 @@
-package com.sparta.badgerBytes.tests;
+package com.sparta.badgerBytes.apiTesting.tests;
 
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
-import com.sparta.badgerBytes.testFramework.model.Injector;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager.Method;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.Injector;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeAll;
-import com.sparta.badgerBytes.testFramework.model.dto.BrandsListDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.BrandsListDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.net.http.HttpResponse;
-import java.util.List;
 
 public class BrandsListDTOTests {
 

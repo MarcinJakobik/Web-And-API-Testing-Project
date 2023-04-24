@@ -1,10 +1,10 @@
-package com.sparta.badgerBytes.tests;
+package com.sparta.badgerBytes.apiTesting.tests;
 
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager;
-import com.sparta.badgerBytes.testFramework.controll.ConnectionManager.Method;
-import com.sparta.badgerBytes.testFramework.model.Injector;
-import com.sparta.badgerBytes.testFramework.model.dto.UserAccountDTO;
-import com.sparta.badgerBytes.testFramework.model.dto.UserCredentialsDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager.Method;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.Injector;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.UserAccountDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.UserCredentialsDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
