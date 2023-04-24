@@ -5,8 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage {
   private final WebDriver driver;
-  By pastLink = new By.ByLinkText("past");
-  By commentsLink = new By.ByLinkText("comments");
+  By someLink = new By.ByLinkText("something"); // edit and use as necessary
 
   public HomePage(WebDriver webDriver) {
     this.driver = webDriver;
@@ -14,16 +13,6 @@ public class HomePage {
   }
 
   private void goToHomePage() {
-    driver.get("https://news.ycombinator.com/");
-  }
-
-  public CommentsPage goToCommentsPage() {
-    driver.findElement(commentsLink).click();
-    return new CommentsPage(driver);
-  }
-
-  public PastPage goToPastPage() {
-    driver.findElement(pastLink).click();
-    return new PastPage(driver);
+    driver.get("https://automationexercise.com/");
   }
 }
