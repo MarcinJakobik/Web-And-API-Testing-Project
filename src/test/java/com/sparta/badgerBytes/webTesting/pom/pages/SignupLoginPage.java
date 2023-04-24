@@ -1,8 +1,11 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
+import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
+import io.cucumber.java.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,6 +20,27 @@ public class SignupLoginPage {
     public String getUrl() {
         return driver.getCurrentUrl();
     }
+
+    public WebElement findSignUpForm() {
+        return driver.findElement(By.className("signup-form"));
+    }
+    public void enterName() {
+        driver.findElement(By.name("name")).sendKeys("Reg");
+    }
+    public void enterEmail() {
+        driver.findElement(By.name("email")).sendKeys("RHoward@spartaglobal.com");
+    }
+    public void submitSignup() {
+        driver.findElement(By.linkText("Signup")).click();
+    }
+    public String findErrorMessage() {
+        return driver.findElement(By.cssSelector(".signup-form p")).getText();
+    }
+
+
+
+
+
 
     public SignupLoginPage createAccount() {
         driver.navigate().to("https://automationexercise.com/signup");

@@ -16,11 +16,12 @@ public class ContactUsFormStepDefs {
     private static WebDriver driver;
     private static HomePage homePage;
     private static ContactUsPage contactUsPage;
+
     @Before
     public void setup() {
-        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        driver = BackgroundStepdefs.getDriver();
     }
-
     @When("I click on the Contact Us link")
     public void iClickOnTheContactUsLink() {
         contactUsPage = homePage.goToContactUsPage();
@@ -64,10 +65,5 @@ public class ContactUsFormStepDefs {
     @And("I enter the contact form details")
     public void iEnterTheContactFormDetails() {
 
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }

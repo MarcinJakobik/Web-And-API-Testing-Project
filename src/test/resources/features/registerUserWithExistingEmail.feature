@@ -10,7 +10,7 @@ Feature: As a Tester, I want to be able to check registration of a user who has 
       And I will see the signup Form
 
   Scenario: Try registering with an existing email address
-    Given An account already exists
+##    Given An account already exists
     When I enter a Name
       And I enter an already registered email address
       And I click the signup button

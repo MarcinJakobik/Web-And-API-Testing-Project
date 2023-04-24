@@ -19,59 +19,52 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     private static WebDriver driver;
     private static HomePage homePage;
+    private static WebElement element;
     private static SignupLoginPage loginPage;
 
     @Before
     public void setup() {
-        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        driver = BackgroundStepdefs.getDriver();
     }
-
 
     @Then("I will go to the Login page")
     public void iWillGoToTheLoginPage() {
         loginPage = homePage.goToLoginPage();
         assertEquals("https://automationexercise.com/login", loginPage.getUrl());
     }
-
     @And("I will see the signup Form")
     public void iWillSeeTheSignupForm() {
-        WebElement element = driver.findElement(By.className("signup-form"));
-        assertEquals("signup-form", element);
+        assertEquals("signup-form", loginPage.findSignUpForm());
     }
+
 
     @When("I enter a Name")
     public void iEnterAName() {
-        driver.findElement(By.name("name")).sendKeys("Reg");
+        loginPage.enterName();
     }
-
     @And("I enter an already registered email address")
     public void iEnterAnAlreadyRegisteredEmailAddress() {
-        driver.findElement(By.name("email")).sendKeys("RHoward@spartaglobal.com");
+        loginPage.enterEmail();
     }
-
     @And("I click the signup button")
     public void iClickTheSignupButton() {
-        driver.findElement(By.linkText("Signup")).click();
+        loginPage.submitSignup();
     }
 
     @Then("I will see the error message")
     public void iWillSeeTheErrorMessage() {
-        assertEquals("Email Address already exists!", driver.findElement(By.cssSelector(".signup-form p")).getText());
+        assertEquals("Email Address already exists!", loginPage.findErrorMessage());
     }
+
 
     @When("I click on the Signup And Login button")
     public void iClickOnTheSignupAndLoginButton() {
-        System.out.println(driver.getCurrentUrl());
-        driver.findElement(By.cssSelector("a[href='/login']")).click();
+        loginPage = homePage.goToLoginPage();
     }
 
     @Given("An account already exists")
     public void anAccountAlreadyExists() {
-
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
+        // This is related to TC 1, connect when uploaded.
     }
 }
