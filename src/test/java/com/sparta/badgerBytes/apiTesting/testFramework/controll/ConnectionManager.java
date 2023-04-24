@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.testFramework.controll;
+package com.sparta.badgerBytes.apiTesting.testFramework.controll;
 
 import java.io.IOException;
 import java.net.URI;

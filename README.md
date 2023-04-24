@@ -75,9 +75,9 @@ The test cases are created based on the user stories. Each test case is designed
 
 ## Contributors
 
-- [Edward Bradbury](https://github.com/@edwardbradbury) // Scrum Master
+- [Nicholas Daily](https://github.com/@NicholasDaily) // Scrum Master for Phase 2
+- [Edward Bradbury](https://github.com/@edwardbradbury) // Scrum Master for Phase 1
 - [Marcin Jakobik](https://github.com/@MarcinJakobik) // Github Lead
-- [Nicholas Daily](https://github.com/@NicholasDaily)
 - [Onur Belek](https://github.com/@Eluented)
 - [Liam Richardson](https://github.com/@LRichardson-git)
 - [Omar Hussain](https://github.com/@OmarHussain01)

@@ -1,8 +1,14 @@
-package com.sparta.badgerBytes.tests;
+package com.sparta.badgerBytes.apiTesting.tests;
 
-import com.sparta.badgerBytes.testFramework.controll.*;
-import com.sparta.badgerBytes.testFramework.model.*;
-import com.sparta.badgerBytes.testFramework.model.dto.*;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.ConnectionManager;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.Injector;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.BrandsListDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.ProductListDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.UserAccountDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.UserCredentialsDTO;
+import com.sparta.badgerBytes.apiTesting.testFramework.controll.*;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.*;
+import com.sparta.badgerBytes.apiTesting.testFramework.model.dto.*;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

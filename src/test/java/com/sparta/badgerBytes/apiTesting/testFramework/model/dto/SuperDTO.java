@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.testFramework.model.dto;
+package com.sparta.badgerBytes.apiTesting.testFramework.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
