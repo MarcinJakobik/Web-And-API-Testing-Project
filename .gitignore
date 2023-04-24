@@ -66,3 +66,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Custom Addition ###
+drivers.properties
