@@ -19,13 +19,12 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     private static WebDriver driver;
     private static HomePage homePage;
-    private static WebElement element;
     private static SignupLoginPage loginPage;
 
     @Before
     public void setup() {
-        homePage = new HomePage(driver);
         driver = BackgroundStepdefs.getDriver();
+        homePage = new HomePage(driver);
     }
 
     @Then("I will go to the Login page")

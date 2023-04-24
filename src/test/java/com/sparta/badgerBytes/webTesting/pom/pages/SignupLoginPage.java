@@ -21,8 +21,9 @@ public class SignupLoginPage {
         return driver.getCurrentUrl();
     }
 
-    public WebElement findSignUpForm() {
-        return driver.findElement(By.className("signup-form"));
+    public String findSignUpForm() {
+        WebElement element = driver.findElement(By.className("signup-form"));
+        return element.getText();
     }
     public void enterName() {
         driver.findElement(By.name("name")).sendKeys("Reg");

@@ -11,6 +11,7 @@ Feature: As a Tester, I want to be able to check registration of a user who has 
 
   Scenario: Try registering with an existing email address
 ##    Given An account already exists
+      And I click on the Signup And Login button
     When I enter a Name
       And I enter an already registered email address
       And I click the signup button

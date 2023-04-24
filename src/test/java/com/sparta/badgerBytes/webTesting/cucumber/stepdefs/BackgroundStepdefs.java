@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BackgroundStepdefs {
 
   private static WebDriver driver;
-  
+
   private static HomePage homePage;
 
   public static WebDriver getDriver() {
