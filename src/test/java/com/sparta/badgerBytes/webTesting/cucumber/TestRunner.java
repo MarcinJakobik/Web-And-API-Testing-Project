@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
 import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
+import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
 import io.cucumber.java.After;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +36,7 @@ public class TestRunner {
 
     private Checkout checkout;
 
-    private SignupLogin signupLogin;
+    private SignupLoginPage signupLoginPage;
 
 
     @BeforeEach

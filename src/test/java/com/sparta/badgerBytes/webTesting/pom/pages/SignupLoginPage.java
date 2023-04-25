@@ -1,19 +1,44 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
+import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
+import io.cucumber.java.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SignupLogin {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class SignupLoginPage {
 
     private final WebDriver driver;
 
-    public SignupLogin(WebDriver driver) {
-
+    public SignupLoginPage(WebDriver driver) {
         this.driver = driver;
-        goToSignupPage();
     }
 
+    public String getUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    public String findSignUpForm() {
+        WebElement element = driver.findElement(By.cssSelector(".signup-form h2"));
+        return element.getText();
+    }
+    public void enterName() {
+        driver.findElement(By.name("name")).click();
+        driver.findElement(By.name("name")).sendKeys("Reg");
+    }
+    public void enterEmail() {
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).click();
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).sendKeys("RHoward@spartaglobal.com");
+    }
+    public void submitSignup() {
+        driver.findElement(By.cssSelector(".signup-form button")).click();
+    }
+    public String findErrorMessage() {
+        return driver.findElement(By.cssSelector(".signup-form p")).getText();
+    }
     private void goToSignupPage(){driver.get("https://automationexercise.com/login");}
 
     public void createAccount(String userName, String email){
@@ -77,5 +102,4 @@ public class SignupLogin {
         //return new HomePage(driver);
 
     }
-
 }

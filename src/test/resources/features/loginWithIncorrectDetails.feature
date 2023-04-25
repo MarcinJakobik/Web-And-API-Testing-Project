@@ -1,4 +1,8 @@
 Feature:
+
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Login with Incorrect Email and Password
     Given I have launched the browser and navigated to the URL
     When I click on the 'Signup / Login' button

@@ -31,30 +31,17 @@ public class StepDefPlaceOrder {
 
     private Checkout checkout;
 
-    private SignupLogin signupLogin;
+    private SignupLoginPage signupLoginPage;
 
 
-    private static final String USERNAME = "liamm";
+    private static final String USERNAME = "liam";
 
     private static boolean confirmedPayment;
     @Before
     public static void setup(){
-
         service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
-
-        webDriver = DriverFactory.getDriver();
-
-
-
+        webDriver = BackgroundStepdefs.getDriver();
     }
-
-    @After
-    public static void tearDownAll(){
-        webDriver.close();
-        webDriver.quit();
-        service.stop();
-    }
-
 
     @Given("I am on the Homepage")
     public void iAmOnTheHomepage() { homePage = new HomePage(webDriver);}
@@ -73,19 +60,13 @@ public class StepDefPlaceOrder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
         homePage.clickContinueShopping();
         cart = homePage.goToCartPage();
         Assert.assertEquals("https://automationexercise.com/view_cart", cart.getUrl() );
-
-
     }
 
     @And("see that the product has been added to the cart")
     public void seeThatTheProductHasBeenAddedToTheCart() {
-
-
-
         Assert.assertEquals(true,cart.checkByClass("product_image"));
     }
 
@@ -105,12 +86,12 @@ public class StepDefPlaceOrder {
 
     @And("I  put in my inital details and continue")
     public void clickOnTheCreateAccountButton() {
-        signupLogin.createAccount(USERNAME, "Marcien@example.com");
+        signupLoginPage.createAccount(USERNAME, "Marcien@example.com");
     }
 
     @Then("I  put in my Full Details")
     public void iWillPutInMyNameAndEmailAddress() {
-       signupLogin.putInAccountDetails("Example","Example","Example","Example",
+       signupLoginPage.putInAccountDetails("Example","Example","Example","Example",
                 "Example","Example","Example","Example","Example");
     }
 
@@ -120,7 +101,6 @@ public class StepDefPlaceOrder {
         Assert.assertTrue(homePage.checkIfLoggedInAsUser(USERNAME));
 
     }
-
 
     @And("I have verified I am logged in")
     public void iHaveVerifiedIAmLoggedIn() {
@@ -175,10 +155,9 @@ public class StepDefPlaceOrder {
 
     }
 
-
     @And("I have Navigated to the Login Signup Page")
     public void iHaveNaviagtedToTheLoginSignupPage() {
 
-        signupLogin = homePage.goToSignUPLogin();
+        signupLoginPage = homePage.goToSignUPLoginPage();
     }
 }

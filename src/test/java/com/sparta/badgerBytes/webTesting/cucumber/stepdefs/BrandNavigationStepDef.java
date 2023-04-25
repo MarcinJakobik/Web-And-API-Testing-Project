@@ -20,7 +20,7 @@ public class BrandNavigationStepDef {
     WebDriver driver;
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
-        driver = DriverFactory.getDriver();
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
     }
 

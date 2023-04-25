@@ -21,7 +21,7 @@ public class StepDefNavigateToTestCasesPage {
 
     @Given("I am on the homepage")
     public void iAmOnTheHomepage() {
-        webDriver = DriverFactory.getDriver();
+        webDriver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(webDriver);
     }
 
