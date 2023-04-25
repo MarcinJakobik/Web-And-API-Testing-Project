@@ -5,8 +5,8 @@ Feature: Contact Us form submission
 
   Scenario: Submitting details through Contact Us form
     Given I have launched the browser and navigated to the URL
-    And I click on the 'Contact Us' button
-    Then I should see the 'GET IN TOUCH' section
+    And I click on the Contact Us button
+    Then I should see the GET IN TOUCH section
     And I should be able to enter my name, email, subject, and message
     And I should be able to upload a file if necessary
     Then I should be able to click the Submit button

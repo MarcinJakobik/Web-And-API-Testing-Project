@@ -38,14 +38,24 @@ public class ContactUs {
         driver = BackgroundStepdefs.getDriver();
     }
 
+    @And("I click on the Contact Us button")
+    public void iClickOnTheContactUsButton() {
+        WebElement contactUsButton = driver.findElement(By.cssSelector("a[href='/contact_us']"));
+        contactUsButton.click();
+    }
 
-    @Then("I should see the {string} section")
-    public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
+//    @Then("I should see the {string} section")
+//    public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
+//        By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
+//        WebElement element = driver.findElement(locator);
+//        assertTrue(element.isDisplayed());
+//    }
+    @Then("I should see the GET IN TOUCH section")
+    public void iShouldSeeTheGETINTOUCHSection() {
         By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
         WebElement element = driver.findElement(locator);
         assertTrue(element.isDisplayed());
     }
-
     @And("I should be able to enter my name, email, subject, and message")
     public void iShouldBeAbleToEnterMyNameEmailSubjectAndMessage() {
         WebElement nameInput = driver.findElement(By.cssSelector("input[data-qa='name']"));
@@ -100,6 +110,5 @@ public class ContactUs {
     @And("I should be taken back to the home page successfully")
     public void iShouldBeTakenBackToTheHomePageSuccessfully() {
     }
-
 
 }
