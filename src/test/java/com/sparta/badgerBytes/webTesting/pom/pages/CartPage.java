@@ -5,11 +5,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CartPage {
+public class CartPage extends SuperFooterPage{
 
-    WebDriver driver;
     public CartPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public String getUrl(){return driver.getCurrentUrl();}

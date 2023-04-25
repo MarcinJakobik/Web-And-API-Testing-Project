@@ -10,7 +10,6 @@ public class HomePage extends SuperFooterPage{
   By loginLink = new By.ByCssSelector("a[href='/login']");
   public HomePage(WebDriver driver) {
     super(driver);
-    goToHomePage();
   }
 
   public String getUrl() {
