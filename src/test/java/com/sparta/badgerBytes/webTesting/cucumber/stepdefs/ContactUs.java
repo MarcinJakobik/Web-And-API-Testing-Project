@@ -22,9 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ContactUs {
     private static WebDriver driver = BackgroundStepdefs.getDriver();
-
     private static ChromeDriverService service;
-
     private HomePage homePage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
