@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage {
   private final WebDriver driver;
-  By someLink = new By.ByLinkText("something"); // edit and use as necessary
-
+  By contactUsLink = new By.ByCssSelector("a[href='/contact_us']");
+  By loginLink = new By.ByCssSelector("a[href='/login']");
   public HomePage(WebDriver webDriver) {
     this.driver = webDriver;
     goToHomePage();
@@ -31,6 +31,19 @@ public class HomePage {
   public TestCasesPage goToTestCasesPage(){
     driver.findElement(By.cssSelector(".test_cases_list")).click();
     return new TestCasesPage(driver);
+  }
+
+  public ContactUsPage goToContactUsPage() {
+    driver.findElement(contactUsLink).click();
+    return new ContactUsPage(driver);
+  }
+
+  public SignupLoginPage goToLoginPage() {
+    driver.findElement(loginLink).click();
+    return new SignupLoginPage(driver);
+  }
+  public String getUrl() {
+    return driver.getCurrentUrl();
   }
 
   public void clickContinueShopping(){ driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();}
@@ -57,11 +70,11 @@ public class HomePage {
     driver.findElement(By.linkText("Continue")).click();
   }
 
-  public SignupLogin goToSignUPLogin(){
+  public SignupLoginPage goToSignUPLoginPage(){
 
     driver.findElement(By.cssSelector("a[href='/login']")).click();
 
-    return new SignupLogin(driver);
+    return new SignupLoginPage(driver);
   }
 
 }

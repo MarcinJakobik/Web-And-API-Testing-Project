@@ -31,7 +31,7 @@ public class StepDefPlaceOrder {
 
     private Checkout checkout;
 
-    private SignupLogin signupLogin;
+    private SignupLoginPage signupLoginPage;
 
 
     private static final String USERNAME = "liamm";
@@ -105,12 +105,12 @@ public class StepDefPlaceOrder {
 
     @And("I  put in my inital details and continue")
     public void clickOnTheCreateAccountButton() {
-        signupLogin.createAccount(USERNAME, "Marcien@example.com");
+        signupLoginPage.createAccount(USERNAME, "Marcien@example.com");
     }
 
     @Then("I  put in my Full Details")
     public void iWillPutInMyNameAndEmailAddress() {
-       signupLogin.putInAccountDetails("Example","Example","Example","Example",
+       signupLoginPage.putInAccountDetails("Example","Example","Example","Example",
                 "Example","Example","Example","Example","Example");
     }
 
@@ -179,6 +179,6 @@ public class StepDefPlaceOrder {
     @And("I have Navigated to the Login Signup Page")
     public void iHaveNaviagtedToTheLoginSignupPage() {
 
-        signupLogin = homePage.goToSignUPLogin();
+        signupLoginPage = homePage.goToSignUPLoginPage();
     }
 }
