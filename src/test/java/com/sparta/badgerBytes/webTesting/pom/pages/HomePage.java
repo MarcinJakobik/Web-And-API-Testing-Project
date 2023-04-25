@@ -1,6 +1,7 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -23,7 +24,17 @@ public class HomePage {
     return new Cart(driver);
   }
 
-  public void clickContinueShopping(){ driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();}
+  public Products goToTheProductPage() {
+    turnOffAd2();
+    WebElement element = driver.findElement(By.cssSelector("a[href='/products'] >  i.material-icons.card_travel"));
+    turnOffAd2();
+    element.click();
+    return new Products(driver);
+  }
+
+  public void clickContinueShopping(){
+    driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();
+  }
 
   public void addToCart(){
     WebElement addToCartButton = driver.findElement(By.cssSelector("a.add-to-cart"));
@@ -40,6 +51,17 @@ public class HomePage {
     else
       return false;
 
+  }
+
+  private void turnOffAd2() {
+    if (driver.getCurrentUrl().contains("#")) {
+      driver.manage().window().setSize(new Dimension(485, 800));
+      try {
+        Thread.sleep(3000);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 
 }

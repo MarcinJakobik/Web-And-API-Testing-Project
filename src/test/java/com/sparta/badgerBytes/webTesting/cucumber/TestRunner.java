@@ -131,7 +131,7 @@ public class TestRunner {
         element = webDriver.findElement(By.cssSelector("a i.fa.fa-user + b"));
         System.out.println(element.getText().contains(userName));
 
-    }
+}
 
     @After
     public void destroy(){
