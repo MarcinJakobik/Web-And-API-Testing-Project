@@ -1,4 +1,4 @@
-Feature: As a USER, I want to subscribe to the mailing list on www.automationexercise.com
+Feature: As a USER, I want to subscribe to the mailing list from the Automation Exericses homepage
 
   Background: Starting from the home page
     Given I am on the automation exercise website

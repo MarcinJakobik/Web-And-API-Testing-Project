@@ -1,5 +1,6 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
+import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
 import io.cucumber.java.After;
@@ -19,6 +20,8 @@ public class MailSubscriptionStepdefs {
     private static ChromeDriverService service;
     private static WebDriver driver;
     private static HomePage homePage;
+
+    private static Cart cartPage;
     private static WebElement footer;
     private static WebElement subscriptionHeading;
     private static WebElement inputForm;
@@ -75,5 +78,15 @@ public class MailSubscriptionStepdefs {
     @Then("the success message is visible")
     public void the_success_message_is_visible() {
         Assertions.assertEquals("You have been successfully subscribed!", homePage.getSuccessMessage().getText());
+    }
+
+    @When("I click on the Cart button")
+    public void iClickOnTheCartButton() {
+        cartPage = homePage.goToCartPage();
+    }
+
+    @Then("I see the text SUBSCRIPTION")
+    public void iSeeTheTextSUBSCRIPTION() {
+        Assertions.assertEquals("SUBSCRIPTION", cartPage.getSubscriptionHeading().getText());
     }
 }
