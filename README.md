@@ -2,7 +2,7 @@
 
 This repository contains work from "Badger Bytes" a group created within Sparta Global's **March '23 JAVA SDET** training course.
 
-The objective of the project is to create test cases for: API endpoints and a website's functionality, creating a test framework for both parts. By creating this framework, we want to help other testers efficiently test the site using our framework. We tested the website and API <https://automationexercise.com/>, a site created for practising automation testing. The project was completed in two sprints: "API testing" and "web testing".
+The objective of the project is to create a testing framework for: API calls and a website's functionality. By creating this framework, we want to help other testers efficiently test the site using our framework. We tested the website and API <https://automationexercise.com/>, a site created for practising automation testing. The project was completed in two phases: "API testing" and "web testing".
 
 ## Learning Objectives
 
@@ -36,7 +36,7 @@ SO THAT I am sure search results can be retrieved and can be presented on a webs
 
 ```
 
-## Sample User Stories // Web
+### Sample User Stories // Web
 
 ```md
 
@@ -95,11 +95,16 @@ THEN a success message 'You have been successfully subscribed!' will be visible
 
 **ADD INSTALLATION INSTRUCTIONS HERE**
 
+1. Clone the repository to your local machine.
+2. Open the project in your preferred IDE.
+3. Run `TestRunner.java` to start the application.
+4. Follow instructions laid out by command-line-interface.
+
 There are two main directories: apiTesting and webTesting. The API directory contains test cases for the site's API, while the Web Implementation directory contains test cases for testing the website's user interface. Each directory contains its own user stories and test cases.
 
 ## Our Process
 
-This project was completed over 4 days total with 2 days for each sprint. We started with the API, developing user stories from the site and then we used a Jira board to plot our product backlog items. We then used TDD (Junit / Maven) and pair programming to continually develop features. We followed this same methodology in phase 2, except we derived our test cases from the the list given to us on the site. We also followed BDD more explicitly in phase 2 with Cucumber to better integrate with Selenium WebDriver.
+This project was completed over 4 days total with 2 days for each phase. There were 8 'sprints' in total. We started with the API, developing user stories from the site and then we used a Jira board to plot our product backlog items. We then used TDD (Junit / Maven) and pair programming to continually develop features. We followed this same methodology in phase 2, except we derived our test cases from the the list given to us on the site. We also followed BDD more explicitly in phase 2 with Cucumber to better integrate with Selenium WebDriver.
 
 During the sprints, we met in the mornings/afternoons to discuss progress and then we would collectively assign programming-pairs to their backlog tickets. We ended our sessions with retro's to talk about any blockers, update the Kanban board and delegate tasks for the next day.
 
@@ -108,8 +113,9 @@ The project applies SOLID and OOP principles and uses well-known design patterns
 ## Contributors
 
 - [Edward Bradbury](https://github.com/@edwardbradbury) // Scrum Master phase 1
-- [Marcin Jakobik](https://github.com/@MarcinJakobik) // Github Lead
 - [Nicholas Daily](https://github.com/@NicholasDaily) // Scrum Master phase 2
+- [Marcin Jakobik](https://github.com/@MarcinJakobik) // Github Lead
+- [Elliott Horton-Stephens](https://github.com/@ells101)
 - [Onur Belek](https://github.com/@Eluented)
 - [Liam Richardson](https://github.com/@LRichardson-git)
 - [Omar Hussain](https://github.com/@OmarHussain01)
