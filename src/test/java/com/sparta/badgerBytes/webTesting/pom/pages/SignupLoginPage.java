@@ -22,17 +22,19 @@ public class SignupLoginPage {
     }
 
     public String findSignUpForm() {
-        WebElement element = driver.findElement(By.className("signup-form"));
+        WebElement element = driver.findElement(By.cssSelector(".signup-form h2"));
         return element.getText();
     }
     public void enterName() {
+        driver.findElement(By.name("name")).click();
         driver.findElement(By.name("name")).sendKeys("Reg");
     }
     public void enterEmail() {
-        driver.findElement(By.name("email")).sendKeys("RHoward@spartaglobal.com");
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).click();
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).sendKeys("RHoward@spartaglobal.com");
     }
     public void submitSignup() {
-        driver.findElement(By.linkText("Signup")).click();
+        driver.findElement(By.cssSelector(".signup-form button")).click();
     }
     public String findErrorMessage() {
         return driver.findElement(By.cssSelector(".signup-form p")).getText();

@@ -27,6 +27,10 @@ public class RegisterUserWithExistingEmailStepdefs {
         homePage = new HomePage(driver);
     }
 
+    @When("I click on the Signup And Login button")
+    public void iClickOnTheSignupAndLoginButton() {
+        loginPage = homePage.goToLoginPage();
+    }
     @Then("I will go to the Login page")
     public void iWillGoToTheLoginPage() {
         loginPage = homePage.goToLoginPage();
@@ -34,10 +38,13 @@ public class RegisterUserWithExistingEmailStepdefs {
     }
     @And("I will see the signup Form")
     public void iWillSeeTheSignupForm() {
-        assertEquals("signup-form", loginPage.findSignUpForm());
+        assertEquals("New User Signup!", loginPage.findSignUpForm());
     }
 
-
+    @Given("An account already exists")
+    public void anAccountAlreadyExists() {
+        // This is related to TC 1, connect when uploaded.
+    }
     @When("I enter a Name")
     public void iEnterAName() {
         loginPage.enterName();
@@ -54,16 +61,5 @@ public class RegisterUserWithExistingEmailStepdefs {
     @Then("I will see the error message")
     public void iWillSeeTheErrorMessage() {
         assertEquals("Email Address already exists!", loginPage.findErrorMessage());
-    }
-
-
-    @When("I click on the Signup And Login button")
-    public void iClickOnTheSignupAndLoginButton() {
-        loginPage = homePage.goToLoginPage();
-    }
-
-    @Given("An account already exists")
-    public void anAccountAlreadyExists() {
-        // This is related to TC 1, connect when uploaded.
     }
 }
