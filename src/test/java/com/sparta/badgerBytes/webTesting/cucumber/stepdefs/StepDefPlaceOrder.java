@@ -31,30 +31,16 @@ public class StepDefPlaceOrder {
 
     private Checkout checkout;
 
-    private SignupLogin signupLogin;
+    private SignupLoginPage signupLoginPage;
 
 
-    private static final String USERNAME = "liamm";
+    private static final String USERNAME = "liam";
 
-
+    private static boolean confirmedPayment;
     @Before
     public static void setup(){
-
-        service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
-
-        webDriver = DriverFactory.getDriver();
-
-
-
+        webDriver = BackgroundStepdefs.getDriver();
     }
-
-    @After
-    public static void tearDownAll(){
-        webDriver.close();
-        webDriver.quit();
-       service.stop();
-    }
-
 
     @Given("I am on the Homepage")
     public void iAmOnTheHomepage() { homePage = new HomePage(webDriver);}
@@ -73,90 +59,104 @@ public class StepDefPlaceOrder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
         homePage.clickContinueShopping();
         cart = homePage.goToCartPage();
         Assert.assertEquals("https://automationexercise.com/view_cart", cart.getUrl() );
-
-
     }
 
     @And("see that the product has been added to the cart")
     public void seeThatTheProductHasBeenAddedToTheCart() {
-
-
-
         Assert.assertEquals(true,cart.checkByClass("product_image"));
     }
 
     @Given("I am on the cart page")
     public void iAmOnTheCartPage() {
-        iAmOnTheHomepage();
-        iAddAProductToTheCart();
-        iWillGoToTheCart();
+      //  iAmOnTheHomepage();
+      //  iAddAProductToTheCart();
+      //  iWillGoToTheCart();
+        Assert.assertEquals("https://automationexercise.com/view_cart",cart.getUrl());
     }
 
     @When("I click the proceed to checkout button")
     public void iClickTheProceedToCheckoutButton() {
 
-        signupLogin = cart.proceedToCheckoutRegister();
+        checkout = cart.proccedToCheckout();
     }
 
-    @And("Click on the create account button")
+    @And("I  put in my inital details and continue")
     public void clickOnTheCreateAccountButton() {
-        signupLogin.createAccount(USERNAME, "Marcien@example.com");
+        signupLoginPage.createAccount(USERNAME, "Marcien@example.com");
     }
 
-    @Then("I will put in my Name andEmail Address")
+    @Then("I  put in my Full Details")
     public void iWillPutInMyNameAndEmailAddress() {
-       signupLogin.putInAccountDetails("Example","Example","Example","Example",
+       signupLoginPage.putInAccountDetails("Example","Example","Example","Example",
                 "Example","Example","Example","Example","Example");
     }
 
-    @And("I will create a account")
+    @And("I  have created an account")
     public void iWillCreateAAccount() {
 
-        Assert.assertTrue(homePage.checkIfLoggedInAsUser(USERNAME)) ;
+        Assert.assertTrue(homePage.checkIfLoggedInAsUser(USERNAME));
 
     }
 
-
     @And("I have verified I am logged in")
     public void iHaveVerifiedIAmLoggedIn() {
+
+        homePage.checkIfLoggedInAsUser(USERNAME);
     }
 
     @When("I click on the cart")
     public void iClickOnTheCart() {
+        cart = homePage.goToCartPage();
     }
 
     @And("have items in the cart")
     public void haveItemsInTheCart() {
+        Assert.assertEquals(true,cart.checkByClass("product_image"));
     }
 
     @Then("click proceed to checkout button")
     public void clickProceedToCheckoutButton() {
+        checkout = cart.proccedToCheckout();
     }
 
-    @And("I have entered my details")
+    @And("I have entered my payment details")
     public void iHaveEnteredMyDetails() {
+        //procceed(place order)
+        //put in cary details
+        checkout.placeOrderButton();
+        confirmedPayment= checkout.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43");
+
     }
 
     @And("I verified the order was a success")
     public void iVerifiedTheOrderWasASuccess() {
+        Assert.assertTrue( confirmedPayment);
     }
 
     @When("I click the delete account button")
     public void iClickTheDeleteAccountButton() {
+        homePage.deleteAccount();
     }
 
     @And("clicked the verify account deletion button")
     public void clickedTheVerifyAccountDeletionButton() {
+        //done in previous step
+
     }
 
     @Then("my account should be deleted")
     public void myAccountShouldBeDeleted() {
+        //account deleted
+        Assert.assertEquals("https://automationexercise.com",webDriver.getCurrentUrl());
+
     }
 
+    @And("I have Navigated to the Login Signup Page")
+    public void iHaveNaviagtedToTheLoginSignupPage() {
 
-
+        signupLoginPage = homePage.goToSignUPLoginPage();
+    }
 }

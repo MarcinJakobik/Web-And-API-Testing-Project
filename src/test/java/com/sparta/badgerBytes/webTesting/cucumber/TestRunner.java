@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
 import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
+import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
 import io.cucumber.java.After;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,7 +36,7 @@ public class TestRunner {
 
     private Checkout checkout;
 
-    private SignupLogin signupLogin;
+    private SignupLoginPage signupLoginPage;
 
 
     @BeforeEach
@@ -70,6 +70,8 @@ public class TestRunner {
         webDriver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();
 
         webDriver.findElement(By.linkText("Cart")).click();
+
+        cart.proceedToCheckoutRegister();
 
 
 
@@ -130,6 +132,10 @@ public class TestRunner {
 
         element = webDriver.findElement(By.cssSelector("a i.fa.fa-user + b"));
         System.out.println(element.getText().contains(userName));
+
+        homePage.goToCartPage();
+        cart.proccedToCheckout();
+        System.out.println(checkout.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43"));
 
     }
 

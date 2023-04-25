@@ -1,10 +1,12 @@
 package com.sparta.badgerBytes.webTesting.pom.util;
 
+import io.cucumber.java.hu.De;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
@@ -25,14 +27,20 @@ public class DriverFactory {
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
                     options.addExtensions(new File("src/test/resources/uBlock-Origin.crx"));
+
+//                    DesiredCapabilities capabilities = new DesiredCapabilities();
+//                    capabilities.setCapability(ChromeOptions.CAPABILITY,options);
+
                     if(headless) options.addArguments("headless");
                     driver = new ChromeDriver(service, options);
+
                     break;
                 case "firefox":
                     System.setProperty("webdriver.gecko.driver", properties.getProperty("driverPath"));
                     if(headless) {
                         FirefoxOptions ffoptions = new FirefoxOptions();
                         ffoptions.addArguments("-headless");
+
                         driver = new FirefoxDriver(ffoptions);
                         break;
                     }
