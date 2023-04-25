@@ -21,7 +21,11 @@ public class StepDefsProductsInCart {
     private static ProductsPage productPage;
     private static CartPage cart;
 
-
+    @Before
+    public void setup(){
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+    }
 
     @When("I click products button")
     public void iClickProductsButton() {

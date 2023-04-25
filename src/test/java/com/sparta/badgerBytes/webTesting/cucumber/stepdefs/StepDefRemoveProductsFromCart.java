@@ -5,6 +5,8 @@ import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
+import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,6 +15,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class StepDefRemoveProductsFromCart {
 

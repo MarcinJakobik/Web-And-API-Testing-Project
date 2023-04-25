@@ -29,10 +29,11 @@ public class HomePage extends SuperFooterPage {
     }
 
     public BrandProductPage goToBrandPage(String brandName) {
-
+        turnOffAd();
         WebElement element = driver.findElement(By.cssSelector("a[href='/brand_products/"+brandName+"']"));
         turnOffAd();
         element.click();
+        turnOffAd();
         return new BrandProductPage(driver);
     }
 

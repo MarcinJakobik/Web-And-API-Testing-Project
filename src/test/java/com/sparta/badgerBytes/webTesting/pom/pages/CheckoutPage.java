@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 //rename this class to Checkout/Payment
 public class CheckoutPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
     }

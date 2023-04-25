@@ -38,10 +38,6 @@ public class ContactUs {
         driver = BackgroundStepdefs.getDriver();
     }
 
-    @Given("I am on the Automation Exercise Website")
-    public void iAmOnTheAutomationExerciseWebsite() {
-        homePage = new HomePage(driver);
-    }
 
     @Then("I should see the {string} section")
     public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
