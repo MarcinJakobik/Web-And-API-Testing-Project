@@ -4,19 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
+
+public class HomePage extends Footer {
   private final WebDriver driver;
   By contactUsLink = new By.ByCssSelector("a[href='/contact_us']");
   By loginLink = new By.ByCssSelector("a[href='/login']");
   public HomePage(WebDriver webDriver) {
-    this.driver = webDriver;
+    super(webDriver);
     goToHomePage();
+  }
+
+  public String getUrl() {
+    return driver.getCurrentUrl();
   }
 
   private void goToHomePage() {
     driver.get("https://automationexercise.com/");
   }
 
+  public Products goToProductsPage() {
+    driver.findElement(By.cssSelector("a[href='/products']")).click();
+    return new Products(driver);
+ }
+ 
   public BrandProductPage goToBrandPage(String brandName){
     driver.findElement(By.partialLinkText(brandName.toUpperCase())).click();
     return new BrandProductPage(driver);
@@ -24,7 +34,7 @@ public class HomePage {
 
   public Cart goToCartPage(){
 
-    driver.findElement(By.linkText("Cart")).click();
+    driver.findElement(By.cssSelector("a[href='/view_cart']")).click();
     return new Cart(driver);
   }
 

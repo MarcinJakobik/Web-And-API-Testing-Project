@@ -36,6 +36,4 @@ public class Cart {
         driver.findElement(By.linkText("Proceed To Checkout")).click();
         return new Checkout(driver);
     }
-
-
 }
