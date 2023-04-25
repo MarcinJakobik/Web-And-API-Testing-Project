@@ -47,9 +47,7 @@ public class ContactUs {
 //    @Then("I should see the {string} section")
 //    public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
 //        By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
-//        WebElement element = driver.findElement(locator);
-//        assertTrue(element.isDisplayed());
-//    }
+
     @Then("I should see the GET IN TOUCH section")
     public void iShouldSeeTheGETINTOUCHSection() {
         By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
