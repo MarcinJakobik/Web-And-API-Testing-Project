@@ -33,8 +33,11 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     @And("An account already exists")
     public void anAccountAlreadyExists() {
-        loginPage.createAccount("Reg", "RHoward@SpartaGlobal.com");
-        loginPage.putInAccountDetails("Reggie", "Howard", "password", "Sparta Global", "Some Address", "Montana", "59923", "456841531", "Libby");
+        loginPage.createAnAccount("Reg", "RHoward@SpartaGlobal.com");
+        if (loginPage.getUrl().equals("https://automationexercise.com/login")){
+            loginPage.putInMyAccountDetails("Reggie", "Howard", "password", "Sparta Global", "Some Address", "Montana", "59923", "456841531", "Libby");
+        }
+        loginPage.refreshNow();
     }
     @When("I enter a Name")
     public void iEnterAName() {
@@ -51,6 +54,11 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     @Then("I will see the error message")
     public void iWillSeeTheErrorMessage() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         assertEquals("Email Address already exist!", loginPage.findErrorMessage());
     }
 }
