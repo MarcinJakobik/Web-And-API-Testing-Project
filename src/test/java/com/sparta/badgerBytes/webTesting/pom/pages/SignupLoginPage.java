@@ -108,4 +108,26 @@ public class SignupLoginPage {
         //return new HomePage(driver);
 
     }
+    public void clickLoginButton(){
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click(); //change the xpath
+    }
+
+    public void clickingActualLoginButton(){
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div[1]/form/button")).click();
+    }
+
+    public void isTheLoginToYourAccountMessageDisplayed(){
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/h2")).click();
+    }
+    public void enteringIncorrectEmailAndPassword(){
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")).sendKeys("correct_email@example.com");
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")).sendKeys("correct_password");
+    }
+    public void checkThatTheUsernameOnTheTopIsCorrect(){
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[10]/a/b")).equals("Omar");
+    }
+    public void clickTheLogoutButton(){
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click();
+    }
+
 }
