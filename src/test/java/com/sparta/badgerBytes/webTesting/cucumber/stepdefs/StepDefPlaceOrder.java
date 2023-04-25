@@ -39,7 +39,6 @@ public class StepDefPlaceOrder {
     private static boolean confirmedPayment;
     @Before
     public static void setup(){
-        service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
         webDriver = BackgroundStepdefs.getDriver();
     }
 
