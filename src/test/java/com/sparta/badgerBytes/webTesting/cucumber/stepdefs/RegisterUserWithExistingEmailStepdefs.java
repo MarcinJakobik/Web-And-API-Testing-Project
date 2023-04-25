@@ -5,6 +5,7 @@ import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,10 +35,14 @@ public class RegisterUserWithExistingEmailStepdefs {
     @And("An account already exists")
     public void anAccountAlreadyExists() {
         loginPage.createAnAccount("Reg", "RHoward@SpartaGlobal.com");
-        if (loginPage.getUrl().equals("https://automationexercise.com/login")){
-            loginPage.putInMyAccountDetails("Reggie", "Howard", "password", "Sparta Global", "Some Address", "Montana", "59923", "456841531", "Libby");
+        if (loginPage.findErrorMessage().equals("Email Address already exist!")) {
+            loginPage.refreshNow();
+        } else {
+            loginPage.putInMyAccountDetails(1, "Reggie", "password", "26", "August",
+                    "1965", "Reggie", "Howard", "Some Address", "United States",
+                    "Montana", "Libby", "59923", "45678934567");
+            loginPage.goToLoginPage();
         }
-        loginPage.refreshNow();
     }
     @When("I enter a Name")
     public void iEnterAName() {
