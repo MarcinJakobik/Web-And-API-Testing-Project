@@ -2,6 +2,7 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.Products;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
+import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
@@ -34,15 +35,16 @@ public class ProductsStepDefs {
 //    options.addArguments("--remote-allow-origins=*");
 //    options.addArguments("headless");
 //    driver = new ChromeDriver(service, options);
-
+    driver = DriverFactory.getDriver();
     driver.manage().window().maximize();
   }
 
   @After
   public static void tearDown() {
-    driver.close();
+//    driver.close();
+//    driver.quit();
+//    service.stop();
     driver.quit();
-    service.stop();
   }
 
   @Given("I am on the Automation Exercise homepage")
