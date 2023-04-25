@@ -59,7 +59,7 @@ public class UserAlreadyRegistered {
     public void iEnterMyNameAndAnAlreadyRegisteredEmailAddress() {
         WebElement nameInput = driver.findElement(By.name("name"));
         nameInput.sendKeys("Hamza Kazi");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
         WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-qa='signup-email']")));
         emailInput.sendKeys("hamza.kazi@test.com");
     }
