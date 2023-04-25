@@ -1,6 +1,7 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.registerusersteps;
 
 import com.github.javafaker.Faker;
+import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RegisterUsersteps {
     private String name;
     private Faker faker;
+    private HomePage homePage;
 
     @AfterAll
     void closeAll() {
@@ -29,35 +31,13 @@ public class RegisterUsersteps {
     }
 
     WebDriver driver;
-    @Given("I have launched the browser and navigated to the URL {string}")
-    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom(String URL) {
+    @Given("I have launched the browser and navigated to the URL")
+    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
         driver = getDriver();
-
-        driver.get(URL);
+        homePage = new HomePage(driver);
     }
 
-//    @And("I close the add by clicking on the {string}")
-//    public void iCloseTheAddByClickingOnTheCloseButton(String closeButton) throws InterruptedException {
-//        try {
-//            Thread.sleep(1000);
-//
-//            By elementLocator = By.className(closeButton);
-//
-//
-//            if(driver.findElements(elementLocator).isEmpty()){
-//                System.out.println("Add not found");
-//
-//            } else {
-//                System.out.println("ADD FOUND");
-//                WebElement closeAddButton = driver.findElement(By.className(closeButton));
-//                closeAddButton.click();
-//            }
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    @And("I click on the Signup \\/ Login button")
+    @And("I click on the Signup button")
     public void iClickOnTheSignupLoginButton() {
         WebElement signupLoginButton = driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a"));
         signupLoginButton.click();
@@ -161,19 +141,68 @@ public class RegisterUsersteps {
         String city = faker.address().city();
         String state = faker.address().state();
         String zipCode = faker.address().zipCode();
+        String mobileNumber = String.valueOf(faker.phoneNumber());
 
         driver.findElement(By.xpath("//*[@id=\"address1\"]")).sendKeys(streetAddress);
-//        driver.findElement(By.xpath(""))
+        driver.findElement(By.xpath("//*[@id=\"state\"]")).sendKeys(state);
+        driver.findElement(By.xpath("//*[@id=\"city\"]")).sendKeys(city);
+        driver.findElement(By.xpath("//*[@id=\"zipcode\"]")).sendKeys(zipCode);
+        driver.findElement(By.xpath("//*[@id=\"mobile_number\"]")).sendKeys(mobileNumber);
+
+
+
+    }
+
+    @And("I click the Create Account button to create account")
+    public void iClickTheCreateAccountButtonToCreateAccount() {
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div[1]/form/button")).click();
     }
 
     @Then("I should see {string} on the page")
-    public void iShouldSeeAccountCreatedOnThePage(String accountCreated) {
-        WebElement element = driver.findElement(By.xpath("//*[contains(text(), '" + accountCreated + "')]"));
-        assertTrue(element.isDisplayed(), "Element with text '" + accountCreated + "' is not displayed on the page");
+    public void iShouldSeeAccountCreatedOnThePage(String accountCreated) throws InterruptedException {
+        try {
+            Thread.sleep(2000);
+
+            WebElement element = driver.findElement(By.xpath("//*[contains(text(), '" + accountCreated + "')]"));
+            assertTrue(element.isDisplayed(), "Element with text '" + accountCreated + "' is not displayed on the page");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
+    @And("I then click the {string} button")
+    public void iThenClickTheContinueButton(String continueButton) {
+        driver.findElement(By.xpath("//*[contains(text(), '" + continueButton + "')]")).click();
+
+    }
+
+    @Then("I should view logged in as username shown on the page")
+    public void iShouldViewLoggedInAsUsernameDisplayedOnThePage() {
+        assertTrue(driver.findElement(By.xpath("//*[contains(text(), '" + name + "')]")).isDisplayed(), "Element with Logging in as username is not displayed on the page");
+
+    }
+
+    @When("I click on the Delete Account button")
+    public void iClickOnTheDeleteAccountButton() {
+        driver.findElement(By.xpath("/html/body/header/div/div/div/div[2]/div/ul/li[5]/a")).click();
+    }
+
+    @Then("I should see account deleted displayed on the page")
+    public void iShouldSeeAccountDeletedDisplayedOnThePage() throws InterruptedException {
+        try {
+            Thread.sleep(3000);
+            assertTrue(driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/h2/b")).isDisplayed(), "Cannot see account deleted displayed on the page");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    @And("I click the Continue button")
+    public void iClickTheContinueButton() {
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
+    }
 }
-
-
-
