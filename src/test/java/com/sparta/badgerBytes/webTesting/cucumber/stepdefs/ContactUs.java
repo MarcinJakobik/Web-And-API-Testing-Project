@@ -22,30 +22,30 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ContactUs {
     private static WebDriver driver = BackgroundStepdefs.getDriver();
-
     private static ChromeDriverService service;
-
     private HomePage homePage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
     private SignupLoginPage signupLogin;
-
     private static final String USERNAME = "hamza";
-
 
     @Before
     public void setup() {
         driver = BackgroundStepdefs.getDriver();
     }
 
+    @And("I click on the Contact Us button")
+    public void iClickOnTheContactUsButton() {
+        WebElement contactUsButton = driver.findElement(By.cssSelector("a[href='/contact_us']"));
+        contactUsButton.click();
+    }
 
-    @Then("I should see the {string} section")
-    public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
+    @Then("I should see the GET IN TOUCH section")
+    public void iShouldSeeTheGETINTOUCHSection() {
         By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
         WebElement element = driver.findElement(locator);
         assertTrue(element.isDisplayed());
     }
-
     @And("I should be able to enter my name, email, subject, and message")
     public void iShouldBeAbleToEnterMyNameEmailSubjectAndMessage() {
         WebElement nameInput = driver.findElement(By.cssSelector("input[data-qa='name']"));
@@ -56,12 +56,11 @@ public class ContactUs {
         subjectInput.sendKeys("Test Subject");
         WebElement messageInput = driver.findElement(By.cssSelector("textarea[data-qa='message']"));
         messageInput.sendKeys("This is a test message.");
-
     }
 
     @And("I should be able to upload a file if necessary")
     public void iShouldBeAbleToUploadAFileIfNecessary() {
-
+//Uploading a file code optional
     }
 
     @Then("I should be able to click the Submit button")
@@ -82,7 +81,6 @@ public class ContactUs {
         wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = driver.switchTo().alert();
         alert.accept();
-
     }
 
     @Then("I should see the success message {string}")
@@ -100,6 +98,5 @@ public class ContactUs {
     @And("I should be taken back to the home page successfully")
     public void iShouldBeTakenBackToTheHomePageSuccessfully() {
     }
-
 
 }
