@@ -34,27 +34,14 @@ public class StepDefPlaceOrder {
     private SignupLoginPage signupLoginPage;
 
 
-    private static final String USERNAME = "liamm";
+    private static final String USERNAME = "liam";
 
     private static boolean confirmedPayment;
     @Before
     public static void setup(){
-
         service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
-
-        webDriver = DriverFactory.getDriver();
-
-
-
+        webDriver = BackgroundStepdefs.getDriver();
     }
-
-    @After
-    public static void tearDownAll(){
-        webDriver.close();
-        webDriver.quit();
-        service.stop();
-    }
-
 
     @Given("I am on the Homepage")
     public void iAmOnTheHomepage() { homePage = new HomePage(webDriver);}
@@ -73,19 +60,13 @@ public class StepDefPlaceOrder {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
         homePage.clickContinueShopping();
         cart = homePage.goToCartPage();
         Assert.assertEquals("https://automationexercise.com/view_cart", cart.getUrl() );
-
-
     }
 
     @And("see that the product has been added to the cart")
     public void seeThatTheProductHasBeenAddedToTheCart() {
-
-
-
         Assert.assertEquals(true,cart.checkByClass("product_image"));
     }
 
@@ -120,7 +101,6 @@ public class StepDefPlaceOrder {
         Assert.assertTrue(homePage.checkIfLoggedInAsUser(USERNAME));
 
     }
-
 
     @And("I have verified I am logged in")
     public void iHaveVerifiedIAmLoggedIn() {
@@ -174,7 +154,6 @@ public class StepDefPlaceOrder {
         Assert.assertEquals("https://automationexercise.com",webDriver.getCurrentUrl());
 
     }
-
 
     @And("I have Navigated to the Login Signup Page")
     public void iHaveNaviagtedToTheLoginSignupPage() {
