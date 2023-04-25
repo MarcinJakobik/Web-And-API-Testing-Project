@@ -15,11 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuccessfulLogoutStepDefs {
     private static HomePage homePage;
     private static SignupLoginPage signupLogin;
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     @Given("I have launched the browser and navigated to the correct URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheCorrectURL() {
-        driver = getDriver();
         homePage = new HomePage(driver);
     }
 

@@ -16,19 +16,14 @@ import org.openqa.selenium.WebDriver;
 
 public class StepDefsProductsInCart {
 
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private static HomePage homePage;
     private static ProductsPage productPage;
     private static CartPage cart;
 
-    @Before
-    public void setup(){
-        driver = DriverFactory.getDriver();
-        homePage = new HomePage(driver);
-    }
-
     @When("I click products button")
     public void iClickProductsButton() {
+        homePage = new HomePage(driver);
         productPage = homePage.goToProductsPage();
     }
 

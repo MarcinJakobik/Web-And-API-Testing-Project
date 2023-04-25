@@ -15,20 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LoginWithCorrectDetails {
     private HomePage homePage;
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private static String name = "Onur Belek";
     private static String email = "onur123@gmail.com";
     private static String password = "lmao";
 
-//    @AfterAll
-//    void closeAll() {
-//        driver.quit();
-//        driver.close();
-//    }
 
     @Given("I am on the Index Page")
     public void iAmOnTheIndexPage() {
-        driver = getDriver();
         homePage = new HomePage(driver);
     }
 

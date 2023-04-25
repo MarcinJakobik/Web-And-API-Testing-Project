@@ -15,11 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BrandNavigationStepDef {
     HomePage homePage;
     BrandProductPage brandProductPage;
-    WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
-        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
     }
 

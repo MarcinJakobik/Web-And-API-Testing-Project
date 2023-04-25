@@ -14,7 +14,7 @@ import org.openqa.selenium.WebElement;
 public class CartMailSubscriptionStepDefs {
 
   private static HomePage homePage;
-  private static WebDriver driver;
+  private static WebDriver driver = BackgroundStepdefs.getDriver();
   private static CartPage cartPage;
   private static WebElement footer;
   private static WebElement subscriptionHeading;
@@ -22,7 +22,6 @@ public class CartMailSubscriptionStepDefs {
 
   @Given("I am on the automation exercise website shopping cart")
   public void iAmOnTheAutomationExerciseWebsiteShoppingCart() {
-    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
     cartPage = homePage.goToCartPage();
   }

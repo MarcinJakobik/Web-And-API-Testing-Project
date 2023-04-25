@@ -21,7 +21,7 @@ import static com.sparta.badgerBytes.webTesting.pom.util.DriverFactory.getDriver
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ContactUs {
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     private static ChromeDriverService service;
 

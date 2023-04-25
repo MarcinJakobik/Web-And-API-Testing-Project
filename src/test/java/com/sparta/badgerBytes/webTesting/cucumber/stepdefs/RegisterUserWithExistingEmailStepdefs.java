@@ -16,18 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegisterUserWithExistingEmailStepdefs {
 
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private static HomePage homePage;
     private static SignupLoginPage loginPage;
 
-    @Before
-    public void setup() {
-        driver = BackgroundStepdefs.getDriver();
-        homePage = new HomePage(driver);
-    }
-
     @When("I click on the Signup And Login button")
     public void iClickOnTheSignupAndLoginButton() {
+        homePage = new HomePage(driver);
         loginPage = homePage.goToLoginPage();
     }
     @Then("I will go to the Login page")
