@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.loginwithcorrectdetails;
+package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import io.cucumber.java.AfterAll;
@@ -19,12 +19,6 @@ public class LoginWithCorrectDetails {
     private static String name = "Onur Belek";
     private static String email = "onur123@gmail.com";
     private static String password = "lmao";
-
-//    @AfterAll
-//    void closeAll() {
-//        driver.quit();
-//        driver.close();
-//    }
 
     @Given("I am on the Index Page")
     public void iAmOnTheIndexPage() {

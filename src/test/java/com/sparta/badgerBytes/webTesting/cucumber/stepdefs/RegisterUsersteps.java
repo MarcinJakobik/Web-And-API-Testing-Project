@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.registerusersteps;
+package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.github.javafaker.Faker;
 import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
