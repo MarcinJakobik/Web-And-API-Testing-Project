@@ -85,7 +85,7 @@ public class ContactUs {
         Alert alert = driver.switchTo().alert();
         assertTrue(alert.getText().contains("Press OK to proceed!"));
     }
-//
+
     @When("I click on the OK button")
     public void iClickOnTheOKButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
