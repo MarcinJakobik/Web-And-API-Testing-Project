@@ -160,4 +160,19 @@ public class StepDefPlaceOrder {
 
         signupLoginPage = homePage.goToSignUPLoginPage();
     }
+
+    @Then("I Will Enter my login details")
+    public void iWillEnterMyLoginDetails() {
+
+        signupLoginPage.login("Marcien@example.com","Example");
+    }
+
+    @And("I Check I am logged in \\(alternate)")
+    public void iCheckIAmLoggedInAlternate() {
+        homePage.checkIfLoggedInAsUser(USERNAME);
+    }
+
+
+
+
 }
