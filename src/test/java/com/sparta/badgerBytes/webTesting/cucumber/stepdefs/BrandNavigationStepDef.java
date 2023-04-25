@@ -2,17 +2,13 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.BrandProductPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
-import java.sql.Driver;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BrandNavigationStepDef {
     HomePage homePage;
@@ -38,13 +34,11 @@ public class BrandNavigationStepDef {
     public void iShouldSeeAllOfTheKOOKIEKIDSProducts() {
         assertEquals("BRAND - KOOKIE KIDS PRODUCTS", brandProductPage.getBrandProductListTitle());
         assertEquals(brandProductPage.getExpectedBrandProductsCount(), brandProductPage.getBrandProductsCount());
-        driver.close();
     }
 
     @Given("I am on the Kookie Kids product page")
     public void iAmOnTheKookieKidsProductPage() {
         //new given makes me do the setup again :P
-        driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
         brandProductPage = homePage.goToBrandPage("KOOKIE KIDS");
     }
@@ -63,7 +57,6 @@ public class BrandNavigationStepDef {
     public void iShouldSeeAllOfTheBabyhugProducts() {
         assertEquals("BRAND - BABYHUG PRODUCTS", brandProductPage.getBrandProductListTitle());
         assertEquals(brandProductPage.getExpectedBrandProductsCount(), brandProductPage.getBrandProductsCount());
-        driver.close();
     }
 
 
