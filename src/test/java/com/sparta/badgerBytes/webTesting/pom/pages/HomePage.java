@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePage {
+
   private final WebDriver driver;
   By someLink = new By.ByLinkText("something"); // edit and use as necessary
 
@@ -62,6 +63,10 @@ public class HomePage {
     driver.findElement(By.cssSelector("a[href='/login']")).click();
 
     return new SignupLogin(driver);
+  }
+
+  public String getUrl(){
+    return driver.getCurrentUrl();
   }
 
 }

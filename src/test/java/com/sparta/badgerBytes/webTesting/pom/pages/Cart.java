@@ -37,5 +37,14 @@ public class Cart {
         return new Checkout(driver);
     }
 
+    public void deleteItemFromCart(){
+        driver.findElement(By.cssSelector(".cart_delete")).click();
+    }
+
+    public String checkCartIsEmpty(){
+        WebElement element=driver.findElement(By.cssSelector(".cart_info p [b='Cart is empty!']"));
+        return element.getText();
+    }
+
 
 }
