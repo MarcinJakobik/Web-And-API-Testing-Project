@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage {
   private final WebDriver driver;
-  By contactUsLink = new By.ByLinkText("/contact_us");
+  By contactUsLink = new By.ByCssSelector("a[href='/contact_us']");
   By loginLink = new By.ByCssSelector("a[href='/login']");
 
   public HomePage(WebDriver webDriver) {
