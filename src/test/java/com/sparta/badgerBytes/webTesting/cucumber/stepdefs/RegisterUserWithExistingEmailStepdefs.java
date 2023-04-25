@@ -17,6 +17,7 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     @When("I click on the Signup And Login button")
     public void iClickOnTheSignupAndLoginButton() {
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
         loginPage = homePage.goToLoginPage();
     }
@@ -50,6 +51,6 @@ public class RegisterUserWithExistingEmailStepdefs {
 
     @Then("I will see the error message")
     public void iWillSeeTheErrorMessage() {
-        assertEquals("Email Address already exists!", loginPage.findErrorMessage());
+        assertEquals("Email Address already exist!", loginPage.findErrorMessage());
     }
 }
