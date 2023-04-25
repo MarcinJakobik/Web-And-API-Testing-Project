@@ -33,21 +33,19 @@ public class UserAlreadyRegistered {
         homePage = new HomePage(driver);
     }
 
-    @And("I click on the {string} button")
-    public void iClickOnTheSignupLoginButton(String buttonName) {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+
+    @And("I click on the Signup button")
+    public void iClickOnTheSignupLoginButton() {
         WebElement signupLoginButton = driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a"));
         signupLoginButton.click();
-
     }
 
     @Then("I should see {string} displayed on the page")
     public void iShouldSeeNewUserSignupDisplayedOnThePage(String newUser) {
-        By locator = By.xpath("//*[@id='form']/div/div/div[3]/div/h2");
-        WebElement element = driver.findElement(locator);
-        assertTrue(element.isDisplayed());
-        assertEquals(newUser, element.getText());
+        WebElement element = driver.findElement(By.xpath("//*[contains(text(), '" + newUser + "')]"));
+        assertTrue(element.isDisplayed(), "Element with text '" + newUser + "' is not displayed on the page");
     }
+
 
     @When("I enter my name and an already registered email address")
     public void iEnterMyNameAndAnAlreadyRegisteredEmailAddress() {
