@@ -4,6 +4,7 @@ import com.sparta.badgerBytes.webTesting.pom.pages.Products;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -28,16 +29,17 @@ public class ProductsStepDefs {
   @Before
   public void setup() {
 
-    service = WebAutomationUtil.getChromeDriverService(DRIVER_PATH);
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--remote-allow-origins=*");
-    options.addArguments("headless");
-    driver = new ChromeDriver(service, options);
+//    service = WebAutomationUtil.getChromeDriverService(DRIVER_PATH);
+//    ChromeOptions options = new ChromeOptions();
+//    options.addArguments("--remote-allow-origins=*");
+//    options.addArguments("headless");
+//    driver = new ChromeDriver(service, options);
+
     driver.manage().window().maximize();
   }
 
   @After
-  public void tearDown() {
+  public static void tearDown() {
     driver.close();
     driver.quit();
     service.stop();
@@ -55,12 +57,12 @@ public class ProductsStepDefs {
 
   @Then("the products list is visible")
   public void theProductsListIsVisible() {
-    Assertions.assertTrue(products.getProductsList(), "The products list isn't displayed");
+    Assertions.assertTrue(products.getProductsList());
   }
 
   @Given("I am on the Products page")
   public void iAmOnTheProductsPage() {
-
+    Assertions.assertEquals("https://automationexercise.com/products", products.getURL());
   }
 
   @When("I click on the view product button for the first product")

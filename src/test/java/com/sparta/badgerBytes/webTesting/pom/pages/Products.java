@@ -17,4 +17,8 @@ public class Products {
     return driver.findElement(productsList).isDisplayed();
   }
 
+  public String getURL() {
+    return driver.getCurrentUrl();
+  }
+
 }
