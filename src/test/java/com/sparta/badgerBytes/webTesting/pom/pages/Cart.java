@@ -31,5 +31,11 @@ public class Cart {
         return new SignupLogin(driver);
     }
 
+    public Checkout proccedToCheckout(){
+
+        driver.findElement(By.linkText("Proceed To Checkout")).click();
+        return new Checkout(driver);
+    }
+
 
 }

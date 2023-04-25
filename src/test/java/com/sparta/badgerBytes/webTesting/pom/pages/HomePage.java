@@ -17,10 +17,20 @@ public class HomePage {
     driver.get("https://automationexercise.com/");
   }
 
+  public BrandProductPage goToBrandPage(String brandName){
+    driver.findElement(By.partialLinkText(brandName.toUpperCase())).click();
+    return new BrandProductPage(driver);
+  }
+
   public Cart goToCartPage(){
 
     driver.findElement(By.linkText("Cart")).click();
     return new Cart(driver);
+  }
+
+  public TestCasesPage goToTestCasesPage(){
+    driver.findElement(By.cssSelector(".test_cases_list")).click();
+    return new TestCasesPage(driver);
   }
 
   public void clickContinueShopping(){ driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();}
@@ -40,6 +50,18 @@ public class HomePage {
     else
       return false;
 
+  }
+
+  public void deleteAccount(){
+    driver.findElement(By.linkText("Delete Account")).click();
+    driver.findElement(By.linkText("Continue")).click();
+  }
+
+  public SignupLogin goToSignUPLogin(){
+
+    driver.findElement(By.cssSelector("a[href='/login']")).click();
+
+    return new SignupLogin(driver);
   }
 
 }
