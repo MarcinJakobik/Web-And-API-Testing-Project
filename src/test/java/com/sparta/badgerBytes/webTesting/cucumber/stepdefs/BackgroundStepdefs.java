@@ -7,6 +7,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,11 +30,13 @@ public class BackgroundStepdefs {
   @Given("I am on the Automation Exercise Website")
   public void iAmOnTheAutomationExerciseWebsite() {
     homePage = new HomePage(driver);
+    turnOffAd();
   }
 
   @When("I call the driver")
   public void iCallTheDriver() {
     homePage = new HomePage(driver);
+    turnOffAd();
   }
 
   @Then("I will load the home page")
@@ -44,5 +47,15 @@ public class BackgroundStepdefs {
   @After
   public void tearDown() {
     driver.quit();
+  }
+  public void turnOffAd() {
+    if (driver.getCurrentUrl().contains("#")) {
+      driver.manage().window().setSize(new Dimension(485, 800));
+      try {
+        Thread.sleep(3000);
+      } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+      }
+    }
   }
 }

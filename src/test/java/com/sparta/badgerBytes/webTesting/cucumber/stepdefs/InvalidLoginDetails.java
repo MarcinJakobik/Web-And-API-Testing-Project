@@ -26,10 +26,6 @@ public class InvalidLoginDetails {
     public void setup() {
         driver = BackgroundStepdefs.getDriver();
     }
-    @Given("I am on the Automation Exercise Website")
-    public void iAmOnTheAutomationExerciseWebsite() {
-        homePage = new HomePage(driver);
-    }
 
 //    @Given("I have launched the browser and navigated to the URL")
 //    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {

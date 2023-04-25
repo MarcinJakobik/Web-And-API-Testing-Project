@@ -19,12 +19,13 @@ public class BrandNavigationStepDef {
 
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
-        driver = DriverFactory.getDriver();
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
     }
 
     @When("I click on the KOOKIE KIDS button")
     public void iClickOnTheKOOKIEKIDSButton() {
+        homePage.turnOffAd();
         brandProductPage = homePage.goToBrandPage("Kookie Kids");
     }
 
@@ -42,8 +43,10 @@ public class BrandNavigationStepDef {
     @Given("I am on the Kookie Kids product page")
     public void iAmOnTheKookieKidsProductPage() {
         //new given makes me do the setup again :P
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
-        brandProductPage = homePage.goToBrandPage("KOOKIE KIDS");
+        homePage.turnOffAd();
+        brandProductPage = homePage.goToBrandPage("Kookie Kids");
     }
 
     @When("I click on the BABYHUG button")
