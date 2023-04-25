@@ -41,6 +41,12 @@ public class SignupLoginPage {
     }
     private void goToSignupPage(){driver.get("https://automationexercise.com/login");}
 
+    public void login(String email, String password){
+        driver.findElement(By.name("email")).sendKeys(email);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.cssSelector("button[data-qa='login-button']")).click();
+    }
+
     public void createAccount(String userName, String email){
 
         WebElement element = driver.findElement(By.name("name"));
