@@ -1,5 +1,8 @@
 Feature: As a tester I WANT to be able to access individual brand product pages
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: verification of brand side bar feature from home page
     Given I am on the home page
     When I click on the KOOKIE KIDS button

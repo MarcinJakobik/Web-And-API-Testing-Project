@@ -1,5 +1,6 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.InvalidLogin;
 
+import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import io.cucumber.java.After;
@@ -21,39 +22,40 @@ public class InvalidLoginDetails {
     private static HomePage homePage;
     private static WebDriver driver;
 
-    @Given("I have launched the browser and navigated to the URL")
-    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        driver = getDriver();
-        homePage = new HomePage(driver);
-    }
-    @When("I click on the {string} button")
-    public void iClickOnTheSignupLoginButton(String buttonName) {
-        driver.findElement(By.xpath("//*[contains(text(),'" + buttonName + "')]")).click();
+    @Before
+    public void setup() {
+        driver = BackgroundStepdefs.getDriver();
     }
 
-    @Then("I should see {string} displayed on the page")
-    public void iShouldSeeLoginToYourAccountDisplayedOnThePage(String loginToYourAccount) {
-        driver.findElement(By.xpath("//*[contains(text(),'" + loginToYourAccount + "')]")).click();
-        assertEquals("https://automationexercise.com/login", driver.getCurrentUrl());
-    }
+//    @Given("I have launched the browser and navigated to the URL")
+//    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
+//        homePage = new HomePage(driver);
+//    }
+//    @When("I click on the {string} button")
+//    public void iClickOnTheSignupLoginButton(String buttonName) {
+//        driver.findElement(By.xpath("//*[contains(text(),'" + buttonName + "')]")).click();
+//    }
 
-    @When("I enter an incorrect email address and password")
-    public void iEnterAnIncorrectEmailAddressAndPassword() {
-        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")).sendKeys("incorrect_email@example.com");
-        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")).sendKeys("incorrect_password");
+//    @Then("I should see {string} displayed on the page")
+//    public void iShouldSeeLoginToYourAccountDisplayedOnThePage(String loginToYourAccount) {
+//        driver.findElement(By.xpath("//*[contains(text(),'" + loginToYourAccount + "')]")).click();
+//        assertEquals("https://automationexercise.com/login", driver.getCurrentUrl());
+//    }
 
-    }
+//    @When("I enter an incorrect email address and password")
+//    public void iEnterAnIncorrectEmailAddressAndPassword() {
+//        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[2]")).sendKeys("incorrect_email@example.com");
+//        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/form/input[3]")).sendKeys("incorrect_password");
 
-    @And("I click the {string} button")
-    public void iClickTheLoginButton(String loginButton) {
-        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div[1]/form/button")).click();
-    }
+//    }
 
-    @Then("I should see the error message {string} displayed on the page")
-    public void iShouldSeeTheErrorMessageYourEmailOrPasswordIsIncorrectDisplayedOnThePage(String errorMessage) {
-        driver.findElement(By.xpath("//*[contains(text(),'" + errorMessage + "')]")).click();
-    }
+//    @And("I click the {string} button")
+//    public void iClickTheLoginButton(String loginButton) {
+//        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div[1]/form/button")).click();
+//    }
 
-
-
+//    @Then("I should see the error message {string} displayed on the page")
+//    public void iShouldSeeTheErrorMessageYourEmailOrPasswordIsIncorrectDisplayedOnThePage(String errorMessage) {
+//        driver.findElement(By.xpath("//*[contains(text(),'" + errorMessage + "')]")).click();
+//    }
 }

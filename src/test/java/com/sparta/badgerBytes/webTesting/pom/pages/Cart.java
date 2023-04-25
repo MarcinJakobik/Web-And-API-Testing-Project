@@ -25,10 +25,10 @@ public class Cart {
         return true;
     }
 
-    public SignupLogin proceedToCheckoutRegister(){
+    public SignupLoginPage proceedToCheckoutRegister(){
         driver.findElement(By.linkText("Proceed To Checkout")).click();
         driver.findElement(By.linkText("Register / Login")).click();
-        return new SignupLogin(driver);
+        return new SignupLoginPage(driver);
     }
 
     public Checkout proccedToCheckout(){

@@ -2,7 +2,6 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.TestCasesPage;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,7 +20,7 @@ public class StepDefNavigateToTestCasesPage {
 
     @Given("I am on the homepage")
     public void iAmOnTheHomepage() {
-        webDriver = DriverFactory.getDriver();
+        webDriver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(webDriver);
     }
 
@@ -33,8 +32,6 @@ public class StepDefNavigateToTestCasesPage {
     @Then("I should be directed to the test_cases page")
     public void iShouldBeDirectedToTheTest_casesPage() {
         assertEquals("https://automationexercise.com/test_cases", testCasesPage.getUrl());
-        webDriver.close();
-        webDriver.quit();
     }
 
 
