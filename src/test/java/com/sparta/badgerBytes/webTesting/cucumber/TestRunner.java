@@ -28,7 +28,7 @@ public class TestRunner {
 
     private static WebDriver webDriver;
 
-    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
+    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver";
 
     private HomePage homePage;
 
@@ -141,8 +141,8 @@ public class TestRunner {
 
     @After
     public void destroy(){
-
-        // service.stop();
+        webDriver.quit();
+         service.stop();
     }
 
 }
