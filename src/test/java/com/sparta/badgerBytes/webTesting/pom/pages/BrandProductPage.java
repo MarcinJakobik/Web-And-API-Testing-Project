@@ -9,13 +9,24 @@ public class BrandProductPage {
     private final WebDriver driver;
     public BrandProductPage(WebDriver webDriver) {
         this.driver = webDriver;
+        if (driver.getCurrentUrl().contains("#google_vignette")) {
+            driver.manage().window().setSize(new Dimension(485, 800));
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public BrandProductPage goToBrandPage(String brandName){
-        turnOffAd();
-        WebElement element=driver.findElement(By.partialLinkText(brandName.toUpperCase()));
-        turnOffAd();
-        element.click();
+        driver.manage().window().setSize(new Dimension(800, 800));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(By.partialLinkText(brandName.toUpperCase())).click();
         return new BrandProductPage(driver);
     }
 

@@ -25,7 +25,7 @@ public class BackgroundStepdefs {
 
   @Before
   public void setup() {
-    if(driver==null) {
+    if(driver==null || driver.toString().contains("(null)")) {
       driver = DriverFactory.getDriver();
     }
   }

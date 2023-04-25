@@ -1,9 +1,6 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 public class HomePage extends SuperFooterPage {
 
@@ -29,11 +26,14 @@ public class HomePage extends SuperFooterPage {
     }
 
     public BrandProductPage goToBrandPage(String brandName) {
-        turnOffAd();
-        WebElement element = driver.findElement(By.cssSelector("a[href='/brand_products/"+brandName+"']"));
-        turnOffAd();
-        element.click();
-        turnOffAd();
+        super.driver.manage().window().setSize(new Dimension(800, 800));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        driver.findElement(By.cssSelector("a[href='/brand_products/"+brandName+"']")).click();
+
         return new BrandProductPage(driver);
     }
 
