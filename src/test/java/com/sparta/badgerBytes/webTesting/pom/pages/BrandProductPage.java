@@ -1,16 +1,21 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class BrandProductPage {
-    private static WebDriver driver;
+    private final WebDriver driver;
     public BrandProductPage(WebDriver webDriver) {
         this.driver = webDriver;
     }
 
     public BrandProductPage goToBrandPage(String brandName){
-        driver.findElement(By.partialLinkText(brandName.toUpperCase())).click();
+        turnOffAd();
+        WebElement element=driver.findElement(By.partialLinkText(brandName.toUpperCase()));
+        turnOffAd();
+        element.click();
         return new BrandProductPage(driver);
     }
 
@@ -34,5 +39,16 @@ public class BrandProductPage {
                 driver.findElement(
                 By.cssSelector("a[href='/brand_products" + brandLink + "'] .pull-right"))
                 .getText().replaceAll("[()]", ""));
+    }
+
+    private void turnOffAd() {
+        if (driver.getCurrentUrl().contains("#")) {
+            driver.manage().window().setSize(new Dimension(485, 800));
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }

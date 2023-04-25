@@ -30,7 +30,6 @@ public class UserAlreadyRegistered {
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
     private SignupLoginPage signupLogin;
-
     private static final String USERNAME = "hamza";
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {

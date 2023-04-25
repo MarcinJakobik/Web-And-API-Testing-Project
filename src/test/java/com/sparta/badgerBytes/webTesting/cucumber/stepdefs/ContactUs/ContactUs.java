@@ -43,16 +43,6 @@ public class ContactUs {
         homePage = new HomePage(driver);
     }
 
-    @Given("I have launched the browser and navigated to the URL")
-    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        homePage = new HomePage(driver);
-    }
-    @And("I click on the {string} button")
-    public void iClickOnTheButton(String buttonName) {
-        WebElement contactUsButton = driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[8]/a"));
-        contactUsButton.click();
-    }
-
     @Then("I should see the {string} section")
     public void iShouldSeeTheGETINTOUCHSection(String sectionName) {
         By locator = By.xpath("//*[@id='contact-page']/div[2]/div[1]/div/h2");
