@@ -26,8 +26,8 @@ public class SignupLoginPage {
         return element.getText();
     }
     public void enterName() {
-        driver.findElement(By.name("name")).click();
-        driver.findElement(By.name("name")).sendKeys("Reg");
+        driver.findElement(By.cssSelector(".signup-form [name = 'name']")).click();
+        driver.findElement(By.cssSelector(".signup-form [name = 'name']")).sendKeys("Reg");
     }
     public void enterEmail() {
         driver.findElement(By.cssSelector(".signup-form [name = 'email']")).click();

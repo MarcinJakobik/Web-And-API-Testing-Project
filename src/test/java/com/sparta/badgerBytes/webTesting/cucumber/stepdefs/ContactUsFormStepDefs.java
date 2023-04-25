@@ -21,6 +21,7 @@ public class ContactUsFormStepDefs {
 
     @When("I click on the Contact Us link")
     public void iClickOnTheContactUsLink() {
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
         contactUsPage = homePage.goToContactUsPage();
     }
