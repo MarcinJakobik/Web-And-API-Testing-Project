@@ -3,7 +3,7 @@ Feature: As a registered user, I want to be able to login with my correct email 
   Scenario: Login with Correct Details
     Given I am on the Index Page
     When I press the login button
-    Then I should see Login to your account displayed on the page
+    Then I should see Login to your account displayed
     When I enter my correct email and password
     And I click on the Login button
     Then I should see Logged in as username displayed on page
