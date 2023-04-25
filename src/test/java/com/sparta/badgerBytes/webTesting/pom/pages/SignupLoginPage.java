@@ -7,7 +7,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SignupLoginPage {
 
@@ -28,12 +31,14 @@ public class SignupLoginPage {
 
     public void enterName() {
         driver.findElement(By.cssSelector(".signup-form [name = 'name']")).click();
+        driver.findElement(By.cssSelector(".signup-form [name = 'name']")).clear();
         driver.findElement(By.cssSelector(".signup-form [name = 'name']")).sendKeys("Reg");
     }
 
     public void enterEmail() {
         driver.findElement(By.cssSelector(".signup-form [name = 'email']")).click();
-        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).sendKeys("RHoward@spartaglobal.com");
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).clear();
+        driver.findElement(By.cssSelector(".signup-form [name = 'email']")).sendKeys("RHoward@SpartaGlobal.com");
     }
 
     public void submitSignup() {
@@ -45,7 +50,10 @@ public class SignupLoginPage {
     }
 
     private void goToSignupPage() {
-        driver.get("https://automationexercise.com/login");
+        driver.get("https://automationexercise.com/signup");
+    }
+    public void goToLoginPage() {
+        driver.navigate().to("https://automationexercise.com/login");
     }
 
     public void login(String email, String password) {
@@ -144,29 +152,37 @@ public class SignupLoginPage {
         driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click();
     }
 
-    public SignupLoginPage putInMyAccountDetails() {
+    public SignupLoginPage putInMyAccountDetails(int id, String username, String password, String date,
+                                                 String month, String year, String first_name, String last_name, String address,
+                                                 String country, String state, String city, String zipcode, String mobile_number) {
         driver.navigate().to("https://automationexercise.com/signup");
-        driver.findElement(By.id("id_gender1")).click();
-        driver.findElement(By.name("name")).sendKeys("Reg");
-        driver.findElement(By.name("email")).sendKeys("RHoward@spartaGlobal.com");
-        driver.findElement(By.name("password")).sendKeys("password");
-        driver.findElement(By.name("days")).sendKeys(Keys.chord(Keys.NUMPAD2, Keys.NUMPAD4, Keys.ENTER));
-        driver.findElement(By.name("months")).sendKeys("April");
-        driver.findElement(By.name("years")).sendKeys("1995");
-        driver.findElement(By.name("first_name")).sendKeys("Reggie");
-        driver.findElement(By.name("last_name")).sendKeys("Howard");
-        driver.findElement(By.name("address1")).sendKeys("Some Address");
-        driver.findElement(By.name("country")).sendKeys("United States");
-        driver.findElement(By.name("state")).sendKeys("Montana");
-        driver.findElement(By.name("city")).sendKeys("Libby");
-        driver.findElement(By.name("zipcode")).sendKeys("59923");
-        driver.findElement(By.name("mobile_number")).sendKeys("456841531");
-        driver.findElement(By.tagName("button")).click();
-        checkAccountWasCreated();
+        if (id == 1) {
+            driver.findElement(By.id("id_gender1")).click();
+        } else if (id == 2) {
+            driver.findElement(By.id("id_gender2")).click();
+        }
+        driver.findElement(By.cssSelector(".login-form [name='name']")).sendKeys(username);
+        //driver.findElement(By.cssSelector(".login-form [name='email']")).sendKeys(email); // Not required as inputted by form creator.
+        driver.findElement(By.cssSelector(".login-form [name='password']")).sendKeys(password);
+        driver.findElement(By.cssSelector(".login-form [name='days']")).sendKeys(date);
+        driver.findElement(By.cssSelector(".login-form [name='months']")).sendKeys(month);
+        driver.findElement(By.cssSelector(".login-form [name='years']")).sendKeys(year);
+        driver.findElement(By.cssSelector(".login-form [name='first_name']")).sendKeys(first_name);
+        driver.findElement(By.cssSelector(".login-form [name='last_name']")).sendKeys(last_name);
+        driver.findElement(By.cssSelector(".login-form [name='address1']")).sendKeys(address);
+        driver.findElement(By.cssSelector(".login-form [name='country']")).sendKeys(country);
+        driver.findElement(By.cssSelector(".login-form [name='state']")).sendKeys(state);
+        driver.findElement(By.cssSelector(".login-form [name='city']")).sendKeys(city);
+        driver.findElement(By.cssSelector(".login-form [name='zipcode']")).sendKeys(zipcode);
+        driver.findElement(By.cssSelector(".login-form [name='mobile_number']")).sendKeys(mobile_number);
+        driver.findElement(By.cssSelector(".login-form button")).click();
+            if (!checkAccountWasCreated()) {
+                System.out.println("Error, new account not created!");
+            }
         return new SignupLoginPage(driver);
     }
-    public void checkAccountWasCreated() {
-        assertEquals("https://automationexercise.com/account_created", driver.getCurrentUrl());
+    public boolean checkAccountWasCreated() {
+        return driver.getCurrentUrl().equals("https://automationexercise.com/account_created");
     }
     public void refreshNow() {
         driver.navigate().refresh();

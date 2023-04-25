@@ -19,7 +19,9 @@ public class BackgroundStepdefs {
   private static HomePage homePage;
 
   public static WebDriver getDriver() {
-    if(driver==null) { return DriverFactory.getDriver(); }
+    if((driver == null) || driver.toString().contains("(null)")) {
+      driver = DriverFactory.getDriver();
+    }
     return driver;
   }
 
