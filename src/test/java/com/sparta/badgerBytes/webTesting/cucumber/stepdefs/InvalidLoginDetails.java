@@ -20,12 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InvalidLoginDetails {
     private static HomePage homePage;
-    private static WebDriver driver;
-
-    @Before
-    public void setup() {
-        driver = BackgroundStepdefs.getDriver();
-    }
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
 //    @Given("I have launched the browser and navigated to the URL")
 //    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {

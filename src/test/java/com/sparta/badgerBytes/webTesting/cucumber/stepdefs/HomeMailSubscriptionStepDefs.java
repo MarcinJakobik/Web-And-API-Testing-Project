@@ -12,9 +12,8 @@ import org.openqa.selenium.WebElement;
 
 public class HomeMailSubscriptionStepDefs {
 
-  private static WebDriver driver;
+  private static WebDriver driver = BackgroundStepdefs.getDriver();
   private static HomePage homePage;
-
   private static CartPage cartPage;
   private static WebElement footer;
   private static WebElement subscriptionHeading;
@@ -22,7 +21,6 @@ public class HomeMailSubscriptionStepDefs {
 
   @Given("I am on the automation exercise website")
   public void iAmOnTheAutomationExerciseWebsite() {
-    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
   }
 

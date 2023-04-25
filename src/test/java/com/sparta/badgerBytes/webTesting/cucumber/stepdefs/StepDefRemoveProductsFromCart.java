@@ -3,10 +3,7 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
-import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -16,17 +13,12 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class StepDefRemoveProductsFromCart {
 
 
-    private static ChromeDriverService service;
-
-    private static WebDriver driver;
-
-    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     private HomePage homePage;
 
@@ -34,16 +26,9 @@ public class StepDefRemoveProductsFromCart {
 
     private CheckoutPage checkoutPage;
 
-
-    @Before
-    public void setup() {
-        driver = BackgroundStepdefs.getDriver();
-        homePage = new HomePage(driver);
-    }
-
     @Given("I launch the browser")
     public void iLaunchWebsite() {
-        driver = DriverFactory.getDriver();
+        Assert.assertEquals(WebDriver.class, driver.getClass());
     }
 
     @When("I navigate to the Homepage")
@@ -76,12 +61,10 @@ public class StepDefRemoveProductsFromCart {
     @When("I click the X button corresponding to a particular product")
     public void iClickTheXButtonCorrespondingToAParticularProduct() {
      cartPage.deleteItemFromCart();
-
     }
 
     @Then("the product is removed from the cart")
     public void theProductIsRemovedFromTheCart() {
         Assert.assertEquals("Cart is empty!", cartPage.checkCartIsEmpty());
-
     }
 }

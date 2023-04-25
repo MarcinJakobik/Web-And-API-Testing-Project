@@ -15,18 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContactUsFormStepDefs {
 
-    private static WebDriver driver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private static HomePage homePage;
     private static ContactUsPage contactUsPage;
 
-    @Before
-    public void setup() {
-        driver = BackgroundStepdefs.getDriver();
-        homePage = new HomePage(driver);
-    }
-
     @When("I click on the Contact Us link")
     public void iClickOnTheContactUsLink() {
+        homePage = new HomePage(driver);
         contactUsPage = homePage.goToContactUsPage();
     }
     @Then("I will go to the Contact Us page")

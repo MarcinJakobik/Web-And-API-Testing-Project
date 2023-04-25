@@ -13,23 +13,15 @@ import org.openqa.selenium.WebElement;
 
 public class ProductsStepDefs {
 
-  private static WebDriver driver;
+  private static WebDriver driver = BackgroundStepdefs.getDriver();
   private static HomePage homePage;
 
   private static ProductsPage productsPage;
   private ProductDetailsPage productDetailsPage;
   private static WebElement inputForm;
 
-//  @Before
-//  public void setup() {
-//    driver = BackgroundStepdefs.getDriver();
-//    driver.manage().window().maximize();
-//    homePage = new HomePage(driver);
-//  }
-
   @Given("I am on the Automation Exercise homepage")
   public void iAmOnTheAutomationExerciseHomepage() {
-    driver = BackgroundStepdefs.getDriver();
     driver.manage().window().maximize();
     homePage = new HomePage(driver);
   }

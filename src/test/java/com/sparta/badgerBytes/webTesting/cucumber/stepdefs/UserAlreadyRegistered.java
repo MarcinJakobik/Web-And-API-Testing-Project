@@ -22,10 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserAlreadyRegistered {
-    private static WebDriver driver;
-
-    private static ChromeDriverService service;
-
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private HomePage homePage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
@@ -33,7 +30,6 @@ public class UserAlreadyRegistered {
     private static final String USERNAME = "hamza";
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        driver = getDriver();
         homePage = new HomePage(driver);
     }
 

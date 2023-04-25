@@ -13,15 +13,14 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefNavigateToTestCasesPage {
-    private static WebDriver webDriver;
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
     private static HomePage homePage;
 
     private static TestCasesPage testCasesPage;
 
     @Given("I am on the homepage")
     public void iAmOnTheHomepage() {
-        webDriver = BackgroundStepdefs.getDriver();
-        homePage = new HomePage(webDriver);
+        homePage = new HomePage(driver);
     }
 
     @When("I click the Test Cases button")

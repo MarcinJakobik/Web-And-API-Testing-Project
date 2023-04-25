@@ -14,9 +14,7 @@ public class StepDefPlaceOrder {
 
     private static ChromeDriverService service;
 
-    private static WebDriver webDriver;
-
-    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     private HomePage homePage;
 
@@ -30,13 +28,9 @@ public class StepDefPlaceOrder {
     private static final String USERNAME = "liam";
 
     private static boolean confirmedPayment;
-    @Before
-    public static void setup(){
-        webDriver = BackgroundStepdefs.getDriver();
-    }
 
     @Given("I am on the Homepage")
-    public void iAmOnTheHomepage() { homePage = new HomePage(webDriver);}
+    public void iAmOnTheHomepage() { homePage = new HomePage(driver);}
 
     @When("I add a product to the cart")
     public void iAddAProductToTheCart() {
@@ -143,7 +137,7 @@ public class StepDefPlaceOrder {
     @Then("my account should be deleted")
     public void myAccountShouldBeDeleted() {
         //account deleted
-        Assert.assertEquals("https://automationexercise.com",webDriver.getCurrentUrl());
+        Assert.assertEquals("https://automationexercise.com",driver.getCurrentUrl());
 
     }
 
