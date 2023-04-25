@@ -27,7 +27,7 @@ public class BackgroundStepdefs {
 
   @Before
   public void setup() {
-    if(driver==null) {
+    if(driver==null || driver.toString().contains("(null)")) {
       driver = DriverFactory.getDriver();
     }
   }
@@ -40,6 +40,7 @@ public class BackgroundStepdefs {
 
   @When("I call the driver")
   public void iCallTheDriver() {
+    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
     turnOffAd();
   }
