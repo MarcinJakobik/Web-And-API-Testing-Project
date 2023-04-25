@@ -71,6 +71,8 @@ public class TestRunner {
 
         webDriver.findElement(By.linkText("Cart")).click();
 
+        cart.proceedToCheckoutRegister();
+
 
 
         String userName = "liam";
@@ -130,6 +132,10 @@ public class TestRunner {
 
         element = webDriver.findElement(By.cssSelector("a i.fa.fa-user + b"));
         System.out.println(element.getText().contains(userName));
+
+        homePage.goToCartPage();
+        cart.proccedToCheckout();
+        System.out.println(checkout.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43"));
 
     }
 

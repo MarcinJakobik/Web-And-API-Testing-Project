@@ -52,4 +52,16 @@ public class HomePage {
 
   }
 
+  public void deleteAccount(){
+    driver.findElement(By.linkText("Delete Account")).click();
+    driver.findElement(By.linkText("Continue")).click();
+  }
+
+  public SignupLogin goToSignUPLogin(){
+
+    driver.findElement(By.cssSelector("a[href='/login']")).click();
+
+    return new SignupLogin(driver);
+  }
+
 }
