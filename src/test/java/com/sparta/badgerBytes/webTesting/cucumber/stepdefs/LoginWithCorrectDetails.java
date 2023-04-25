@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.loginwithcorrectdetails;
+package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import io.cucumber.java.AfterAll;

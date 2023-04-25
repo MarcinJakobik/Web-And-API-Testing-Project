@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.UserAlreadyRegistered;
+package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;

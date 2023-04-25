@@ -1,4 +1,4 @@
-package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.ContactUs;
+package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
 import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
