@@ -68,7 +68,7 @@ public class UserAlreadyRegistered {
     public void iClickTheSignupButton(String buttonText) throws InterruptedException {
         WebElement signupButton = driver.findElement(By.xpath("//*[text()='" + buttonText + "']"));
         signupButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(2500);
     }
 
     @Then("I should see the error message {string} displayed on the page")
