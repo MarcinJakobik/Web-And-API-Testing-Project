@@ -4,28 +4,37 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
-  private final WebDriver driver;
+public class HomePage extends SuperFooterPage{
+
   By contactUsLink = new By.ByCssSelector("a[href='/contact_us']");
   By loginLink = new By.ByCssSelector("a[href='/login']");
-  public HomePage(WebDriver webDriver) {
-    this.driver = webDriver;
+  public HomePage(WebDriver driver) {
+    super(driver);
     goToHomePage();
+  }
+
+  public String getUrl() {
+    return driver.getCurrentUrl();
   }
 
   private void goToHomePage() {
     driver.get("https://automationexercise.com/");
   }
 
+  public ProductsPage goToProductsPage() {
+    driver.findElement(By.cssSelector("a[href='/products']")).click();
+    return new ProductsPage(driver);
+ }
+ 
   public BrandProductPage goToBrandPage(String brandName){
     driver.findElement(By.partialLinkText(brandName.toUpperCase())).click();
     return new BrandProductPage(driver);
   }
 
-  public Cart goToCartPage(){
+  public CartPage goToCartPage(){
 
-    driver.findElement(By.linkText("Cart")).click();
-    return new Cart(driver);
+    driver.findElement(By.cssSelector("a[href='/view_cart']")).click();
+    return new CartPage(driver);
   }
 
   public TestCasesPage goToTestCasesPage(){
@@ -39,11 +48,8 @@ public class HomePage {
   }
 
   public SignupLoginPage goToLoginPage() {
-    driver.findElement(loginLink).click();
-    return new SignupLoginPage(driver);
-  }
-  public String getUrl() {
-    return driver.getCurrentUrl();
+      driver.findElement(loginLink).click();
+      return new SignupLoginPage(driver);
   }
 
   public void clickContinueShopping(){ driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();}
@@ -76,5 +82,4 @@ public class HomePage {
 
     return new SignupLoginPage(driver);
   }
-
 }
