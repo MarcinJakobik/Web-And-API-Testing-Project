@@ -23,6 +23,7 @@ public class RegisterUsersteps {
     private String name;
     private Faker faker;
     private HomePage homePage;
+    private static WebDriver driver;
 
     @AfterAll
     void closeAll() {
@@ -30,7 +31,6 @@ public class RegisterUsersteps {
         driver.close();
     }
 
-    WebDriver driver;
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
         driver = getDriver();
