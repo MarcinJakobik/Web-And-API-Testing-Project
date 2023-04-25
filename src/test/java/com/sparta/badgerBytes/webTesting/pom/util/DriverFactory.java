@@ -24,6 +24,7 @@ public class DriverFactory {
                     ChromeDriverService service = WebAutomationUtil.getChromeDriverService(properties.getProperty("driverPath"));
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--remote-allow-origins=*");
+                    options.addExtensions(new File("src/test/resources/uBlock-Origin.crx"));
                     if(headless) options.addArguments("headless");
                     driver = new ChromeDriver(service, options);
                     break;
