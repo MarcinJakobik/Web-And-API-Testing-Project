@@ -29,6 +29,11 @@ public class BrandNavigationStepDef {
 
     @Then("I should be directed to the Kookie Kids product page")
     public void iShouldBeDirectedToTheKookieKidsProductPage() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         assertEquals("https://automationexercise.com/brand_products/Kookie%20Kids", brandProductPage.getUrl());
     }
 
@@ -54,6 +59,11 @@ public class BrandNavigationStepDef {
 
     @Then("I should be directed to the Babyhug products page")
     public void iShouldBeDirectedToTheBabyhugProductsPage() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         assertEquals("https://automationexercise.com/brand_products/Babyhug", brandProductPage.getUrl());
     }
 
