@@ -25,7 +25,8 @@ public class RegisterUsersteps {
     private String name;
     private Faker faker;
     private HomePage homePage;
-    private WebDriver driver;
+    private static WebDriver driver;
+
     @Before
     public void setup() {
         driver = BackgroundStepdefs.getDriver();
