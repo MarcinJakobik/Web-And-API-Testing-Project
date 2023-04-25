@@ -91,29 +91,30 @@ public class StepDefPlaceOrder {
 
     @Given("I am on the cart page")
     public void iAmOnTheCartPage() {
-        iAmOnTheHomepage();
-        iAddAProductToTheCart();
-        iWillGoToTheCart();
+      //  iAmOnTheHomepage();
+      //  iAddAProductToTheCart();
+      //  iWillGoToTheCart();
+        Assert.assertEquals("https://automationexercise.com/view_cart",cart.getUrl());
     }
 
     @When("I click the proceed to checkout button")
     public void iClickTheProceedToCheckoutButton() {
 
-        signupLogin = cart.proceedToCheckoutRegister();
+        checkout = cart.proccedToCheckout();
     }
 
-    @And("Click on the create account button")
+    @And("I  put in my inital details and continue")
     public void clickOnTheCreateAccountButton() {
         signupLogin.createAccount(USERNAME, "Marcien@example.com");
     }
 
-    @Then("I will put in my Name andEmail Address")
+    @Then("I  put in my Full Details")
     public void iWillPutInMyNameAndEmailAddress() {
        signupLogin.putInAccountDetails("Example","Example","Example","Example",
                 "Example","Example","Example","Example","Example");
     }
 
-    @And("I will create a account")
+    @And("I  have created an account")
     public void iWillCreateAAccount() {
 
         Assert.assertTrue(homePage.checkIfLoggedInAsUser(USERNAME));
@@ -129,7 +130,7 @@ public class StepDefPlaceOrder {
 
     @When("I click on the cart")
     public void iClickOnTheCart() {
-        homePage.goToCartPage();
+        cart = homePage.goToCartPage();
     }
 
     @And("have items in the cart")
@@ -164,13 +165,20 @@ public class StepDefPlaceOrder {
     @And("clicked the verify account deletion button")
     public void clickedTheVerifyAccountDeletionButton() {
         //done in previous step
+
     }
 
     @Then("my account should be deleted")
     public void myAccountShouldBeDeleted() {
         //account deleted
+        Assert.assertEquals("https://automationexercise.com",webDriver.getCurrentUrl());
+
     }
 
 
+    @And("I have Navigated to the Login Signup Page")
+    public void iHaveNaviagtedToTheLoginSignupPage() {
 
+        signupLogin = homePage.goToSignUPLogin();
+    }
 }

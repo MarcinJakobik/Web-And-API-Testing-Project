@@ -8,12 +8,12 @@ Feature: As, a User I want to Place an Order
     Then I will go to the cart
     And see that the product has been added to the cart
 
-  Scenario: Create an account on the checkout page
+  #Scenario: Create an account on the checkout page
     Given I am on the cart page
     When I click the proceed to checkout button
-    And Click on the create account button
-    Then I will put in my Name andEmail Address
-    And I will create a account
+    And I  put in my inital details and continue
+    Then I  put in my Full Details
+    And I  have created an account
     And I have verified I am logged in
 
   #Scenario: Order products on the cart Page
@@ -27,6 +27,27 @@ Feature: As, a User I want to Place an Order
     When I click the delete account button
     And clicked the verify account deletion button
     Then my account should be deleted
+
+    Scenario: Register before I checkout my order
+      Given I am on the Homepage
+      And I have Navigated to the Login Signup Page
+      When I  put in my inital details and continue
+      And  I  put in my Full Details
+      Then I  have created an account
+      And I have verified I am logged in
+      #scenario add products and goTO cart
+      Given I am on the Homepage
+      And I add a product to the cart
+      When I click on the cart
+      Then I am on the cart page
+      And have items in the cart
+      ##Checkout while already logged in and delete account
+      Given I am on the cart page
+      When I click the proceed to checkout button
+      And I have entered my payment details
+      And I verified the order was a success
+      Then I click the delete account button
+      And my account should be deleted
 
 
 

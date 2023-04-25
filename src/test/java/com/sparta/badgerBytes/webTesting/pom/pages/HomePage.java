@@ -47,4 +47,11 @@ public class HomePage {
     driver.findElement(By.linkText("Continue")).click();
   }
 
+  public SignupLogin goToSignUPLogin(){
+
+    driver.findElement(By.cssSelector("a[href='/login']")).click();
+
+    return new SignupLogin(driver);
+  }
+
 }
