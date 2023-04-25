@@ -1,6 +1,9 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.InvalidLogin;
 
+import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
+import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,19 +18,13 @@ import static com.sparta.badgerBytes.webTesting.pom.util.DriverFactory.getDriver
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InvalidLoginDetails {
-    WebDriver driver;
-//    @AfterAll
-//    public void tearDown() {
-//        driver.close();
-//        driver.quit();
-//        service.stop();
-//    }
+    private static HomePage homePage;
+    private static WebDriver driver;
 
-
-    @Given("I have launched the browser and navigated to the URL {string}")
-    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom(String URL) {
+    @Given("I have launched the browser and navigated to the URL")
+    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
         driver = getDriver();
-        driver.get(URL);
+        homePage = new HomePage(driver);
     }
     @When("I click on the {string} button")
     public void iClickOnTheSignupLoginButton(String buttonName) {
