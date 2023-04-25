@@ -46,7 +46,7 @@ public class ContactUsPage {
         driver.findElement(By.cssSelector(".contact-form [name='email']")).sendKeys("RHoward@SpartaGlobal.com");
         driver.findElement(By.cssSelector(".contact-form [name='subject']")).sendKeys("Test Subject");
         driver.findElement(By.cssSelector(".contact-form [name='message']")).sendKeys("Test Message With Lots Of Words");
-        File archibald = new File("src/test/resources/features/Dz1lng.png");
+        File archibald = new File("src/test/resources/Archibald.png");
         driver.findElement(By.cssSelector(".contact-form [type='file']")).sendKeys(archibald.getAbsolutePath());
     }
 }
