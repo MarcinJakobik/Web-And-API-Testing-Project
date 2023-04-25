@@ -1,5 +1,6 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
+import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -34,12 +35,21 @@ public class ProductsPage extends SuperFooterPage {
   }
 
   public void AddProductToCart(String productId, String quantity) {
+    turnOffAd();
     WebElement element = driver.findElement(By.cssSelector("a[href='/product_details/" + productId + "'][style='color: brown;'] > i.fa.fa-plus-square"));
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      throw new RuntimeException(e);
+    }
+    turnOffAd();
     element.click();
     element = driver.findElement(By.id("quantity"));
     element.clear();
     element.sendKeys(quantity);
+    turnOffAd();
     element = driver.findElement(By.cssSelector("button.btn.btn-default.cart > i.fa.fa-shopping-cart"));
+    turnOffAd();
     element.click();
     try {
       Thread.sleep(3000);

@@ -1,7 +1,7 @@
 Feature: Adding Products to Cart
 
   Background:Adding two products to cart and verifying their prices, quantity and total price
-    Given I am on the home page
+    Given I am on the main page
 
   Scenario:Navigating to product page
     When I click products button

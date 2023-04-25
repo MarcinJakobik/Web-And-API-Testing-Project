@@ -19,7 +19,6 @@ public class BackgroundStepdefs {
   private static HomePage homePage;
 
   public static WebDriver getDriver() {
-    if(driver==null) { return DriverFactory.getDriver(); }
     return driver;
   }
 
@@ -38,6 +37,7 @@ public class BackgroundStepdefs {
 
   @When("I call the driver")
   public void iCallTheDriver() {
+    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
     turnOffAd();
   }
