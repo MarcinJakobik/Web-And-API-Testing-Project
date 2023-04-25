@@ -25,7 +25,9 @@ public class BackgroundStepdefs {
 
   @Before
   public void setup() {
-    driver = DriverFactory.getDriver();
+    if(driver==null) {
+      driver = DriverFactory.getDriver();
+    }
   }
 
   @Given("I am on the Automation Exercise Website")
