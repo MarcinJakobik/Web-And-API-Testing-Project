@@ -1,7 +1,7 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.UserAlreadyRegistered;
 
-import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
-import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
+import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
 import io.cucumber.java.en.And;
@@ -18,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.sparta.badgerBytes.webTesting.pom.util.DriverFactory.getDriver;
-import static io.netty.handler.codec.rtsp.RtspHeaders.Values.URL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,8 +27,8 @@ public class UserAlreadyRegistered {
     private static ChromeDriverService service;
 
     private HomePage homePage;
-    private Cart cart;
-    private Checkout checkout;
+    private CartPage cartPage;
+    private CheckoutPage checkoutPage;
     private SignupLogin signupLogin;
 
     private static final String USERNAME = "hamza";

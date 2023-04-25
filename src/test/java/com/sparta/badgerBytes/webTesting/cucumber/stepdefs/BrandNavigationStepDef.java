@@ -58,7 +58,4 @@ public class BrandNavigationStepDef {
         assertEquals("BRAND - BABYHUG PRODUCTS", brandProductPage.getBrandProductListTitle());
         assertEquals(brandProductPage.getExpectedBrandProductsCount(), brandProductPage.getBrandProductsCount());
     }
-
-
-
 }

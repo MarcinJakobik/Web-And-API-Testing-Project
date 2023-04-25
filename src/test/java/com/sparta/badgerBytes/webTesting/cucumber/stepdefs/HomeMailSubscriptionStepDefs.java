@@ -1,10 +1,7 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
-import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
+import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,7 +15,7 @@ public class HomeMailSubscriptionStepDefs {
   private static WebDriver driver;
   private static HomePage homePage;
 
-  private static Cart cartPage;
+  private static CartPage cartPage;
   private static WebElement footer;
   private static WebElement subscriptionHeading;
   private static WebElement inputForm;

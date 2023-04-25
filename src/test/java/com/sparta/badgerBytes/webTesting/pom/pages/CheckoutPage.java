@@ -3,13 +3,12 @@ package com.sparta.badgerBytes.webTesting.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 //rename this class to Checkout/Payment
-public class Checkout {
+public class CheckoutPage {
 
     private WebDriver driver;
-    public Checkout(WebDriver driver) {
+    public CheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
 

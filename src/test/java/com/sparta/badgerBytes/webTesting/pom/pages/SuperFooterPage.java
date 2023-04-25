@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class Footer {
+public class SuperFooterPage {
     protected final WebDriver driver;
     By subscriptionText = By.cssSelector("#footer > div.footer-widget > div > div > div.col-sm-3.col-sm-offset-1 > div > h2");
     By footer = By.id("footer");
@@ -16,8 +16,8 @@ public class Footer {
     By arrowButton = By.id("subscribe");
     By successMessage = By.id("success-subscribe");
 
-    public Footer(WebDriver webDriver) {
-        this.driver = webDriver;
+    public SuperFooterPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public WebElement getSubscriptionHeading() {

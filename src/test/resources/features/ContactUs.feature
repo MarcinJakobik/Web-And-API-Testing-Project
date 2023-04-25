@@ -1,5 +1,8 @@
 Feature: Contact Us form submission
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Submitting details through Contact Us form
     Given I have launched the browser and navigated to the URL
     And I click on the 'Contact Us' button
