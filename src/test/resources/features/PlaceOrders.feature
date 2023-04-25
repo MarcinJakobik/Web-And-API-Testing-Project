@@ -49,7 +49,7 @@ Feature: As, a User I want to Place an Order
       Then I click the delete account button
       And my account should be deleted
 
-#here to create an account if you need one
+  #here to create an account since need one
   Scenario: Create a Account
     Given I am on the Homepage
     And I have Navigated to the Login Signup Page
