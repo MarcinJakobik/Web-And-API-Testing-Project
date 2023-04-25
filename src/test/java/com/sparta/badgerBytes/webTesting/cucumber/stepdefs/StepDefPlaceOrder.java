@@ -50,9 +50,9 @@ public class StepDefPlaceOrder {
 
     @After
     public static void tearDownAll(){
-//        webDriver.close();
-//        webDriver.quit();
-//       service.stop();
+        webDriver.close();
+        webDriver.quit();
+        service.stop();
     }
 
 
