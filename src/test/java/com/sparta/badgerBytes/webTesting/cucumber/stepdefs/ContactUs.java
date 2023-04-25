@@ -27,9 +27,7 @@ public class ContactUs {
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
     private SignupLoginPage signupLogin;
-
     private static final String USERNAME = "hamza";
-
 
     @Before
     public void setup() {
@@ -58,12 +56,11 @@ public class ContactUs {
         subjectInput.sendKeys("Test Subject");
         WebElement messageInput = driver.findElement(By.cssSelector("textarea[data-qa='message']"));
         messageInput.sendKeys("This is a test message.");
-
     }
 
     @And("I should be able to upload a file if necessary")
     public void iShouldBeAbleToUploadAFileIfNecessary() {
-
+//Uploading a file code optional
     }
 
     @Then("I should be able to click the Submit button")
@@ -84,7 +81,6 @@ public class ContactUs {
         wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = driver.switchTo().alert();
         alert.accept();
-
     }
 
     @Then("I should see the success message {string}")
