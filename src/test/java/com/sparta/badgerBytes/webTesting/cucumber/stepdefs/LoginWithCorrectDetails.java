@@ -32,7 +32,7 @@ public class LoginWithCorrectDetails {
         signupLoginButton.click();
     }
 
-    @Then("I should see Login to your account displayed on the page")
+    @Then("I should see Login to your account displayed")
     public void iShouldSeeLoginToYourAccountDisplayedOnThePage() {
         assertTrue(driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div[1]/div/h2")).isDisplayed(), "Login Account is not displayed!");
     }
