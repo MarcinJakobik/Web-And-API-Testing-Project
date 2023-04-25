@@ -16,14 +16,14 @@ Feature: As, a User I want to Place an Order
     And I will create a account
     And I have verified I am logged in
 
-  Scenario: Order products on the cart Page
+  #Scenario: Order products on the cart Page
     When I click on the cart
     And have items in the cart
     Then click proceed to checkout button
-    And I have entered my details
+    And I have entered my payment details
     And I verified the order was a success
 
-  Scenario: Delete account on homepage
+  #Scenario: Delete account on homepage
     When I click the delete account button
     And clicked the verify account deletion button
     Then my account should be deleted
