@@ -41,9 +41,9 @@ public class SignupLoginPage {
     }
 
 
-
-
-
+/*
+    Originally the below would confirm the creation of an account, however another team member was working on this as a
+    separate test case and so their code was used for the production.
 
     public SignupLoginPage createAccount() {
         driver.navigate().to("https://automationexercise.com/signup");
@@ -70,4 +70,5 @@ public class SignupLoginPage {
     public void checkAccountWasCreated() {
         assertEquals("https://automationexercise.com/account_created", driver.getCurrentUrl());
     }
+ */
 }

@@ -41,9 +41,11 @@ public class RegisterUserWithExistingEmailStepdefs {
         assertEquals("New User Signup!", loginPage.findSignUpForm());
     }
 
-    @Given("An account already exists")
+    @And("An account already exists")
     public void anAccountAlreadyExists() {
         // This is related to TC 1, connect when uploaded.
+        loginPage.createAccount("Reg", "RHoward@SpartaGlobal.com");
+        loginPage.putInAccountDetails("Reggie", "Howard", "password", "Sparta Global", "Some Address", "Montana", "59923", "456841531", "Libby");
     }
     @When("I enter a Name")
     public void iEnterAName() {
