@@ -46,6 +46,10 @@ public class RegisterUsersteps {
 
 
     }
+    @And("I click on the Signup button there")
+    public void iClickOnTheSignupButtonThere() {
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a")).click();
+    }
 
 
     @Then("I should see {string} shown on the page")
@@ -175,4 +179,6 @@ public class RegisterUsersteps {
     public void iClickTheContinueButton() {
         driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div/a")).click();
     }
+
+
 }

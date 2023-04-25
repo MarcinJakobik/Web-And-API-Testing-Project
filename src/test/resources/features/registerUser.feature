@@ -5,7 +5,7 @@ Feature: As a User I want to register and be able to delete my account
 
   Scenario: Registering a new user
     Given I have launched the browser and navigated to the URL
-    And I click on the Signup button
+    And I click on the Signup button there
     Then I should see 'New User Signup!' displayed on the page
     When I enter my name and email address
     And I click the 'Signup' button
