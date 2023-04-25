@@ -6,5 +6,6 @@ public class Cart extends Footer{
     public Cart(WebDriver webDriver) {
         super(webDriver);
     }
+
 }
 

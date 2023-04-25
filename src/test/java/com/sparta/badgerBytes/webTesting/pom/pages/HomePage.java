@@ -10,6 +10,10 @@ public class HomePage extends Footer {
     goToHomePage();
   }
 
+  public String getUrl() {
+    return driver.getCurrentUrl();
+  }
+
   private void goToHomePage() {
     driver.get("https://automationexercise.com/");
   }
