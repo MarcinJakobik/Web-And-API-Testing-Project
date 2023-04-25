@@ -1,6 +1,6 @@
 Feature: Multiple items in cart
   Background: Verifying product quantity in cart
-    Given I am on the home page
+    Given I am on the main page
     And I click products button
 
   Scenario: Adding 4 same products to cart

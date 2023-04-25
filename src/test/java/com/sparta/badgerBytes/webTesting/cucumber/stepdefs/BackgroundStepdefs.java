@@ -19,13 +19,14 @@ public class BackgroundStepdefs {
   private static HomePage homePage;
 
   public static WebDriver getDriver() {
-    if(driver==null) { return DriverFactory.getDriver(); }
     return driver;
   }
 
   @Before
   public void setup() {
-    driver = DriverFactory.getDriver();
+    if(driver==null) {
+      driver = DriverFactory.getDriver();
+    }
   }
 
   @Given("I am on the Automation Exercise Website")
@@ -36,6 +37,7 @@ public class BackgroundStepdefs {
 
   @When("I call the driver")
   public void iCallTheDriver() {
+    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
     turnOffAd();
   }

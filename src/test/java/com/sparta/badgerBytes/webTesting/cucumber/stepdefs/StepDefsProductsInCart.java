@@ -3,6 +3,7 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.ProductsPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.SuperFooterPage;
 import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -10,20 +11,27 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class StepDefsProductsInCart {
 
-    private static WebDriver driver = BackgroundStepdefs.getDriver();
+    private static WebDriver driver;
     private static HomePage homePage;
     private static ProductsPage productPage;
     private static CartPage cart;
 
+    @Given("I am on the main page")
+    public void iAmOnTheHomePage() {
+        //DO NOT CHANGE TO BACKGROUND STEP DEFS
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+    }
+
     @When("I click products button")
     public void iClickProductsButton() {
-        homePage = new HomePage(driver);
         productPage = homePage.goToProductsPage();
     }
 
@@ -35,6 +43,7 @@ public class StepDefsProductsInCart {
 
     @When("I add product to the cart")
     public void iAddProductToTheCart() {
+        productPage = homePage.goToProductsPage();
         productPage.AddProductToCart("1", "2");//add to cart method
     }
 
@@ -51,10 +60,8 @@ public class StepDefsProductsInCart {
 
     @Then("two product should be in the cart")
     public void twoProductShouldBeInTheCart() {
-
         productPage.goToProductsPage();
         cart = productPage.goToCartPage();
-        System.out.println(cart.getUrl());
         Assertions.assertEquals(2, cart.checkNumberOfProductsInCart());
     }
 
@@ -80,13 +87,6 @@ public class StepDefsProductsInCart {
 
     }
 
-
-    @After
-    public void tearDown() {
-//        driver.close();
-//        driver.quit();
-    }
-
     @When("I add {int} units of the same product to cart")
     public void iAddUnitsOfTheSameProductToCart(int arg0) {
         productPage.turnOffAd();
@@ -98,5 +98,11 @@ public class StepDefsProductsInCart {
     @Then("Cart should have {int} same items")
     public void cartShouldHaveSameItems(int arg0) {
         Assertions.assertEquals(arg0, cart.returnQuantity("1"));
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        driver.close();
+        driver.quit();
     }
 }
