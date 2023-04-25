@@ -4,6 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+public class HomePage {
+
+  private final WebDriver driver;
+  By someLink = new By.ByLinkText("something"); // edit and use as necessary
+
 
 public class HomePage extends Footer {
   private final WebDriver driver;
@@ -85,6 +90,10 @@ public class HomePage extends Footer {
     driver.findElement(By.cssSelector("a[href='/login']")).click();
 
     return new SignupLoginPage(driver);
+  }
+
+  public String getUrl(){
+    return driver.getCurrentUrl();
   }
 
 }
