@@ -2,6 +2,8 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.BrandProductPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
+import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,15 +16,16 @@ public class BrandNavigationStepDef {
     HomePage homePage;
     BrandProductPage brandProductPage;
     WebDriver driver;
+
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
-        driver = BackgroundStepdefs.getDriver();
+        driver = DriverFactory.getDriver();
         homePage = new HomePage(driver);
     }
 
     @When("I click on the KOOKIE KIDS button")
     public void iClickOnTheKOOKIEKIDSButton() {
-        brandProductPage = homePage.goToBrandPage("KOOKIE KIDS");
+        brandProductPage = homePage.goToBrandPage("Kookie Kids");
     }
 
     @Then("I should be directed to the Kookie Kids product page")

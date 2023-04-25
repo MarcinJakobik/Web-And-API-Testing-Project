@@ -3,7 +3,7 @@ package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.UserAlreadyRegistere
 import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
+import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -29,8 +29,7 @@ public class UserAlreadyRegistered {
     private HomePage homePage;
     private CartPage cartPage;
     private CheckoutPage checkoutPage;
-    private SignupLogin signupLogin;
-
+    private SignupLoginPage signupLogin;
     private static final String USERNAME = "hamza";
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {

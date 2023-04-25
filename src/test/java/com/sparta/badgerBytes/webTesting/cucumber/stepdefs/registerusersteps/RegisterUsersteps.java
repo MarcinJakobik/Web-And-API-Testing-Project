@@ -31,26 +31,6 @@ public class RegisterUsersteps {
         driver = BackgroundStepdefs.getDriver();
     }
 
-    @Given("I have launched the browser and navigated to the URL")
-    public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        homePage = new HomePage(driver);
-    }
-
-    @And("I click on the Signup button")
-    public void iClickOnTheSignupLoginButton() {
-        WebElement signupLoginButton = driver.findElement(By.xpath("//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a"));
-        signupLoginButton.click();
-    }
-
-
-
-
-    @Then("I should see {string} displayed on the page")
-    public void iShouldSeeNewUserSignupDisplayedOnThePage(String newUser) {
-        WebElement element = driver.findElement(By.xpath("//*[contains(text(), '" + newUser + "')]"));
-        assertTrue(element.isDisplayed(), "Element with text '" + newUser + "' is not displayed on the page");
-    }
-
     @When("I enter my name and email address")
     public void iEnterMyNameAndEmailAddress() {
         faker = new Faker();
@@ -71,11 +51,6 @@ public class RegisterUsersteps {
 
     }
 
-    @And("I click the {string} button")
-    public void iClickTheSignupButton(String signUp) {
-        WebElement submitButton = driver.findElement(By.xpath("//button[contains(text(), '" + signUp + "')]"));
-        submitButton.click();
-    }
 
     @Then("I should see {string} shown on the page")
     public void iShouldSeeEnterAccountInformation(String text) {

@@ -129,9 +129,5 @@ public class TestRunner {
 
     }
 
-    @After
-    public void destroy(){
-        driver.quit();
-    }
 
 }
