@@ -1,11 +1,8 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
-import com.sparta.badgerBytes.webTesting.pom.pages.ProductDetails;
-import com.sparta.badgerBytes.webTesting.pom.pages.Products;
+import com.sparta.badgerBytes.webTesting.pom.pages.ProductDetailsPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.ProductsPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,8 +16,8 @@ public class ProductsStepDefs {
   private static WebDriver driver;
   private static HomePage homePage;
 
-  private static Products products;
-  private ProductDetails productDetails;
+  private static ProductsPage productsPage;
+  private ProductDetailsPage productDetailsPage;
   private static WebElement inputForm;
 
 //  @Before
@@ -39,24 +36,24 @@ public class ProductsStepDefs {
 
   @When("I click on the Products button")
   public void iClickOnTheProductsButton() {
-    products = homePage.goToProductsPage();
+    productsPage = homePage.goToProductsPage();
   }
 
   @Then("the products list is visible")
   public void theProductsListIsVisible() {
-    Assertions.assertTrue(products.getProductsList());
+    Assertions.assertTrue(productsPage.getProductsList());
   }
 
   @Given("I am on the Products page")
   public void iAmOnTheProductsPage() {
 //    homePage = new HomePage(driver);
 //    products = homePage.goToProductsPage();
-    Assertions.assertEquals("https://automationexercise.com/products", products.getURL());
+    Assertions.assertEquals("https://automationexercise.com/products", productsPage.getURL());
   }
 
   @When("I click on the view product button for the first product")
   public void iClickOnTheViewProductButtonForTheFirstProduct() {
-    productDetails = products.goToProductDetails();
+    productDetailsPage = productsPage.goToProductDetails();
   }
 
   @Then("then I see a page with details about the product")

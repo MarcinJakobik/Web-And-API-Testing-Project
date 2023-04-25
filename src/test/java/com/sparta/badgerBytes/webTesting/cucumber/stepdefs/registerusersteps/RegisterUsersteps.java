@@ -1,8 +1,10 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.registerusersteps;
 
 import com.github.javafaker.Faker;
+import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,17 +25,14 @@ public class RegisterUsersteps {
     private String name;
     private Faker faker;
     private HomePage homePage;
-
-    @AfterAll
-    void closeAll() {
-        driver.quit();
-        driver.close();
+    private WebDriver driver;
+    @Before
+    public void setup() {
+        driver = BackgroundStepdefs.getDriver();
     }
 
-    WebDriver driver;
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        driver = getDriver();
         homePage = new HomePage(driver);
     }
 

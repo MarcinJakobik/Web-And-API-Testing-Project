@@ -1,21 +1,14 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
 import com.sparta.badgerBytes.webTesting.pom.pages.*;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
-import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
-import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.junit.jupiter.api.Nested;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 public class StepDefPlaceOrder {
 
@@ -27,9 +20,9 @@ public class StepDefPlaceOrder {
 
     private HomePage homePage;
 
-    private Cart cart;
+    private CartPage cartPage;
 
-    private Checkout checkout;
+    private CheckoutPage checkoutPage;
 
     private SignupLoginPage signupLoginPage;
 
@@ -60,13 +53,13 @@ public class StepDefPlaceOrder {
             throw new RuntimeException(e);
         }
         homePage.clickContinueShopping();
-        cart = homePage.goToCartPage();
-        Assert.assertEquals("https://automationexercise.com/view_cart", cart.getUrl() );
+        cartPage = homePage.goToCartPage();
+        Assert.assertEquals("https://automationexercise.com/view_cart", cartPage.getUrl() );
     }
 
     @And("see that the product has been added to the cart")
     public void seeThatTheProductHasBeenAddedToTheCart() {
-        Assert.assertEquals(true,cart.checkByClass("product_image"));
+        Assert.assertEquals(true, cartPage.checkByClass("product_image"));
     }
 
     @Given("I am on the cart page")
@@ -74,13 +67,13 @@ public class StepDefPlaceOrder {
       //  iAmOnTheHomepage();
       //  iAddAProductToTheCart();
       //  iWillGoToTheCart();
-        Assert.assertEquals("https://automationexercise.com/view_cart",cart.getUrl());
+        Assert.assertEquals("https://automationexercise.com/view_cart", cartPage.getUrl());
     }
 
     @When("I click the proceed to checkout button")
     public void iClickTheProceedToCheckoutButton() {
 
-        checkout = cart.proccedToCheckout();
+        checkoutPage = cartPage.proccedToCheckout();
     }
 
     @And("I  put in my inital details and continue")
@@ -109,25 +102,25 @@ public class StepDefPlaceOrder {
 
     @When("I click on the cart")
     public void iClickOnTheCart() {
-        cart = homePage.goToCartPage();
+        cartPage = homePage.goToCartPage();
     }
 
     @And("have items in the cart")
     public void haveItemsInTheCart() {
-        Assert.assertEquals(true,cart.checkByClass("product_image"));
+        Assert.assertEquals(true, cartPage.checkByClass("product_image"));
     }
 
     @Then("click proceed to checkout button")
     public void clickProceedToCheckoutButton() {
-        checkout = cart.proccedToCheckout();
+        checkoutPage = cartPage.proccedToCheckout();
     }
 
     @And("I have entered my payment details")
     public void iHaveEnteredMyDetails() {
         //procceed(place order)
         //put in cary details
-        checkout.placeOrderButton();
-        confirmedPayment= checkout.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43");
+        checkoutPage.placeOrderButton();
+        confirmedPayment= checkoutPage.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43");
 
     }
 

@@ -1,7 +1,7 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs;
 
-import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
-import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
+import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
 import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
@@ -24,46 +24,31 @@ public class StepDefRemoveProductsFromCart {
 
     private static ChromeDriverService service;
 
-    private static WebDriver webDriver;
+    private static WebDriver driver;
 
     private static final String DRIVER_LOCATION = "src/test/resources/chromedriver.exe";
 
     private HomePage homePage;
 
-    private Cart cart;
+    private CartPage cartPage;
 
-    private Checkout checkout;
-
-    private SignupLogin signupLogin;
+    private CheckoutPage checkoutPage;
 
 
     @Before
-    public static void setup(){
-
-        service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
-
-        webDriver = DriverFactory.getDriver();
-
-
-
+    public void setup() {
+        driver = BackgroundStepdefs.getDriver();
+        homePage = new HomePage(driver);
     }
-
-    @After
-    public static void tearDownAll(){
-        webDriver.close();
-        webDriver.quit();
-        service.stop();
-    }
-
 
     @Given("I launch the browser")
     public void iLaunchWebsite() {
-        webDriver = DriverFactory.getDriver();
+        driver = DriverFactory.getDriver();
     }
 
     @When("I navigate to the Homepage")
     public void iNavigateToTheUrlHttpAutomationexerciseCom() {
-        homePage = new HomePage(webDriver);
+        homePage = new HomePage(driver);
     }
 
     @Then("the homepage is displayed successfully")
@@ -79,24 +64,24 @@ public class StepDefRemoveProductsFromCart {
 
     @And("I click the cart button")
     public void iClickTheCartButton() {
-        cart = homePage.goToCartPage();
+        cartPage = homePage.goToCartPage();
 
     }
 
     @Then("the cart page is displayed successfully")
     public void theCartPageIsDisplayedSuccessfully() {
-        Assert.assertEquals("https://automationexercise.com/view_cart",cart.getUrl());
+        Assert.assertEquals("https://automationexercise.com/view_cart", cartPage.getUrl());
     }
 
     @When("I click the X button corresponding to a particular product")
     public void iClickTheXButtonCorrespondingToAParticularProduct() {
-     cart.deleteItemFromCart();
+     cartPage.deleteItemFromCart();
 
     }
 
     @Then("the product is removed from the cart")
     public void theProductIsRemovedFromTheCart() {
-        Assert.assertEquals("Cart is empty!", cart.checkCartIsEmpty());
+        Assert.assertEquals("Cart is empty!", cartPage.checkCartIsEmpty());
 
     }
 }

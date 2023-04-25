@@ -1,10 +1,11 @@
 package com.sparta.badgerBytes.webTesting.cucumber;
 
+import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
-import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
+import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
 import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
@@ -24,61 +25,50 @@ import org.openqa.selenium.chrome.ChromeOptions;
     plugin = {"pretty", "html:target/testReport.html", "json:target/jsonReport.json"}
 )
 public class TestRunner {
-    private static ChromeDriverService service;
 
-    private static WebDriver webDriver;
-
-    private static final String DRIVER_LOCATION = "src/test/resources/chromedriver";
+    private static WebDriver driver;
 
     private HomePage homePage;
 
-    private Cart cart;
+    private CartPage cartPage;
 
-    private Checkout checkout;
+    private CheckoutPage checkoutPage;
 
     private SignupLoginPage signupLoginPage;
 
 
     @BeforeEach
     public void setup(){
-
-        service = WebAutomationUtil.getChromeDriverService(DRIVER_LOCATION);
-
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        //chromeOptions.addArguments("headless"); //noGUI
-        webDriver = new ChromeDriver(service,chromeOptions);
-        webDriver.get("https://automationexercise.com/");
-
+        driver = BackgroundStepdefs.getDriver();
     }
 
     @Test
     @DisplayName("Test")
     void test()
     {
-        // webDriver.findElement(By.id("1")).click();
-        //webDriver.findElement(By.className("btn btn-default add-to-cart")).findElement(By.id("1")).click();
-        WebElement addToCartButton = webDriver.findElement(By.cssSelector("a.add-to-cart")); addToCartButton.click();
+        // driver.findElement(By.id("1")).click();
+        //driver.findElement(By.className("btn btn-default add-to-cart")).findElement(By.id("1")).click();
+        WebElement addToCartButton = driver.findElement(By.cssSelector("a.add-to-cart")); addToCartButton.click();
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
-        //webDriver.findElement(By.className("button.btn btn-success close-modal btn-block")).click();
-        //webDriver.findElement(By.xpath("//button[contains(text(), 'Continue Shopping')]")).click();
-        webDriver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();
+        //driver.findElement(By.className("button.btn btn-success close-modal btn-block")).click();
+        //driver.findElement(By.xpath("//button[contains(text(), 'Continue Shopping')]")).click();
+        driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();
 
-        webDriver.findElement(By.linkText("Cart")).click();
+        driver.findElement(By.linkText("Cart")).click();
 
-        cart.proceedToCheckoutRegister();
+        cartPage.proceedToCheckoutRegister();
 
 
 
         String userName = "liam";
-        WebElement element = webDriver.findElement(By.name("name"));
+        WebElement element = driver.findElement(By.name("name"));
         element.sendKeys(userName);
-        element = webDriver.findElement(By.cssSelector("input[data-qa='signup-email']"));
+        element = driver.findElement(By.cssSelector("input[data-qa='signup-email']"));
         element.sendKeys("Marcin@ExampleEmail.com");
 
         try {
@@ -89,36 +79,36 @@ public class TestRunner {
 
 
 
-        webDriver.findElement(By.cssSelector("button[data-qa='signup-button']")).click();
+        driver.findElement(By.cssSelector("button[data-qa='signup-button']")).click();
 
-        element = webDriver.findElement(By.name("first_name"));
+        element = driver.findElement(By.name("first_name"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("password"));
+        element = driver.findElement(By.name("password"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("last_name"));
+        element = driver.findElement(By.name("last_name"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("company"));
+        element = driver.findElement(By.name("company"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("address1"));
+        element = driver.findElement(By.name("address1"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("state"));
+        element = driver.findElement(By.name("state"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("zipcode"));
+        element = driver.findElement(By.name("zipcode"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("mobile_number"));
+        element = driver.findElement(By.name("mobile_number"));
         element.sendKeys("Example@Example");
 
-        element = webDriver.findElement(By.name("city"));
+        element = driver.findElement(By.name("city"));
         element.sendKeys("ExampleCity");
 
-//        element = webDriver.findElement(By.name("country"));
+//        element = driver.findElement(By.name("country"));
 //        element.click();
         try {
             Thread.sleep(1000);
@@ -126,23 +116,22 @@ public class TestRunner {
             throw new RuntimeException(e);
         }
 
-        webDriver.findElement(By.cssSelector("button[data-qa='create-account']")).click();
+        driver.findElement(By.cssSelector("button[data-qa='create-account']")).click();
 
-        webDriver.findElement(By.cssSelector("a[data-qa='continue-button']")).click();
+        driver.findElement(By.cssSelector("a[data-qa='continue-button']")).click();
 
-        element = webDriver.findElement(By.cssSelector("a i.fa.fa-user + b"));
+        element = driver.findElement(By.cssSelector("a i.fa.fa-user + b"));
         System.out.println(element.getText().contains(userName));
 
         homePage.goToCartPage();
-        cart.proccedToCheckout();
-        System.out.println(checkout.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43"));
+        cartPage.proccedToCheckout();
+        System.out.println(checkoutPage.putInPaymentDetailsAndConfirmOrder("liam","3243","434","3443","43"));
 
     }
 
     @After
     public void destroy(){
-        webDriver.quit();
-         service.stop();
+        driver.quit();
     }
 
 }

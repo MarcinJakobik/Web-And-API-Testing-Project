@@ -1,11 +1,10 @@
 package com.sparta.badgerBytes.webTesting.cucumber.stepdefs.ContactUs;
 
-import com.sparta.badgerBytes.webTesting.pom.pages.Cart;
-import com.sparta.badgerBytes.webTesting.pom.pages.Checkout;
+import com.sparta.badgerBytes.webTesting.cucumber.stepdefs.BackgroundStepdefs;
+import com.sparta.badgerBytes.webTesting.pom.pages.CartPage;
+import com.sparta.badgerBytes.webTesting.pom.pages.CheckoutPage;
 import com.sparta.badgerBytes.webTesting.pom.pages.HomePage;
-import com.sparta.badgerBytes.webTesting.pom.pages.SignupLogin;
-import com.sparta.badgerBytes.webTesting.pom.util.DriverFactory;
-import com.sparta.badgerBytes.webTesting.pom.util.WebAutomationUtil;
+import com.sparta.badgerBytes.webTesting.pom.pages.SignupLoginPage;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,7 +18,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static com.sparta.badgerBytes.webTesting.pom.util.DriverFactory.getDriver;
-import static io.netty.handler.codec.rtsp.RtspHeaders.Values.URL;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ContactUs {
@@ -28,20 +26,22 @@ public class ContactUs {
     private static ChromeDriverService service;
 
     private HomePage homePage;
-    private Cart cart;
-    private Checkout checkout;
-    private SignupLogin signupLogin;
+    private CartPage cartPage;
+    private CheckoutPage checkoutPage;
+    private SignupLoginPage signupLogin;
 
     private static final String USERNAME = "hamza";
 
 
+    @Before
+    public void setup() {
+        driver = BackgroundStepdefs.getDriver();
+    }
 
 
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
-        driver = getDriver();
         homePage = new HomePage(driver);
-
     }
     @And("I click on the {string} button")
     public void iClickOnTheButton(String buttonName) {

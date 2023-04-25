@@ -3,12 +3,12 @@ package com.sparta.badgerBytes.webTesting.pom.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ProductDetails {
+public class ProductDetailsPage {
 
   protected final WebDriver driver;
 
   private By productInfoSelector = By.className("product-information");
-  public ProductDetails(WebDriver driver) {
+  public ProductDetailsPage(WebDriver driver) {
     this.driver = driver;
   }
 

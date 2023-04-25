@@ -1,15 +1,14 @@
 package com.sparta.badgerBytes.webTesting.pom.pages;
 
-import io.cucumber.java.ro.Si;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Cart {
+public class CartPage {
 
     WebDriver driver;
-    public Cart(WebDriver driver) {
+    public CartPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -31,10 +30,10 @@ public class Cart {
         return new SignupLoginPage(driver);
     }
 
-    public Checkout proccedToCheckout(){
+    public CheckoutPage proccedToCheckout(){
 
         driver.findElement(By.linkText("Proceed To Checkout")).click();
-        return new Checkout(driver);
+        return new CheckoutPage(driver);
     }
 
     public void deleteItemFromCart(){

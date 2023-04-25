@@ -142,7 +142,7 @@ public class ProductListDTOTests {
     }
     @Nested
     @DisplayName("POST method for searching products")
-    class PostMethodForSearchingProducts {
+    class PostMethodForSearchingProductsPage {
         @Test
         @DisplayName("Check a POST request to searchProduct endpoint without search_product parameter returns 400 bad request")
         void testPostRequestToSearchProductWithoutSearchParam() {

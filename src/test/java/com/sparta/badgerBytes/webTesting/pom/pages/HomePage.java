@@ -4,18 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
+public class HomePage extends SuperFooterPage{
 
-  private final WebDriver driver;
-  By someLink = new By.ByLinkText("something"); // edit and use as necessary
-
-
-public class HomePage extends Footer {
-  private final WebDriver driver;
   By contactUsLink = new By.ByCssSelector("a[href='/contact_us']");
   By loginLink = new By.ByCssSelector("a[href='/login']");
-  public HomePage(WebDriver webDriver) {
-    super(webDriver);
+  public HomePage(WebDriver driver) {
+    super(driver);
     goToHomePage();
   }
 
@@ -27,9 +21,9 @@ public class HomePage extends Footer {
     driver.get("https://automationexercise.com/");
   }
 
-  public Products goToProductsPage() {
+  public ProductsPage goToProductsPage() {
     driver.findElement(By.cssSelector("a[href='/products']")).click();
-    return new Products(driver);
+    return new ProductsPage(driver);
  }
  
   public BrandProductPage goToBrandPage(String brandName){
@@ -37,10 +31,10 @@ public class HomePage extends Footer {
     return new BrandProductPage(driver);
   }
 
-  public Cart goToCartPage(){
+  public CartPage goToCartPage(){
 
     driver.findElement(By.cssSelector("a[href='/view_cart']")).click();
-    return new Cart(driver);
+    return new CartPage(driver);
   }
 
   public TestCasesPage goToTestCasesPage(){
@@ -54,11 +48,8 @@ public class HomePage extends Footer {
   }
 
   public SignupLoginPage goToLoginPage() {
-    driver.findElement(loginLink).click();
-    return new SignupLoginPage(driver);
-  }
-  public String getUrl() {
-    return driver.getCurrentUrl();
+      driver.findElement(loginLink).click();
+      return new SignupLoginPage(driver);
   }
 
   public void clickContinueShopping(){ driver.findElement(By.cssSelector("button.btn.btn-success.close-modal.btn-block")).click();}
@@ -91,9 +82,4 @@ public class HomePage extends Footer {
 
     return new SignupLoginPage(driver);
   }
-
-  public String getUrl(){
-    return driver.getCurrentUrl();
-  }
-
 }

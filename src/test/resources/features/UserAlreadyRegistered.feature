@@ -3,6 +3,9 @@ Feature: Register User with Existing Email
   I want to register with my name and email address
   So that I can access the website
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: User tries to register with an existing email address
     Given I have launched the browser and navigated to the URL
     And I click on the 'Signup / Login' button

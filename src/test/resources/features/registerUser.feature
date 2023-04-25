@@ -1,4 +1,8 @@
 Feature: As a User I want to register and be able to delete my account
+
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Registering a new user
     Given I have launched the browser and navigated to the URL
     And I click on the Signup button

@@ -1,5 +1,8 @@
 Feature: As a USER, I want to view products for sale on the Automation Exericses website
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Viewing all products for sale
     Given I am on the Automation Exercise homepage
     When I click on the Products button
