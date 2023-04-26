@@ -1,9 +1,10 @@
 Feature: As, a User I want to Place an Order
 
   Background: Starting from the Home page
-    Given I am on the Homepage
+    Given I am on the Automation Exercise Website
 
   Scenario: Add a product to the cart
+    Given I am on the Homepage
     When I add a product to the cart
     Then I will go to the cart
     And see that the product has been added to the cart

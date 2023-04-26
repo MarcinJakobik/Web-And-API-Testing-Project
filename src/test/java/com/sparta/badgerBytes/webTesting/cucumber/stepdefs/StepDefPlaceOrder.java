@@ -12,8 +12,6 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 
 public class StepDefPlaceOrder {
 
-    private static ChromeDriverService service;
-
     private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     private HomePage homePage;
@@ -30,7 +28,10 @@ public class StepDefPlaceOrder {
     private static boolean confirmedPayment;
 
     @Given("I am on the Homepage")
-    public void iAmOnTheHomepage() { homePage = new HomePage(driver);}
+    public void iAmOnTheHomepage() {
+        driver = BackgroundStepdefs.getDriver();
+        homePage = new HomePage(driver);
+    }
 
     @When("I add a product to the cart")
     public void iAddAProductToTheCart() {
@@ -137,7 +138,7 @@ public class StepDefPlaceOrder {
     @Then("my account should be deleted")
     public void myAccountShouldBeDeleted() {
         //account deleted
-        Assert.assertEquals("https://automationexercise.com",driver.getCurrentUrl());
+        Assert.assertEquals("https://automationexercise.com/",driver.getCurrentUrl());
 
     }
 
