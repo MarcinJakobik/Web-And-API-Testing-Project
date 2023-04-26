@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BrandNavigationStepDef {
     HomePage homePage;
     BrandProductPage brandProductPage;
-    private static WebDriver driver = DriverFactory.getDriver();
+    private static WebDriver driver = BackgroundStepdefs.getDriver();
 
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
@@ -46,7 +46,7 @@ public class BrandNavigationStepDef {
     @Given("I am on the Kookie Kids product page")
     public void iAmOnTheKookieKidsProductPage() {
         //new given makes me do the setup again :P
-        driver = DriverFactory.getDriver();
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
         homePage.turnOffAd();
         brandProductPage = homePage.goToBrandPage("Kookie Kids");
