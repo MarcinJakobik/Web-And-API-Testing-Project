@@ -164,4 +164,14 @@ public class StepDefPlaceOrder {
     public void iClickTheProceedToCheckoutButtonRegister() {
         signupLoginPage = cartPage.proceedToCheckoutRegister();
     }
+
+    @Given("I go to the homepagee")
+    public void iGoToHomepage() {
+        homePage = new HomePage(driver);
+    }
+
+    @And("I Logout of my account")
+    public void iLogoutOfMyAccount() {
+        homePage.logout();
+    }
 }

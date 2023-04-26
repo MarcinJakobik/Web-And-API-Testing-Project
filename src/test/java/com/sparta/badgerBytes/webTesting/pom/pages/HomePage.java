@@ -101,4 +101,9 @@ public class HomePage extends SuperFooterPage {
             }
         }
     }
+
+    public void logout(){
+
+        driver.findElement(By.cssSelector("a[href='/logout']")).click();
+    }
 }
