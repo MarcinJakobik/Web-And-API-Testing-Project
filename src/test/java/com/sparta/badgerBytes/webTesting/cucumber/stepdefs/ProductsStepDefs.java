@@ -38,8 +38,9 @@ public class ProductsStepDefs {
 
   @Given("I am on the Products page")
   public void iAmOnTheProductsPage() {
-//    homePage = new HomePage(driver);
-//    products = homePage.goToProductsPage();
+    driver = BackgroundStepdefs.getDriver();
+    homePage = new HomePage(driver);
+    productsPage = homePage.goToProductsPage();
     Assertions.assertEquals("https://automationexercise.com/products", productsPage.getURL());
   }
 

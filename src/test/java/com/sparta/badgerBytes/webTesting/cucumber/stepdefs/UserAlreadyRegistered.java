@@ -30,6 +30,7 @@ public class UserAlreadyRegistered {
     private static final String USERNAME = "hamza";
     @Given("I have launched the browser and navigated to the URL")
     public void iHaveLaunchedTheBrowserAndNavigatedToTheURLHttpAutomationexerciseCom() {
+        driver = BackgroundStepdefs.getDriver();
         homePage = new HomePage(driver);
     }
 
