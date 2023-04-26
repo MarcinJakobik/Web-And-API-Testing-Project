@@ -159,6 +159,8 @@ public class StepDefPlaceOrder {
     }
 
 
-
-
+    @When("I click the proceed to checkout button Register")
+    public void iClickTheProceedToCheckoutButtonRegister() {
+        signupLoginPage = cartPage.proceedToCheckoutRegister();
+    }
 }

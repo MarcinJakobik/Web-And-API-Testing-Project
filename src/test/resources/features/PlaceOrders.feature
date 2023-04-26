@@ -10,7 +10,7 @@ Feature: As, a User I want to Place an Order
 
   #Scenario: Create an account on the checkout page
     Given I am on the cart page
-    When I click the proceed to checkout button
+    When I click the proceed to checkout button Register
     And I  put in my inital details and continue
     Then I  put in my Full Details
     And I  have created an account
