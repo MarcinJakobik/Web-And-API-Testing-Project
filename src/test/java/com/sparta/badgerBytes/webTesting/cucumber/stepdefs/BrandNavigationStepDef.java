@@ -46,9 +46,9 @@ public class BrandNavigationStepDef {
     @Given("I am on the Kookie Kids product page")
     public void iAmOnTheKookieKidsProductPage() {
         //new given makes me do the setup again :P
-//        driver = DriverFactory.getDriver();
-//        homePage = new HomePage(driver);
-        //homePage.turnOffAd();
+        driver = DriverFactory.getDriver();
+        homePage = new HomePage(driver);
+        homePage.turnOffAd();
         brandProductPage = homePage.goToBrandPage("Kookie Kids");
     }
 
