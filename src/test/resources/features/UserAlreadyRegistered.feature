@@ -8,7 +8,7 @@ Feature: Register User with Existing Email
 
   Scenario: User tries to register with an existing email address
     Given I have launched the browser and navigated to the URL
-    And I click on the 'Signup / Login' button
+    And I click on the Signup button
     Then I should see 'New User Signup!' displayed on the page
     When I enter my name and an already registered email address
     And I click the 'Signup' button
