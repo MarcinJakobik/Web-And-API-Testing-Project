@@ -20,8 +20,6 @@ i.e. What was tested?
 
 The API testing framework tests for specific API calls on differing endpoints to check the expected response codes and messages. To do this, we were often checking if certain JSON data was present and parsing the JSON into Java objects that could be tested on. Meanwhile, the web testing framework has test cases for functionality/features that users would expect and ensure that they're working as intended.
 
-On our Kanban board the test cases are organized by user story and are written in a format that includes the test case ID, name, objective, steps, expected result, test data, test environment, and pass criteria.
-
 Here's a small sample of the user stories we used to derive our tests.
 
 ### Sample User Stories // API
@@ -85,20 +83,33 @@ THEN a success message 'You have been successfully subscribed!' will be visible
 
 ## Test Metrics
 
-**NEED TO BE ADDED**
+- API Call Tests:
+  - 100% coverage of each item on the websites API Test list.
 
-- Check how many web tests we’ve done out of total and then give a %
-- Metric derived from  Cucumber Stuff
-- We have 100% coverage of every API call test.
+- Website Functionality Tests:
+  - Successfully tested 65% of our website functionality cases.​
+  - 17 / 26 Test cases covered.
+
+- Cucumber Features:
+  - 18 features with 30 scenarios.​
+  - 19 / 30 scenarios passing, 63%.
 
 ## Project Structure And Installation
 
-**ADD INSTALLATION INSTRUCTIONS HERE**
-
-1. Clone the repository to your local machine.
+1. Fork this repository and then clone the forked repo to your local machine.
 2. Open the project in your preferred IDE.
-3. Run `TestRunner.java` to start the application.
-4. Follow instructions laid out by command-line-interface.
+3. Download the correct driver for your browser of choice.
+
+- e.g. If using Chrome, check your version of Chrome and Download the corresponding ChromeDriver on https://chromedriver.chromium.org/downloads
+
+4. Copy and paste the Driver application into this folder: `Web-And-API-Testing-Project/src/test/resources/`
+5. Open the `WebTesting.properties` file in the same `/resources` folder.
+6. In `WebTesting.properties` ensure that the driver you are using is the **only** driver that is "un-commented". If using Chrome, skip this step as Chrome is the default driver.
+
+- e.g If you are using Firefox, comment out `driver=chrome` and "un-comment" `driver=firefox`.
+
+7. Call `DriverFactory.getDriver()` from the `src/test/java/com/sparta/badgerBytes/webTesting/pom/util` folder and pass it to the constructor of the `HomePage` class in `src/test/java/com/sparta/badgerBytes/webTesting/pom/pages`
+8. Rebuild your project in the IDE.
 
 There are two main directories: apiTesting and webTesting. The API directory contains test cases for the site's API, while the Web Implementation directory contains test cases for testing the website's user interface. Each directory contains its own user stories and test cases.
 
