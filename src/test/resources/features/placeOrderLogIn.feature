@@ -1,5 +1,8 @@
   Feature: logging in before checking out
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
     Scenario: Log in before checking out my cart
     #Scenario: Create a Account to log into first
     Given I am on the Homepage

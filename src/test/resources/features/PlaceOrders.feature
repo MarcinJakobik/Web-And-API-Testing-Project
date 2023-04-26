@@ -1,5 +1,8 @@
 Feature: As, a User I want to Place an Order and register at the same time
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Add a product to the cart
     Given I am on the Homepage
     When I add a product to the cart

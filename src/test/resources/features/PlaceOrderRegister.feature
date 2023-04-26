@@ -1,5 +1,8 @@
 Feature: Registering the user before checking out a order
 
+  Background: Starting from the homepage
+    Given I am on the Automation Exercise Website
+
   Scenario: Register before I checkout my order
   Given I am on the Homepage
   And I have Navigated to the Login Signup Page
