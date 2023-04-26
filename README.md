@@ -87,12 +87,12 @@ THEN a success message 'You have been successfully subscribed!' will be visible
   - 100% coverage of each item on the websites API Test list.
 
 - Website Functionality Tests:
-  - Successfully tested 65% of our website functionality cases.​
-  - 17 / 26 Test cases covered.
+  - 17 / 26 Test cases covered, 15 passed.
+  - Successfully tested 65% of cases provided by the site.
 
 - Cucumber Features:
-  - 18 features with 30 scenarios.​
-  - 19 / 30 scenarios passing, 63%.
+  - 17 features containing 29 scenarios.
+  - 27 / 29 scenarios passed = 93%%.
 
 ## Project Structure And Installation
 
