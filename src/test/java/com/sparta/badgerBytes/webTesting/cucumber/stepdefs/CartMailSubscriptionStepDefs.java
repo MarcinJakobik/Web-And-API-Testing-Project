@@ -22,6 +22,7 @@ public class CartMailSubscriptionStepDefs {
 
   @Given("I am on the automation exercise website shopping cart")
   public void iAmOnTheAutomationExerciseWebsiteShoppingCart() {
+    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
     cartPage = homePage.goToCartPage();
   }

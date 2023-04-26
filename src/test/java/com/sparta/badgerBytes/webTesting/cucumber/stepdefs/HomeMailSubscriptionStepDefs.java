@@ -21,6 +21,7 @@ public class HomeMailSubscriptionStepDefs {
 
   @Given("I am on the automation exercise website")
   public void iAmOnTheAutomationExerciseWebsite() {
+    driver = BackgroundStepdefs.getDriver();
     homePage = new HomePage(driver);
   }
 
