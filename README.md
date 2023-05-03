@@ -123,13 +123,13 @@ The project applies SOLID and OOP principles and uses well-known design patterns
 
 ## Contributors
 
-- [Edward Bradbury](https://github.com/@edwardbradbury) // Scrum Master phase 1
-- [Nicholas Daily](https://github.com/@NicholasDaily) // Scrum Master phase 2
-- [Marcin Jakobik](https://github.com/@MarcinJakobik) // Github Lead
-- [Elliott Horton-Stephens](https://github.com/@ells101)
-- [Onur Belek](https://github.com/@Eluented)
-- [Liam Richardson](https://github.com/@LRichardson-git)
-- [Omar Hussain](https://github.com/@OmarHussain01)
-- [Reggie Howard](https://github.com/@Reg-Howard)
-- [Hamza Kazi](https://github.com/@HamzaKazi)
-- [Muhammad Rizwan](https://github.com/@usmanrizwan1)
+- [Edward Bradbury](https://github.com/edwardbradbury) // Scrum Master phase 1
+- [Nicholas Daily](https://github.com/NicholasDaily) // Scrum Master phase 2
+- [Marcin Jakobik](https://github.com/MarcinJakobik) // Github Lead
+- [Elliott Horton-Stephens](https://github.com/ells101)
+- [Onur Belek](https://github.com/Eluented)
+- [Liam Richardson](https://github.com/LRichardson-git)
+- [Omar Hussain](https://github.com/OmarHussain01)
+- [Reggie Howard](https://github.com/Reg-Howard)
+- [Hamza Kazi](https://github.com/HamzaKazi)
+- [Muhammad Rizwan](https://github.com/usmanrizwan1)
